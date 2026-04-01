@@ -159,12 +159,13 @@
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px var(--glow-pink); background: var(--pink-dark); }
   .btn-ghost {
-    color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; text-decoration: none;
-    display: flex; align-items: center; gap: 8px; transition: all 0.3s;
-    letter-spacing: 0.5px;
+    background: transparent; color: white; padding: 16px 36px;
+    border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s; display: inline-block;
+    border: 2px solid rgba(255,255,255,0.7);
   }
-  .btn-ghost:hover { color: white; gap: 14px; }
-  .btn-ghost::after { content: '\2192'; transition: inherit; }
+  .btn-ghost:hover { background: white; color: var(--pink); border-color: white; transform: translateY(-2px); box-shadow: 0 8px 40px rgba(255,255,255,0.15); }
 
   .hero-image-col {
     position: relative; display: flex; justify-content: center; align-items: center;
@@ -1198,7 +1199,7 @@
       <p class="hero-sub">Gymnastics Online — Supporting every gymnast. Connecting the community.</p>
       <div class="hero-actions">
         <a href="#" class="btn-primary">Get Early Access</a>
-        <a href="#programs" class="btn-ghost">See what's inside &rarr;</a>
+        <a href="#programs" class="btn-ghost">See what's inside</a>
       </div>
     </div>
   </div>
