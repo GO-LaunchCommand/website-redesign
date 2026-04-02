@@ -538,7 +538,24 @@
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+61 400 000 000">
+                <div style="display:flex;gap:8px;">
+                  <select id="phone-code" name="phone_code" style="flex:0 0 110px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:13px 10px;font-size:13px;color:white;font-family:var(--sans);outline:none;appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.4)%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 8px center;background-size:14px;padding-right:28px;cursor:pointer;">
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+64">🇳🇿 +64</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+1-CA">🇨🇦 +1</option>
+                    <option value="+353">🇮🇪 +353</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+81">🇯🇵 +81</option>
+                    <option value="+65">🇸🇬 +65</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <input type="tel" id="phone" name="phone" placeholder="400 000 000" style="flex:1;">
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -647,6 +664,10 @@ var stateData = {
 
 function updateStates() {
   var country = document.getElementById('country').value;
+  var codeMap = {AU:'+61',NZ:'+64',US:'+1',GB:'+44',CA:'+1-CA',IE:'+353',ZA:'+27'};
+  if (codeMap[country]) {
+    document.getElementById('phone-code').value = codeMap[country];
+  }
   var stateGroup = document.getElementById('state-group');
   var stateSelect = document.getElementById('state');
   var stateLabel = document.getElementById('state-label');
