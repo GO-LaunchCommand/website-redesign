@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Clubs & Coaches — Gymnastics Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #E8317F;
+    --pink-dark: #c4195f;
+    --pink-light: #f472a8;
+    --purple: #6B2FA0;
+    --purple-deep: #2D1B4E;
+    --purple-dark: #1a0e30;
+    --dark: #0f0a1a;
+    --mid: #6a6a7e;
+    --light: #f8f6fc;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --glow-pink: rgba(232, 49, 127, 0.4);
+    --glow-purple: rgba(107, 47, 160, 0.4);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--dark); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s; background: rgba(15, 10, 26, 0.92); backdrop-filter: blur(20px); box-shadow: 0 2px 40px rgba(0,0,0,0.3); }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 40px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); text-decoration: none; text-transform: uppercase; letter-spacing: 1.2px; transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--pink); transition: width 0.3s; }
+  .nav-links a:hover { color: white; }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links .for-clubs { color: var(--pink-light); font-weight: 700; }
+  .nav-cta { background: var(--pink); color: white !important; padding: 10px 24px; border-radius: 100px; font-weight: 600 !important; letter-spacing: 0.5px !important; text-transform: uppercase !important; font-size: 12px !important; transition: all 0.3s !important; border: 2px solid var(--pink); }
+  .nav-cta:hover { background: transparent !important; border-color: var(--pink) !important; }
+  .nav-cta::after { display: none !important; }
+  .nav-hamburger { display: none; width: 44px; height: 44px; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; padding: 8px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+
+  /* HERO */
+  .clubs-hero {
+    position: relative; min-height: 85vh; display: flex; align-items: center;
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--dark) 50%, #1a0820 100%);
+    overflow: hidden; padding-top: 72px;
+  }
+  .clubs-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .clubs-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: brightness(0.3) grayscale(30%); }
+  .clubs-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,10,26,0.9) 0%, rgba(15,10,26,0.5) 60%, rgba(15,10,26,0.2) 100%); }
+  .clubs-hero-content { position: relative; z-index: 2; max-width: 700px; padding: 80px 0; }
+  .clubs-hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(232,49,127,0.15); border: 1px solid rgba(232,49,127,0.3); border-radius: 100px; padding: 8px 20px; margin-bottom: 28px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pink-light); }
+  .clubs-hero h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 72px); font-weight: 900; color: white; line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; }
+  .clubs-hero h1 em { color: var(--pink); font-style: italic; }
+  .clubs-hero p { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.7; font-weight: 300; max-width: 520px; margin-bottom: 40px; }
+  .clubs-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--pink); color: white; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; display: inline-block; box-shadow: 0 4px 30px var(--glow-pink); border: 2px solid var(--pink); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px var(--glow-pink); background: var(--pink-dark); }
+  .btn-outline { background: transparent; color: white; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; display: inline-block; border: 2px solid rgba(255,255,255,0.4); }
+  .btn-outline:hover { background: white; color: var(--pink); border-color: white; transform: translateY(-2px); }
+
+  /* QUICK WINS BAR */
+  .quick-wins { background: var(--pink); padding: 40px 0; }
+  .quick-wins-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.2); }
+  .quick-win { background: var(--pink); padding: 28px 24px; text-align: center; }
+  .quick-win-icon { font-size: 28px; margin-bottom: 10px; }
+  .quick-win h3 { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .quick-win p { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 300; line-height: 1.5; }
+
+  /* SECTION COMMON */
+  .section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--pink); margin-bottom: 16px; }
+  .section-label::before { content: '—'; }
+  .section-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; }
+  .section-sub { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 560px; font-weight: 300; }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-header .section-sub { margin: 0 auto; }
+
+  /* FINANCIAL */
+  .financial { padding: 100px 0; background: var(--dark); }
+  .financial .section-label { color: var(--pink-light); }
+  .financial .section-label::before { background: var(--pink-light); }
+  .financial .section-title { color: white; }
+  .financial .section-sub { color: rgba(255,255,255,0.6); }
+  .financial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .financial-image { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--purple-deep), var(--dark)); }
+  .financial-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(20%); }
+  .financial-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,10,26,0.6) 0%, transparent 60%); }
+  .financial-how { margin-top: 40px; }
+  .financial-how h3 { font-family: var(--serif); font-size: 22px; color: white; margin-bottom: 20px; }
+  .earn-steps { display: flex; flex-direction: column; gap: 16px; }
+  .earn-step { display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; }
+  .earn-step-num { flex-shrink: 0; width: 36px; height: 36px; background: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; }
+  .earn-step-text h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .earn-step-text p { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; line-height: 1.5; }
+  .earn-highlight { margin-top: 20px; background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.25); border-radius: 10px; padding: 20px 24px; }
+  .earn-highlight p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; font-style: italic; }
+  .earn-highlight strong { color: var(--pink-light); }
+
+  /* FEATURES */
+  .features { padding: 100px 0; background: var(--light); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 60px; }
+  .feature-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid rgba(15,10,26,0.06); transition: all 0.3s; }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(15,10,26,0.1); border-color: rgba(232,49,127,0.15); }
+  .feature-card-img { height: 200px; background: linear-gradient(135deg, var(--purple-dark), var(--dark)); position: relative; overflow: hidden; }
+  .feature-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(30%) brightness(0.8); }
+  .feature-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(15,10,26,0.7) 100%); }
+  .feature-card-num { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--serif); font-size: 48px; font-weight: 900; color: rgba(255,255,255,0.15); line-height: 1; }
+  .feature-card-icon { position: absolute; bottom: 16px; left: 20px; z-index: 2; }
+  .feature-card-icon svg { width: 32px; height: 32px; stroke: var(--pink); stroke-width: 1.5; fill: none; }
+  .feature-card-body { padding: 28px; }
+  .feature-card-body h3 { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .feature-card-body p { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+  .feature-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .feature-bullets li { font-size: 13px; color: var(--mid); display: flex; align-items: flex-start; gap: 8px; }
+  .feature-bullets li::before { content: '✓'; color: var(--pink); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* BENEFITS CHAIN */
+  .benefits-chain { padding: 100px 0; background: var(--purple-dark); position: relative; overflow: hidden; }
+  .benefits-chain::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(232,49,127,0.1) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(107,47,160,0.15) 0%, transparent 60%); }
+  .benefits-chain .container { position: relative; z-index: 1; }
+  .benefits-chain .section-title { color: white; }
+  .benefits-chain .section-sub { color: rgba(255,255,255,0.6); }
+  .benefits-chain .section-label { color: var(--pink-light); }
+  .chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; }
+  .chain-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); padding: 32px 24px; position: relative; transition: all 0.3s; }
+  .chain-item:hover { background: rgba(255,255,255,0.09); border-color: rgba(232,49,127,0.3); }
+  .chain-item::after { content: '→'; position: absolute; right: -16px; top: 50%; transform: translateY(-50%); color: var(--pink); font-size: 20px; z-index: 2; }
+  .chain-item:last-child::after { display: none; }
+  .chain-icon { width: 48px; height: 48px; background: rgba(232,49,127,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .chain-icon svg { width: 24px; height: 24px; stroke: var(--pink); stroke-width: 1.5; fill: none; }
+  .chain-item h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 8px; letter-spacing: 0.3px; }
+  .chain-item p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; font-weight: 300; }
+
+  /* FAQ */
+  .faq { padding: 100px 0; background: white; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 60px; }
+  .faq-item { border: 1px solid rgba(15,10,26,0.08); border-radius: 10px; padding: 28px; cursor: pointer; transition: all 0.3s; }
+  .faq-item:hover { border-color: rgba(232,49,127,0.2); background: var(--light); }
+  .faq-question { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .faq-question::after { content: '+'; color: var(--pink); font-size: 20px; font-weight: 300; flex-shrink: 0; line-height: 1; }
+  .faq-answer { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; }
+
+  /* FORM / DOWNLOAD CTA */
+  .download-cta { padding: 100px 0; background: linear-gradient(135deg, var(--purple-dark) 0%, var(--dark) 60%, #1a0820 100%); position: relative; overflow: hidden; }
+  .download-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 60%, rgba(232,49,127,0.12) 0%, transparent 55%); }
+  .download-cta .container { position: relative; z-index: 1; }
+  .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .download-info h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: white; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+  .download-info h2 em { color: var(--pink); font-style: italic; }
+  .download-info p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 32px; }
+  .pack-includes { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .pack-includes li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7); }
+  .pack-includes li::before { content: ''; width: 20px; height: 20px; border-radius: 50%; background: rgba(232,49,127,0.2); border: 1px solid rgba(232,49,127,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E8317F' stroke-width='2.5'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); background-size: 12px; background-position: center; background-repeat: no-repeat; }
+
+  /* FORM */
+  .download-form-wrap { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 44px; }
+  .download-form-wrap h3 { font-family: var(--serif); font-size: 24px; font-weight: 700; color: white; margin-bottom: 8px; }
+  .download-form-wrap > p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .form-group input, .form-group select { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: white; font-family: var(--sans); transition: border-color 0.3s, background 0.3s; outline: none; appearance: none; -webkit-appearance: none; }
+  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; padding-right: 40px; cursor: pointer; }
+  .form-group select option { background: #1a0e30; color: white; }
+  .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--pink); background: rgba(255,255,255,0.1); }
+  .form-group input:focus::placeholder { color: rgba(255,255,255,0.4); }
+  #state-group { display: none; }
+  .btn-download { width: 100%; background: var(--pink); color: white; padding: 18px 36px; border-radius: 100px; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 30px var(--glow-pink); margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .btn-download:hover { background: var(--pink-dark); transform: translateY(-2px); box-shadow: 0 8px 40px var(--glow-pink); }
+  .btn-download svg { width: 18px; height: 18px; stroke: white; stroke-width: 2; fill: none; }
+  .form-privacy { font-size: 12px; color: rgba(255,255,255,0.3); text-align: center; margin-top: 12px; line-height: 1.5; }
+  .form-success { display: none; text-align: center; padding: 40px 20px; }
+  .form-success svg { width: 56px; height: 56px; stroke: var(--pink); stroke-width: 1.5; fill: none; margin-bottom: 16px; }
+  .form-success h3 { font-family: var(--serif); font-size: 24px; color: white; margin-bottom: 12px; }
+  .form-success p { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+  .form-success a { background: var(--pink); color: white; padding: 14px 32px; border-radius: 100px; font-size: 13px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; display: inline-block; }
+
+  /* FOOTER */
+  footer { background: var(--dark); padding: 60px 0 40px; color: rgba(255,255,255,0.5); }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 280px; margin-top: 16px; }
+  .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s; }
+  .footer-col ul li a:hover { color: var(--pink); }
+  .footer-col ul li a.clubs-link { color: var(--pink-light); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s; }
+  .footer-legal a:hover { color: var(--pink); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .financial-grid { grid-template-columns: 1fr; gap: 48px; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .chain-grid { grid-template-columns: repeat(2, 1fr); }
+    .chain-item::after { display: none; }
+    .download-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .container { padding: 0 24px; }
+    .clubs-hero p { font-size: 16px; }
+    .quick-wins-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .chain-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+  @media (max-width: 640px) {
+    .quick-wins-grid { grid-template-columns: 1fr; }
+    .clubs-hero-actions { flex-direction: column; }
+    .download-form-wrap { padding: 28px 20px; }
+    .financial { padding: 60px 0; }
+    .features { padding: 60px 0; }
+    .benefits-chain { padding: 60px 0; }
+    .faq { padding: 60px 0; }
+    .download-cta { padding: 60px 0; }
+  }
+  .nav-links.mobile-open { display: flex !important; position: fixed; inset: 0; z-index: 10000; background: rgba(15,10,26,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 0; }
+  .nav-links.mobile-open li { list-style: none; }
+  .nav-links.mobile-open a { font-size: 20px; padding: 16px 0; display: block; text-align: center; letter-spacing: 2px; }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="img/logo-white.png" alt="Gymnastics Online">
+  </a>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#experts">Experts</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="clubs.html" class="for-clubs">For Clubs</a></li>
+    <li><a href="index.html#" class="nav-cta">Get Early Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="clubs-hero">
+  <div class="clubs-hero-bg">
+    <img src="img/Coach1.jpg" alt="Gymnastics coaching" onerror="this.style.display='none'">
+  </div>
+  <div class="container">
+    <div class="clubs-hero-content">
+      <div class="clubs-hero-badge">For Clubs &amp; Coaches</div>
+      <h1>For <em>Clubs</em><br>Who Want More.</h1>
+      <p>A platform built to support your coaches, accelerate athlete development, streamline parent communication — and put passive income back in your club.</p>
+      <div class="clubs-hero-actions">
+        <a href="#download" class="btn-primary">Download Club Pack</a>
+        <a href="#features" class="btn-outline">See What's Included</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK WINS BAR -->
+<div class="quick-wins">
+  <div class="container">
+    <div class="quick-wins-grid">
+      <div class="quick-win">
+        <div class="quick-win-icon">💰</div>
+        <h3>Your club earns revenue</h3>
+        <p>Passive income every time a family joins with your club code</p>
+      </div>
+      <div class="quick-win">
+        <div class="quick-win-icon">⏱</div>
+        <h3>Coaches save time</h3>
+        <p>Voice-to-report in under 60 seconds. No typing, no awkward conversations</p>
+      </div>
+      <div class="quick-win">
+        <div class="quick-win-icon">🏅</div>
+        <h3>Athletes develop faster</h3>
+        <p>Home conditioning that actually translates to gym progress</p>
+      </div>
+      <div class="quick-win">
+        <div class="quick-win-icon">🤝</div>
+        <h3>Parents stay informed</h3>
+        <p>Professional reporting that builds trust and reduces noise</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCIAL BENEFITS -->
+<section class="financial" id="financial">
+  <div class="container">
+    <div class="financial-grid">
+      <div>
+        <span class="section-label">Financial Benefits</span>
+        <h2 class="section-title" style="color:white;">Your club earns.<br><em style="color:var(--pink);font-style:italic;">Every month.</em></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.6);">One of the most compelling reasons to partner with Gymnastics Online is simple: your club earns money every time a family joins using your club code. No extra work. No selling. Just ongoing passive income.</p>
+        <div class="financial-how">
+          <div class="earn-steps">
+            <div class="earn-step">
+              <div class="earn-step-num">1</div>
+              <div class="earn-step-text">
+                <h4>First 3 months — 25% of every membership</h4>
+                <p>For each family that signs up using your club code, your club earns 25% of their membership fee for the first three months.</p>
+              </div>
+            </div>
+            <div class="earn-step">
+              <div class="earn-step-num">2</div>
+              <div class="earn-step-text">
+                <h4>Ongoing — 10% forever</h4>
+                <p>After the first 3 months, your club earns 10% of every membership fee, every month, for as long as that family stays a member.</p>
+              </div>
+            </div>
+            <div class="earn-step">
+              <div class="earn-step-num">3</div>
+              <div class="earn-step-text">
+                <h4>Zero effort required</h4>
+                <p>Families simply sign up using your club's unique code. No lock-in, no selling, no admin. Every family that joins adds to your club's income.</p>
+              </div>
+            </div>
+          </div>
+          <div class="earn-highlight">
+            <p>💡 <strong>Example:</strong> A club with 80 families, 50 of whom join GO. Your club immediately earns 25% of their monthly memberships for 3 months, then 10% every month after — indefinitely. Completely passive.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="financial-image">
+          <img src="img/Coach2.jpg" alt="Coach working with gymnast" onerror="this.style.background='linear-gradient(135deg,#2D1B4E,#0f0a1a)'">
+        </div>
+        <div style="margin-top:28px; display:flex; flex-direction:column; gap:12px;">
+          <p style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:4px;">Clubs can use the income for</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">New equipment</span>
+            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Subsidising lessons</span>
+            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Coach development</span>
+            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">End of year events</span>
+            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Fundraising</span>
+            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Anything you choose</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Platform Features</span>
+      <h2 class="section-title">Everything your club needs.<br>Built for how coaches actually work.</h2>
+      <p class="section-sub">Beyond the financial incentive, GO gives your club a powerful set of tools that improve athlete outcomes, streamline coach workload, and elevate your club's professionalism.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-card-img">
+          <img src="img/Coach3.jpg" alt="Home conditioning" onerror="this.style.display='none'">
+          <span class="feature-card-num">01</span>
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5L17.5 17.5M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
+        </div>
+        <div class="feature-card-body">
+          <h3>Home Conditioning &amp; Workout Modules</h3>
+          <p>Coaches can assign specific conditioning and flexibility modules directly to individual athletes for home practice. With a library of 250+ exercises — and growing — coaches can build fully custom workouts.</p>
+          <ul class="feature-bullets">
+            <li>250+ expert-approved exercises at launch</li>
+            <li>New exercises added continuously</li>
+            <li>Assign to individual athletes or whole squads</li>
+            <li>Purpose-built for gymnastics — not adapted from generic fitness</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-img">
+          <img src="img/Coach4.jpg" alt="Coach reporting" onerror="this.style.display='none'">
+          <span class="feature-card-num">02</span>
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        </div>
+        <div class="feature-card-body">
+          <h3>Reporting &amp; Communication Tool</h3>
+          <p>The feature coaches love most. Record a voice note from your phone — the platform converts it into a beautifully presented, professional report delivered directly to the family. No typing required.</p>
+          <ul class="feature-bullets">
+            <li>Voice-to-report in under 60 seconds</li>
+            <li>Question library from Baby Gym to International pathways</li>
+            <li>Ad hoc, injury, and end-of-term reports</li>
+            <li>Coach privacy protected — no personal contact details shared</li>
+            <li>Club controls the approval workflow</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-img">
+          <img src="img/Coach5.jpg" alt="Athlete wellness" onerror="this.style.display='none'">
+          <span class="feature-card-num">03</span>
+          <div class="feature-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        </div>
+        <div class="feature-card-body">
+          <h3>Athlete Wellness Check-In</h3>
+          <p>Rooted in the athlete-parent-coach triangle, the Wellness Check-In ensures every athlete is seen as a whole person. Before training, athletes answer a brief check-in covering physical and psychological readiness.</p>
+          <ul class="feature-bullets">
+            <li>Physical and mental wellbeing check before each session</li>
+            <li>Red flag responses surfaced immediately to the coach</li>
+            <li>Best-practice coach response prompts included</li>
+            <li>Completable on phone or club iPad before training</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS CHAIN -->
+<section class="benefits-chain">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">The Benefits Chain</span>
+      <h2 class="section-title">When clubs use GO, everyone wins.</h2>
+      <p class="section-sub">Every feature is connected. Better tools for coaches mean better outcomes for athletes, which means happier parents, stronger clubs, and a growing reputation.</p>
+    </div>
+    <div class="chain-grid">
+      <div class="chain-item">
+        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5L17.5 17.5M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
+        <h4>Athlete Development</h4>
+        <p>Home conditioning → faster gym progression → better athlete results → stronger club reputation → more enrolments</p>
+      </div>
+      <div class="chain-item">
+        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>Communication</h4>
+        <p>Professional, effortless reporting → parents feel informed and valued → coaches feel respected → club positioned as quality-focused</p>
+      </div>
+      <div class="chain-item">
+        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4>Athlete Wellness</h4>
+        <p>Athletes feel heard → parents trust the club → coaches handle situations with confidence → club known as athlete-first</p>
+      </div>
+      <div class="chain-item">
+        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h4>Financial</h4>
+        <p>Passive income from every family → funds directed where most needed → sustainable club growth</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">We've heard your concerns.</h2>
+      <p class="section-sub">Here are the questions we hear most from clubs — and our honest answers.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">"We don't want more back-and-forth with parents."</div>
+        <div class="faq-answer">Two-way communication is entirely optional and can be switched off. Coaches control their working hours — messages from parents only arrive during the window coaches set.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">"The wellness check-ins sound like extra work."</div>
+        <div class="faq-answer">They're optional and can be disabled at any time. For clubs that do use them, they take under a minute and have been credited with surfacing issues coaches would never have known about.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">"We already do injury reporting."</div>
+        <div class="faq-answer">This just makes what you're already doing faster, cleaner, and stored automatically. Voice-to-report means the whole thing takes under 60 seconds.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">"Will our coaches actually use it?"</div>
+        <div class="faq-answer">It's designed for the phone and built for speed. The reporting tool was specifically created so coaches who hate admin will actually use it — because it takes less time than typing a text.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">"We already have a system."</div>
+        <div class="faq-answer">Fair. Our question is simple: does your current system pay you? Every family that joins GO with your club code earns your club passive income — month after month.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">"We're a small club. Is this for us?"</div>
+        <div class="faq-answer">Perfect for small clubs. Low effort, passive income, and tools that actually reduce coach workload. You don't need 200 families to make this worthwhile.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA + FORM -->
+<section class="download-cta" id="download">
+  <div class="container">
+    <div class="download-grid">
+      <div class="download-info">
+        <h2>Download the<br><em>Club Pack.</em></h2>
+        <p>Everything you need to understand the GO club offering, share with your committee, and make an informed decision. Fill in your details and we'll get you the pack instantly.</p>
+        <ul class="pack-includes">
+          <li>Full platform overview &amp; feature breakdown</li>
+          <li>Affiliate revenue model explained</li>
+          <li>Reporting &amp; wellness tool walkthroughs</li>
+          <li>Pricing and partnership tiers</li>
+          <li>Getting started guide</li>
+          <li>Contact details for a free club demo</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="download-form-wrap">
+          <h3>Get the Club Pack</h3>
+          <p>We'll send your pack immediately. We'll never share your details.</p>
+
+          <form id="club-form" onsubmit="handleClubForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coach-name">Coach / Contact Name *</label>
+                <input type="text" id="coach-name" name="coach_name" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="club-name">Club Name *</label>
+                <input type="text" id="club-name" name="club_name" placeholder="Your club's name" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="coach@yourclub.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+61 400 000 000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Country *</label>
+              <select id="country" name="country" required onchange="updateStates()">
+                <option value="">Select your country</option>
+                <option value="AU">Australia</option>
+                <option value="NZ">New Zealand</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="IE">Ireland</option>
+                <option value="ZA">South Africa</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+            <div class="form-group" id="state-group">
+              <label for="state" id="state-label">State / Region *</label>
+              <select id="state" name="state">
+                <option value="">Select your state</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-download">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download Club Pack
+            </button>
+            <p class="form-privacy">Your information is used only to send you the club pack and follow up with relevant GO updates. We don't sell or share your data.</p>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>You're all set!</h3>
+            <p>Your Club Pack is downloading now. We'll also send a copy to your email. We look forward to partnering with you.</p>
+            <a href="club-pack-placeholder.pdf" download>Download Again</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img src="img/logo-white.png" alt="Gymnastics Online" style="height:36px; margin-bottom:16px;">
+        <p class="footer-tagline">Expert-backed gymnastics support for families and clubs worldwide. Built by specialists who understand the sport.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="index.html#programs">Programs</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#experts">Experts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>For Clubs</h4>
+        <ul>
+          <li><a href="clubs.html" class="clubs-link">About</a></li>
+          <li><a href="#download" class="clubs-link">Club Info Pack</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Gymnastics Online. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hamburger nav
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('mobile-open');
+  });
+}
+
+// Country → State picker
+var stateData = {
+  AU: { label: 'State / Territory', states: ['Australian Capital Territory','New South Wales','Northern Territory','Queensland','South Australia','Tasmania','Victoria','Western Australia'] },
+  NZ: { label: 'Region', states: ['Auckland','Bay of Plenty','Canterbury','Gisborne','Hawke\'s Bay','Manawatu-Whanganui','Marlborough','Nelson','Northland','Otago','Southland','Taranaki','Tasman','Waikato','Wellington','West Coast'] },
+  US: { label: 'State', states: ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'] },
+  GB: { label: 'Country / Region', states: ['England','Scotland','Wales','Northern Ireland'] },
+  CA: { label: 'Province / Territory', states: ['Alberta','British Columbia','Manitoba','New Brunswick','Newfoundland and Labrador','Northwest Territories','Nova Scotia','Nunavut','Ontario','Prince Edward Island','Quebec','Saskatchewan','Yukon'] },
+  IE: { label: 'Province', states: ['Connacht','Leinster','Munster','Ulster'] },
+  ZA: { label: 'Province', states: ['Eastern Cape','Free State','Gauteng','KwaZulu-Natal','Limpopo','Mpumalanga','Northern Cape','North West','Western Cape'] }
+};
+
+function updateStates() {
+  var country = document.getElementById('country').value;
+  var stateGroup = document.getElementById('state-group');
+  var stateSelect = document.getElementById('state');
+  var stateLabel = document.getElementById('state-label');
+  stateSelect.innerHTML = '<option value="">Select your region</option>';
+  if (stateData[country]) {
+    stateLabel.textContent = stateData[country].label + ' *';
+    stateData[country].states.forEach(function(s) {
+      var opt = document.createElement('option');
+      opt.value = s; opt.textContent = s;
+      stateSelect.appendChild(opt);
+    });
+    stateGroup.style.display = 'block';
+    stateSelect.required = true;
+  } else {
+    stateGroup.style.display = 'none';
+    stateSelect.required = false;
+  }
+}
+
+// Form submit
+function handleClubForm(e) {
+  e.preventDefault();
+  // In production: send form data to backend/email service here
+  // For now: show success state and trigger placeholder download
+  document.getElementById('club-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  // Trigger placeholder download (PDF will be added later)
+  var link = document.createElement('a');
+  link.href = 'club-pack-placeholder.pdf';
+  link.download = 'GO-Club-Pack.pdf';
+  link.click();
+}
+</script>
+</body>
+</html>
