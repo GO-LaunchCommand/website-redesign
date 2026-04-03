@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GO Journal — Gymnastics Online</title>
+  <meta name="description" content="The GO Journal — expert articles, guides and insights for gymnastics families, parents and gymnasts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #e8317f;
+      --pink-dark: #c4215f;
+      --pink-light: #ff6ba8;
+      --purple: #6b2fa0;
+      --purple-dark: #3d1a60;
+      --dark: #0d0618;
+      --sans: 'Inter', sans-serif;
+      --serif: 'Playfair Display', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: #0d0618; color: white; overflow-x: hidden; }
+
+    /* ====== NAV ====== */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,6,24,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-logo img { height: 36px; }
+    .nav-links { list-style: none; display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: white; }
+    .nav-links .for-clubs { color: var(--pink-light); }
+    .nav-links .for-clubs:hover { color: white; }
+    .nav-links .nav-cta { background: var(--pink); color: white; padding: 9px 20px; border-radius: 100px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
+    .nav-links .nav-cta:hover { background: var(--pink-dark); transform: translateY(-1px); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(13,6,24,0.98); flex-direction: column; padding: 24px 20px; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 14px 0; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .nav-links .nav-cta { margin-top: 12px; text-align: center; border-radius: 100px; padding: 14px 20px; }
+    }
+
+    /* ====== HERO ====== */
+    .journal-hero { padding: 140px 40px 80px; text-align: center; background: linear-gradient(160deg, var(--dark) 0%, var(--purple-dark) 60%, #1a0820 100%); position: relative; overflow: hidden; }
+    .journal-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 80%, rgba(232,49,127,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(107,47,160,0.2) 0%, transparent 55%); pointer-events: none; }
+    .journal-hero .container { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .journal-label { display: inline-block; background: rgba(232,49,127,0.15); border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 7px 18px; border-radius: 100px; margin-bottom: 20px; }
+    .journal-hero h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 72px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; }
+    .journal-hero h1 em { color: var(--pink); font-style: italic; }
+    .journal-hero p { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.75; font-weight: 300; max-width: 560px; margin: 0 auto; }
+
+    /* ====== CONTAINER ====== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    /* ====== FILTER BAR ====== */
+    .journal-filters { padding: 40px 0 10px; }
+    .filter-scroll { display: flex; flex-wrap: wrap; gap: 10px; }
+    .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.65); font-family: var(--sans); font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 100px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .filter-btn:hover { background: rgba(232,49,127,0.12); border-color: rgba(232,49,127,0.35); color: white; }
+    .filter-btn.active { background: var(--pink); border-color: var(--pink); color: white; }
+
+    /* ====== GRID ====== */
+    .journal-grid-section { padding: 40px 0 80px; }
+    .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    @media (max-width: 960px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .journal-grid { grid-template-columns: 1fr; } }
+
+    .post-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+    .post-card:hover { transform: translateY(-5px); border-color: rgba(232,49,127,0.3); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+    .post-card-img { aspect-ratio: 16/9; overflow: hidden; position: relative; }
+    .post-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; filter: brightness(0.85); }
+    .post-card:hover .post-card-img img { transform: scale(1.05); }
+    .post-card-cat { position: absolute; bottom: 12px; left: 12px; background: rgba(13,6,24,0.85); border: 1px solid rgba(232,49,127,0.4); color: var(--pink-light); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; backdrop-filter: blur(6px); }
+    .post-card-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+    .post-card-body h3 { font-family: var(--serif); font-size: 20px; font-weight: 700; color: white; line-height: 1.3; margin-bottom: 10px; }
+    .post-card-body p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.65; flex: 1; margin-bottom: 20px; }
+    .post-read-more { display: inline-flex; align-items: center; gap: 8px; color: var(--pink-light); font-size: 13px; font-weight: 700; text-decoration: none; transition: gap 0.2s; }
+    .post-read-more svg { width: 16px; height: 16px; transition: transform 0.2s; }
+    .post-card:hover .post-read-more { gap: 12px; }
+    .post-card:hover .post-read-more svg { transform: translateX(3px); }
+
+    /* Featured (first post larger) */
+    .post-card.featured { grid-column: span 2; }
+    .post-card.featured .post-card-img { aspect-ratio: 21/9; }
+    .post-card.featured .post-card-body h3 { font-size: 26px; }
+    @media (max-width: 960px) { .post-card.featured { grid-column: span 1; } .post-card.featured .post-card-img { aspect-ratio: 16/9; } .post-card.featured .post-card-body h3 { font-size: 20px; } }
+
+    /* ====== LOAD MORE ====== */
+    .load-more-wrap { text-align: center; padding: 0 0 80px; }
+    .load-more-btn { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-family: var(--sans); font-size: 14px; font-weight: 600; padding: 14px 36px; border-radius: 100px; cursor: pointer; transition: all 0.3s; }
+    .load-more-btn:hover { border-color: var(--pink); color: var(--pink-light); background: rgba(232,49,127,0.08); }
+    .load-more-btn svg { width: 16px; height: 16px; }
+
+    /* ====== NEWSLETTER STRIP ====== */
+    .journal-newsletter { background: linear-gradient(135deg, rgba(107,47,160,0.3) 0%, rgba(232,49,127,0.2) 100%); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 60px 0; }
+    .newsletter-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .newsletter-text h3 { font-family: var(--serif); font-size: 28px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .newsletter-text p { font-size: 15px; color: rgba(255,255,255,0.55); }
+    .newsletter-form { display: flex; gap: 12px; flex-wrap: wrap; }
+    .newsletter-form input { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 13px 22px; font-size: 14px; color: white; font-family: var(--sans); outline: none; min-width: 260px; transition: border-color 0.3s; }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-form input:focus { border-color: rgba(232,49,127,0.5); }
+    .newsletter-form button { background: var(--pink); color: white; border: none; border-radius: 100px; padding: 13px 28px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+    .newsletter-form button:hover { background: var(--pink-dark); transform: translateY(-1px); }
+    @media (max-width: 768px) { .newsletter-inner { flex-direction: column; align-items: flex-start; } .newsletter-form { width: 100%; } .newsletter-form input { min-width: unset; flex: 1; } }
+
+    /* ====== FOOTER ====== */
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0 32px; }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+    .footer-brand img { height: 32px; margin-bottom: 14px; }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.6; max-width: 280px; }
+    .footer-links h4 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    /* ====== HIDDEN posts (load more) ====== */
+    .post-card.hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="img/logo-full-white.png" alt="Gymnastics Online"></a>
+  <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#experts">Experts</a></li>
+    <li><a href="index.html#early-access">Early Access</a></li>
+    <li><a href="journal.html" class="active">GO Journal</a></li>
+    <li><a href="clubs.html" class="for-clubs">For Clubs</a></li>
+    <li><a href="index.html#early-access" class="nav-cta">Get Early Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="journal-hero">
+  <div class="container">
+    <span class="journal-label">Articles &amp; Guides</span>
+    <h1>The GO <em>Journal</em></h1>
+    <p>Expert-backed articles, practical guides, and real talk for gymnastics families — from the first cartwheel to elite competition.</p>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<section class="journal-filters">
+  <div class="container">
+    <div class="filter-scroll">
+      <button class="filter-btn active" data-filter="all">All Posts</button>
+      <button class="filter-btn" data-filter="foundations">Gymnastics Foundations</button>
+      <button class="filter-btn" data-filter="supporting">Supporting Your Gymnast</button>
+      <button class="filter-btn" data-filter="health">Health, Growth &amp; Wellbeing</button>
+      <button class="filter-btn" data-filter="reality">The Reality of Gymnastics</button>
+    </div>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="journal-grid-section">
+  <div class="container">
+    <div class="journal-grid" id="journal-grid">
+
+      <!-- Post 1 — Featured -->
+      <article class="post-card featured" data-cat="foundations">
+        <div class="post-card-img">
+          <img src="img/gobts-1867.jpg" alt="Understanding Gymnastics Levels in Australia">
+          <span class="post-card-cat">Gymnastics Foundations</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Understanding Gymnastics Levels in Australia</h3>
+          <p>Australia's gymnastics pathway can feel like a maze. We break down the levels from foundation through to elite — so you know exactly where your gymnast sits and what comes next.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="post-card" data-cat="foundations">
+        <div class="post-card-img">
+          <img src="img/gobts-810.jpg" alt="Gymnastics Scoring Explained">
+          <span class="post-card-cat">Gymnastics Foundations</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Gymnastics Scoring Explained</h3>
+          <p>D-score, E-score, execution, artistry — demystified. A clear guide to how gymnastics is judged at every level.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="post-card" data-cat="foundations">
+        <div class="post-card-img">
+          <img src="img/gobts-749.jpg" alt="Understanding Gymnastics Coaching">
+          <span class="post-card-cat">Gymnastics Foundations</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Understanding Gymnastics Coaching</h3>
+          <p>What does a great gymnastics coach actually look like? We explore the methods, the relationship between coach and gymnast, and what parents should know.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 4 -->
+      <article class="post-card" data-cat="reality">
+        <div class="post-card-img">
+          <img src="img/gobts-837.jpg" alt="The Gymnastics Beam Problem">
+          <span class="post-card-cat">The Reality of Gymnastics</span>
+        </div>
+        <div class="post-card-body">
+          <h3>The Gymnastics Beam Problem</h3>
+          <p>Fear, falls, and the mental game — the beam is unlike any other apparatus. Here's how to understand and support a gymnast who's struggling on beam.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 5 -->
+      <article class="post-card" data-cat="supporting">
+        <div class="post-card-img">
+          <img src="img/gobts-540.jpg" alt="Safe Gymnastics Exercises at Home">
+          <span class="post-card-cat">Supporting Your Gymnast</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Safe Gymnastics Exercises at Home</h3>
+          <p>Not all home training is created equal. We share safe, effective exercises gymnasts can do between sessions — and what to avoid at all costs.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 6 -->
+      <article class="post-card" data-cat="supporting">
+        <div class="post-card-img">
+          <img src="img/gobts-827.jpg" alt="Home Gymnastics Equipment Guide">
+          <span class="post-card-cat">Supporting Your Gymnast</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Home Gymnastics Equipment Guide</h3>
+          <p>Thinking about a beam or bar for home? We cover what's worth buying, what's not, and how to keep your gymnast safe while training at home.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 7 -->
+      <article class="post-card" data-cat="health">
+        <div class="post-card-img">
+          <img src="img/gobts-255.jpg" alt="Balancing Gymnastics, School and Childhood">
+          <span class="post-card-cat">Health, Growth &amp; Wellbeing</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Balancing Gymnastics, School and Childhood</h3>
+          <p>When does dedication become too much? We talk honestly about the balance between gymnastics, academics, friendships, and just being a kid.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 8 -->
+      <article class="post-card" data-cat="supporting">
+        <div class="post-card-img">
+          <img src="img/gobts-983.jpg" alt="The True Cost of Gymnastics">
+          <span class="post-card-cat">Supporting Your Gymnast</span>
+        </div>
+        <div class="post-card-body">
+          <h3>The True Cost of Gymnastics</h3>
+          <p>Fees, leotards, travel, camps — gymnastics is an investment. We break down the real costs so families can plan ahead without the nasty surprises.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 9 — hidden (load more) -->
+      <article class="post-card hidden" data-cat="supporting">
+        <div class="post-card-img">
+          <img src="img/gobts-1216.jpg" alt="Understanding Skill Regression">
+          <span class="post-card-cat">Supporting Your Gymnast</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Understanding Skill Regression</h3>
+          <p>She could do a back walkover last week — now she can't. Skill regression is frustrating but normal. Here's what's actually happening and how to help.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 10 — hidden (load more) -->
+      <article class="post-card hidden" data-cat="health">
+        <div class="post-card-img">
+          <img src="img/gobts-1780.jpg" alt="Supporting Your Gymnast Through Growth and Puberty">
+          <span class="post-card-cat">Health, Growth &amp; Wellbeing</span>
+        </div>
+        <div class="post-card-body">
+          <h3>Supporting Your Gymnast Through Growth and Puberty</h3>
+          <p>Puberty changes everything — body shape, flexibility, confidence. We look at what to expect and how parents can support their gymnast through this transition.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 11 — hidden (load more) -->
+      <article class="post-card hidden" data-cat="health">
+        <div class="post-card-img">
+          <img src="img/gobts-1887.jpg" alt="How to Talk to Your Coach">
+          <span class="post-card-cat">Health, Growth &amp; Wellbeing</span>
+        </div>
+        <div class="post-card-body">
+          <h3>How to Talk to Your Coach</h3>
+          <p>It can feel awkward to raise concerns with your child's coach. We share how to open the conversation, what to say, and how to keep the relationship positive.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Post 12 — hidden (load more) -->
+      <article class="post-card hidden" data-cat="reality">
+        <div class="post-card-img">
+          <img src="img/gobts-1896.jpg" alt="I Want to Quit Gymnastics">
+          <span class="post-card-cat">The Reality of Gymnastics</span>
+        </div>
+        <div class="post-card-body">
+          <h3>I Want to Quit Gymnastics</h3>
+          <p>Every gymnastics family faces this moment. Before you make any decisions, here's a framework for having the right conversation — and understanding what's really going on.</p>
+          <a href="#" class="post-read-more">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+    </div><!-- /journal-grid -->
+  </div>
+</section>
+
+<!-- LOAD MORE -->
+<div class="load-more-wrap" id="load-more-wrap">
+  <button class="load-more-btn" id="load-more-btn">
+    Load more articles
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </button>
+</div>
+
+<!-- NEWSLETTER STRIP -->
+<section class="journal-newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <h3>Get articles in your inbox</h3>
+        <p>New guides delivered straight to you. No spam — just genuinely useful content for gymnastics families.</p>
+      </div>
+      <form class="newsletter-form" name="journal-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="journal-newsletter">
+        <p style="display:none;"><label>Skip: <input name="bot-field"></label></p>
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo-full-white.png" alt="Gymnastics Online">
+        <p>Supporting every gymnast.<br>Connecting the community.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html#about">About GO</a></li>
+          <li><a href="index.html#experts">Our Experts</a></li>
+          <li><a href="index.html#early-access">Early Access</a></li>
+          <li><a href="journal.html">GO Journal</a></li>
+          <li><a href="clubs.html">For Clubs</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="index.html#early-access">Join Waitlist</a></li>
+          <li><a href="clubs.html#club-pack">Club Pack</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Gymnastics Online. All rights reserved.</p>
+      <p>Launching in 2026.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+  // Category filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const allCards = document.querySelectorAll('.post-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      allCards.forEach(card => {
+        if (filter === 'all') {
+          card.style.display = '';
+          // Re-apply hidden for load more
+          card.classList.contains('hidden') ? card.style.display = 'none' : card.style.display = '';
+        } else {
+          if (card.dataset.cat === filter) {
+            card.style.display = card.classList.contains('hidden') ? 'none' : '';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+
+  // Load more
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadMoreWrap = document.getElementById('load-more-wrap');
+  loadMoreBtn.addEventListener('click', () => {
+    const hidden = document.querySelectorAll('.post-card.hidden');
+    hidden.forEach(card => {
+      card.classList.remove('hidden');
+      card.style.display = '';
+    });
+    loadMoreWrap.style.display = 'none';
+  });
+</script>
+</body>
+</html>
