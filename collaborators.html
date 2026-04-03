@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborator Portal — Gymnastics Online</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #e8317f;
+      --pink-dark: #c4215f;
+      --pink-light: #f472a8;
+      --purple: #6b2fa0;
+      --purple-dark: #1a0e30;
+      --dark: #0d0618;
+      --sans: 'Inter', sans-serif;
+      --serif: 'Playfair Display', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--dark); color: white; overflow-x: hidden; }
+
+    /* ====== NAV ====== */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,6,24,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-logo img { height: 36px; }
+    .nav-links { list-style: none; display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: white; }
+    .nav-links .for-clubs { color: var(--pink-light); }
+    .nav-links .nav-cta { background: var(--pink); color: white; padding: 9px 20px; border-radius: 100px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
+    .nav-links .nav-cta:hover { background: var(--pink-dark); transform: translateY(-1px); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(13,6,24,0.98); flex-direction: column; padding: 24px 20px; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 14px 0; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .nav-links .nav-cta { margin-top: 12px; text-align: center; }
+    }
+
+    /* ====== CONTAINER ====== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    /* ====================================================
+       PASSWORD GATE
+    ==================================================== */
+    #gate {
+      position: fixed; inset: 0; z-index: 500;
+      background: var(--dark);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    #gate::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(107,47,160,0.25) 0%, transparent 55%),
+                  radial-gradient(ellipse at 70% 70%, rgba(232,49,127,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .gate-inner { position: relative; z-index: 1; width: 100%; max-width: 440px; text-align: center; }
+    .gate-logo { margin-bottom: 32px; }
+    .gate-logo img { height: 40px; }
+    .gate-label { display: inline-block; background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 18px; }
+    .gate-title { font-family: var(--serif); font-size: 36px; font-weight: 900; margin-bottom: 10px; letter-spacing: -1px; }
+    .gate-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 32px; line-height: 1.6; }
+
+    /* password panel */
+    #pw-panel { transition: opacity 0.3s; }
+    .gate-form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 32px; }
+    .gate-input-wrap { position: relative; margin-bottom: 14px; }
+    .gate-input-wrap input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 48px 14px 18px; font-size: 15px; color: white; font-family: var(--sans); outline: none; letter-spacing: 2px; transition: border-color 0.3s; }
+    .gate-input-wrap input:focus { border-color: rgba(232,49,127,0.5); }
+    .gate-input-wrap input::placeholder { letter-spacing: 0.5px; color: rgba(255,255,255,0.25); }
+    .gate-eye { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.35); padding: 4px; transition: color 0.2s; }
+    .gate-eye:hover { color: rgba(255,255,255,0.7); }
+    .gate-eye svg { width: 18px; height: 18px; }
+    .gate-btn { width: 100%; background: var(--pink); color: white; border: none; border-radius: 100px; padding: 15px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; letter-spacing: 0.5px; }
+    .gate-btn:hover { background: var(--pink-dark); transform: translateY(-1px); }
+    .gate-error { color: #ff6b8a; font-size: 13px; margin-top: 10px; display: none; }
+    .gate-error.show { display: block; }
+    .gate-divider { display: flex; align-items: center; gap: 12px; margin: 22px 0; }
+    .gate-divider span { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+    .gate-divider p { font-size: 12px; color: rgba(255,255,255,0.3); white-space: nowrap; }
+    .gate-secondary-btn { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.65); border-radius: 100px; padding: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+    .gate-secondary-btn:hover { border-color: rgba(255,255,255,0.35); color: white; }
+
+    /* signup panel */
+    #signup-panel { display: none; text-align: left; }
+    .signup-back { background: none; border: none; color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-bottom: 20px; padding: 0; transition: color 0.2s; }
+    .signup-back:hover { color: white; }
+    .signup-back svg { width: 14px; height: 14px; }
+    .signup-title { font-family: var(--serif); font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    .signup-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 22px; line-height: 1.6; }
+    .signup-form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 28px; max-height: 70vh; overflow-y: auto; }
+    .signup-form-card::-webkit-scrollbar { width: 4px; }
+    .signup-form-card::-webkit-scrollbar-track { background: transparent; }
+    .signup-form-card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+    .sf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 500px) { .sf-row { grid-template-columns: 1fr; } }
+    .sf-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .sf-field label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .sf-field input, .sf-field select, .sf-field textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 14px; font-size: 14px; color: white; font-family: var(--sans); outline: none; transition: border-color 0.3s; width: 100%; }
+    .sf-field input:focus, .sf-field select:focus, .sf-field textarea:focus { border-color: rgba(232,49,127,0.5); }
+    .sf-field input::placeholder, .sf-field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .sf-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    .sf-field select option { background: #1a0e30; color: white; }
+    .sf-field textarea { resize: vertical; min-height: 90px; line-height: 1.55; }
+    .sf-submit { width: 100%; background: var(--pink); color: white; border: none; border-radius: 100px; padding: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 6px; }
+    .sf-submit:hover { background: var(--pink-dark); transform: translateY(-1px); }
+    .sf-success { text-align: center; padding: 24px 0; display: none; }
+    .sf-success-icon { width: 52px; height: 52px; background: rgba(232,49,127,0.15); border: 1px solid rgba(232,49,127,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .sf-success-icon svg { width: 22px; height: 22px; color: var(--pink-light); }
+    .sf-success h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 8px; }
+    .sf-success p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ====================================================
+       MAIN CONTENT (hidden until unlocked)
+    ==================================================== */
+    #main-content { display: none; padding-top: 70px; }
+
+    /* ====== HERO ====== */
+    .collab-hero { padding: 80px 0 60px; background: linear-gradient(160deg, var(--dark) 0%, var(--purple-dark) 60%, #12041e 100%); position: relative; overflow: hidden; }
+    .collab-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 80%, rgba(232,49,127,0.12) 0%, transparent 55%), radial-gradient(ellipse at 20% 20%, rgba(107,47,160,0.18) 0%, transparent 55%); pointer-events: none; }
+    .collab-hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    @media (max-width: 860px) { .collab-hero .container { grid-template-columns: 1fr; gap: 40px; } }
+    .collab-hero-label { display: inline-block; background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 18px; }
+    .collab-hero h1 { font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; }
+    .collab-hero h1 em { color: var(--pink); font-style: italic; }
+    .collab-hero p { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; font-weight: 300; margin-bottom: 28px; }
+    .collab-hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
+    .collab-stat { padding: 20px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
+    .collab-stat:last-child { border-right: none; }
+    .collab-stat-num { font-family: var(--serif); font-size: 28px; font-weight: 900; color: white; line-height: 1; margin-bottom: 4px; }
+    .collab-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.4; }
+    .collab-hero-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; }
+    .collab-hero-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+
+    /* ====== COLLAB TYPES ====== */
+    .collab-types { padding: 80px 0; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
+    .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--pink); vertical-align: middle; margin-right: 8px; }
+    .section-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 14px; }
+    .section-sub { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 600px; margin-bottom: 48px; }
+    .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 860px) { .types-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .types-grid { grid-template-columns: 1fr; } }
+    .type-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; transition: all 0.3s; }
+    .type-card:hover { border-color: rgba(232,49,127,0.3); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+    .type-icon { width: 48px; height: 48px; background: rgba(232,49,127,0.1); border: 1px solid rgba(232,49,127,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--pink-light); }
+    .type-icon svg { width: 22px; height: 22px; }
+    .type-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .type-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+
+    /* ====== COLLABORATORS ====== */
+    .collaborators-section { padding: 0 0 80px; }
+    .collabs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media (max-width: 960px) { .collabs-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px) { .collabs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 380px) { .collabs-grid { grid-template-columns: 1fr; } }
+    .collab-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px; text-align: center; transition: all 0.3s; }
+    .collab-card:hover { border-color: rgba(232,49,127,0.25); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .collab-photo { width: 76px; height: 76px; border-radius: 50%; overflow: hidden; margin: 0 auto 14px; border: 2px solid rgba(255,255,255,0.1); }
+    .collab-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%); transition: filter 0.3s; }
+    .collab-card:hover .collab-photo img { filter: grayscale(0%); }
+    .collab-photo-initial { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 14px; background: linear-gradient(135deg, var(--purple), var(--pink)); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 24px; font-weight: 700; color: white; border: 2px solid rgba(255,255,255,0.1); }
+    .collab-name { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; line-height: 1.3; }
+    .collab-role { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.45; }
+
+    /* ====== FOOTER ====== */
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 28px; }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+    .footer-brand img { height: 30px; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+    .footer-links h4 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.2); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="img/logo-full-white.png" alt="Gymnastics Online"></a>
+  <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#experts">Experts</a></li>
+    <li><a href="index.html#early-access">Early Access</a></li>
+    <li><a href="journal.html">GO Journal</a></li>
+    <li><a href="clubs.html" class="for-clubs">For Clubs</a></li>
+    <li><a href="index.html#early-access" class="nav-cta">Get Early Access</a></li>
+  </ul>
+</nav>
+
+<!-- ====================================================
+     PASSWORD GATE
+==================================================== -->
+<div id="gate">
+  <div class="gate-inner">
+
+    <!-- Logo -->
+    <div class="gate-logo">
+      <img src="img/logo-full-white.png" alt="Gymnastics Online">
+    </div>
+
+    <!-- Password panel -->
+    <div id="pw-panel">
+      <span class="gate-label">Collaborator Portal</span>
+      <h1 class="gate-title">Welcome back.</h1>
+      <p class="gate-sub">This area is for GO collaborators.<br>Enter your access code to continue.</p>
+
+      <div class="gate-form-card">
+        <div class="gate-input-wrap">
+          <input type="password" id="pw-input" placeholder="Enter access code" autocomplete="off">
+          <button class="gate-eye" id="pw-toggle" aria-label="Show/hide password">
+            <svg id="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg id="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </button>
+        </div>
+        <button class="gate-btn" id="pw-submit">Enter Portal</button>
+        <p class="gate-error" id="pw-error">Incorrect access code. Please try again.</p>
+
+        <div class="gate-divider"><span></span><p>Not a collaborator yet?</p><span></span></div>
+        <button class="gate-secondary-btn" id="show-signup">Apply to collaborate →</button>
+      </div>
+    </div>
+
+    <!-- Signup panel -->
+    <div id="signup-panel">
+      <button class="signup-back" id="back-to-pw">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back
+      </button>
+      <span class="gate-label">Join the Team</span>
+      <h2 class="signup-title">Collaborate with GO</h2>
+      <p class="signup-sub">Tell us about yourself and how you'd like to contribute. We'll be in touch.</p>
+
+      <div class="signup-form-card">
+        <form name="collaborator-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="signup-form">
+          <input type="hidden" name="form-name" value="collaborator-signup">
+          <p style="display:none;"><label>Skip: <input name="bot-field"></label></p>
+
+          <div class="sf-row">
+            <div class="sf-field">
+              <label for="sf-name">Full Name *</label>
+              <input type="text" id="sf-name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="sf-field">
+              <label for="sf-email">Email *</label>
+              <input type="email" id="sf-email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="sf-row">
+            <div class="sf-field">
+              <label for="sf-phone">Phone</label>
+              <input type="tel" id="sf-phone" name="phone" placeholder="+1 555 000 0000">
+            </div>
+            <div class="sf-field">
+              <label for="sf-country">Country</label>
+              <select id="sf-country" name="country">
+                <option value="">Select country…</option>
+                <option>Australia</option>
+                <option>New Zealand</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Ireland</option>
+                <option>South Africa</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="sf-field">
+            <label for="sf-expertise">Area of Expertise *</label>
+            <select id="sf-expertise" name="expertise" required>
+              <option value="">Select your area…</option>
+              <option>Coach</option>
+              <option>Judge</option>
+              <option>Nutritionist / Dietitian</option>
+              <option>Physiotherapist / Sports Therapist</option>
+              <option>Sports Psychologist / Mental Performance</option>
+              <option>Sports Scientist</option>
+              <option>Parent Contributor</option>
+              <option>Official / Federation Representative</option>
+              <option>Merchandise Supplier</option>
+              <option>Content Creator / Educator</option>
+              <option>Technical / Developer</option>
+              <option>Marketing / Affiliate</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="sf-field">
+            <label for="sf-message">What would you like to collaborate on? *</label>
+            <textarea id="sf-message" name="message" placeholder="Tell us about your background and how you'd love to contribute to Gymnastics Online…" required></textarea>
+          </div>
+
+          <button type="submit" class="sf-submit">Submit Application →</button>
+        </form>
+
+        <div class="sf-success" id="sf-success">
+          <div class="sf-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Application received!</h3>
+          <p>Thank you for your interest in collaborating with GO. We'll review your application and be in touch soon.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gate-inner -->
+</div><!-- /gate -->
+
+<!-- ====================================================
+     MAIN COLLABORATOR CONTENT
+==================================================== -->
+<div id="main-content">
+
+  <!-- HERO -->
+  <section class="collab-hero">
+    <div class="container">
+      <div class="collab-hero-text">
+        <span class="collab-hero-label">Collaborator Portal</span>
+        <h1>Work <em>with</em> us.</h1>
+        <p>Gymnastics Online is being built by a growing community of practitioners, educators, and specialists from around the world — all united by the same goal: to raise the standard of support available to every gymnast and the families behind them.</p>
+        <p>If you're in this space, you belong here. We're stronger together.</p>
+        <div class="collab-hero-stats">
+          <div class="collab-stat">
+            <div class="collab-stat-num">7+</div>
+            <div class="collab-stat-label">Expert collaborators</div>
+          </div>
+          <div class="collab-stat">
+            <div class="collab-stat-num">Global</div>
+            <div class="collab-stat-label">Network reach</div>
+          </div>
+          <div class="collab-stat">
+            <div class="collab-stat-num">2026</div>
+            <div class="collab-stat-label">Launch year</div>
+          </div>
+        </div>
+      </div>
+      <div class="collab-hero-img">
+        <img src="img/gobts-1867.jpg" alt="Gymnastics Online collaborators">
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLABORATION TYPES -->
+  <section class="collab-types">
+    <div class="container">
+      <span class="section-label">How we work together</span>
+      <h2 class="section-title">Ways to collaborate</h2>
+      <p class="section-sub">There's no single way to contribute. Whether you want to shape the content, grow the community, or align your brand with GO — there's a place for you.</p>
+
+      <div class="types-grid">
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Content Collaborator</h3>
+          <p>Contribute articles, guides, video content or expert commentary across any discipline — nutrition, mental performance, coaching, parenting, and more.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <h3>Technical Contributor</h3>
+          <p>Help shape the platform itself — from exercise library design and workout programming to data analysis, research integration, and app functionality.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>Affiliate Partner</h3>
+          <p>Earn revenue by introducing GO to clubs, families and coaches in your network. Our affiliate programme rewards you for every member you bring on board.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Expert Advisor</h3>
+          <p>Lend your professional expertise to validate our content and guide our direction. Be listed as a GO expert and reach thousands of gymnastics families.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          </div>
+          <h3>Brand Partner</h3>
+          <p>Align your brand with a trusted platform serving gymnastics families globally. Opportunities in merchandise, equipment, apparel, and nutrition categories.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Community Leader</h3>
+          <p>Facilitate conversations, moderate community spaces, champion regions or disciplines, and help families connect meaningfully within the GO community.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLABORATORS GRID -->
+  <section class="collaborators-section">
+    <div class="container">
+      <span class="section-label">Our people</span>
+      <h2 class="section-title">Meet the collaborators</h2>
+      <p class="section-sub">Specialists and practitioners from across the gymnastics world — each bringing something unique to the GO platform.</p>
+
+      <div class="collabs-grid">
+
+        <div class="collab-card">
+          <div class="collab-photo">
+            <img src="img/expert-kym-volp.jpg" alt="Kym Volp">
+          </div>
+          <div class="collab-name">Kym Volp</div>
+          <div class="collab-role">Founder</div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-photo-initial">E</div>
+          <div class="collab-name">Emma Nedov</div>
+          <div class="collab-role">Gymnast Mentor &amp; High-Performance Advocate</div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-photo-initial">S</div>
+          <div class="collab-name">Stacey Umeh</div>
+          <div class="collab-role">Technical Advisor</div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-photo">
+            <img src="img/Crystal Yeo Headshot.png" alt="Crystal Yeo">
+          </div>
+          <div class="collab-name">Crystal Yeo</div>
+          <div class="collab-role">Gymnastics Performance Coach &amp; Mental Skills Specialist</div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-photo">
+            <img src="img/Rebecca-Smith-Headshot-square-600x600.jpeg" alt="Rebecca Smith">
+          </div>
+          <div class="collab-name">Rebecca Smith</div>
+          <div class="collab-role">Mental Performance Specialist</div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-photo-initial">Z</div>
+          <div class="collab-name">Zoe Power</div>
+          <div class="collab-role">Accredited Sports Dietitian</div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-photo">
+            <img src="img/Ashleigh Mitchell Screenshots.png" alt="Ashleigh Mitchell">
+          </div>
+          <div class="collab-name">Ashleigh Mitchell</div>
+          <div class="collab-role">Accredited Practising Dietitian &amp; Founder, Nourish Paediatrics</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="img/logo-full-white.png" alt="Gymnastics Online">
+          <p>Supporting every gymnast.<br>Connecting the community.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html#about">About GO</a></li>
+            <li><a href="index.html#experts">Our Experts</a></li>
+            <li><a href="index.html#early-access">Early Access</a></li>
+            <li><a href="journal.html">GO Journal</a></li>
+            <li><a href="clubs.html">For Clubs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Gymnastics Online. All rights reserved.</p>
+        <p>Launching in 2026.</p>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /main-content -->
+
+<script>
+  // Mobile nav
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  // Eye toggle
+  const pwInput = document.getElementById('pw-input');
+  const eyeOpen = document.getElementById('eye-open');
+  const eyeClosed = document.getElementById('eye-closed');
+  document.getElementById('pw-toggle').addEventListener('click', function() {
+    const isPass = pwInput.type === 'password';
+    pwInput.type = isPass ? 'text' : 'password';
+    eyeOpen.style.display = isPass ? 'none' : '';
+    eyeClosed.style.display = isPass ? '' : 'none';
+  });
+
+  // Password check
+  const CORRECT_PASSWORD = 'GOCollab26';
+  const SESSION_KEY = 'go_collab_auth';
+
+  function unlock() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    sessionStorage.setItem(SESSION_KEY, '1');
+    window.scrollTo(0, 0);
+  }
+
+  // Check session
+  if (sessionStorage.getItem(SESSION_KEY) === '1') unlock();
+
+  // Submit on button
+  document.getElementById('pw-submit').addEventListener('click', checkPassword);
+  // Submit on Enter
+  pwInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  function checkPassword() {
+    const val = pwInput.value.trim();
+    const err = document.getElementById('pw-error');
+    if (val === CORRECT_PASSWORD) {
+      err.classList.remove('show');
+      unlock();
+    } else {
+      err.classList.add('show');
+      pwInput.value = '';
+      pwInput.focus();
+    }
+  }
+
+  // Toggle signup panel
+  document.getElementById('show-signup').addEventListener('click', function() {
+    document.getElementById('pw-panel').style.display = 'none';
+    document.getElementById('signup-panel').style.display = 'block';
+  });
+  document.getElementById('back-to-pw').addEventListener('click', function() {
+    document.getElementById('signup-panel').style.display = 'none';
+    document.getElementById('pw-panel').style.display = 'block';
+  });
+
+  // Signup form
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const data = new FormData(form);
+    fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
+      .then(function() {
+        form.style.display = 'none';
+        document.getElementById('sf-success').style.display = 'block';
+      })
+      .catch(function() {
+        form.style.display = 'none';
+        document.getElementById('sf-success').style.display = 'block';
+      });
+  });
+</script>
+</body>
+</html>
