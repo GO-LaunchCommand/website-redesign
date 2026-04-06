@@ -2084,7 +2084,8 @@ var expertData = {
     role: "Mental Performance Specialist | Founder, Complete Performance & PerformHappy",
     image: "img/Rebecca-Smith-Headshot-square-600x600.jpeg",
     thumb: "img/Rebecca-Smith-Headshot-square-600x600.jpeg",
-    bio: "<p>Rebecca Smith is a mental performance specialist who has helped thousands of gymnasts and their families navigate the psychological side of the sport — from fear blocks and competition nerves to confidence, motivation, and long-term wellbeing.</p><p>She holds a Master's degree (M.A.) and has over 20 years of experience working with athletes in high-pressure environments. A former gymnast and coach herself, Rebecca combines lived experience with an evidence-based approach to mental performance coaching.</p><p>As founder of Complete Performance and creator of PerformHappy, she is known for turning complex sports psychology concepts into practical, easy-to-use strategies. Through PerformHappy, she has built a global community supporting gymnasts, parents, and coaches.</p><p>At Gymnastics Online, Rebecca provides high-level education around the mental side of performance to help parents better understand what's going on and how to support their athlete. GO subscribers also gain access to selected PerformHappy resources. For families needing more personalised support, we recommend connecting directly with Rebecca's team at Complete Performance.</p>"
+    bio: "<p>Rebecca Smith is a mental performance specialist who has helped thousands of gymnasts and their families navigate the psychological side of the sport — from fear blocks and competition nerves to confidence, motivation, and long-term wellbeing.</p><p>She holds a Master's degree (M.A.) and has over 20 years of experience working with athletes in high-pressure environments. A former gymnast and coach herself, Rebecca combines lived experience with an evidence-based approach to mental performance coaching.</p><p>As the founder of Complete Performance and the creator of PerformHappy, Rebecca is known for turning complex sports psychology concepts into practical, easy-to-use strategies that actually work in the gym and at competitions. Through PerformHappy, she has built a global community supporting gymnasts, parents, and coaches around the world.</p><p>At Gymnastics Online, Rebecca provides high-level education around the mental side of performance — helping parents better understand what their athlete is going through and how to support them effectively. GO subscribers also gain access to selected PerformHappy resources as part of the platform.</p><p>For families looking for more personalised support, Rebecca and her team at Complete Performance offer one-on-one coaching and programs tailored to individual athletes.</p>",
+    link: "https://links.sophistechatedacademy.app/widget/bookings/coaches-free-consult"
   }
 };
 function openExpertModal(key) {
@@ -2095,6 +2096,13 @@ function openExpertModal(key) {
   document.getElementById("expert-modal-name").textContent = data.name;
   document.getElementById("expert-modal-role").textContent = data.role;
   document.getElementById("expert-modal-bio").innerHTML = data.bio;
+  var linkEl = document.getElementById("expert-modal-link");
+  if (data.link) {
+    linkEl.href = data.link;
+    linkEl.style.display = "inline-block";
+  } else {
+    linkEl.style.display = "none";
+  }
   document.getElementById("expert-modal-overlay").classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -2121,6 +2129,7 @@ var wf=document.getElementById("waitlist-form");if(wf){wf.addEventListener("subm
         <h3 id="expert-modal-name"></h3>
         <div class="expert-modal-role" id="expert-modal-role"></div>
         <div id="expert-modal-bio"></div>
+        <a id="expert-modal-link" href="#" target="_blank" rel="noopener" style="display:none;margin-top:20px;padding:12px 24px;background:#e91e8c;color:#fff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95rem;">Book a Free Consultation →</a>
       </div>
     </div>
   </div>
