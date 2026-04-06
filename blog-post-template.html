@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Gymnastics Levels in Australia: A Parent's Guide — GO Journal</title>
+<meta name="description" content="In Australia, there is not one single levels system used by every club. Here's what every gymnastics parent needs to know.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #E8317F;
+    --pink-dark: #c4195f;
+    --pink-light: #f472a8;
+    --purple: #6B2FA0;
+    --purple-deep: #2D1B4E;
+    --purple-dark: #1a0e30;
+    --dark: #0f0a1a;
+    --mid: #6a6a7e;
+    --light: #f8f6fc;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Quicksand', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--dark); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .container--narrow { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 48px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(15,10,26,0.92);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 36px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.2px; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: white; }
+  .nav-links .active { color: white; }
+  .nav-cta {
+    background: var(--pink); color: white !important; padding: 9px 22px;
+    border-radius: 100px; font-weight: 600 !important; letter-spacing: 0.5px !important;
+    text-transform: uppercase !important; font-size: 12px !important;
+    transition: background 0.3s !important; border: 2px solid var(--pink);
+  }
+  .nav-cta:hover { background: var(--pink-dark) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+
+  /* ========== ARTICLE HERO ========== */
+  .article-hero {
+    padding-top: 72px;
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+  }
+  .article-hero-img {
+    width: 100%; height: 480px; object-fit: cover;
+    display: block; opacity: 0.6;
+    filter: brightness(0.7);
+  }
+  .article-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(15,10,26,0.2) 0%, rgba(15,10,26,0.5) 50%, rgba(15,10,26,1) 100%);
+  }
+  .article-hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 0 48px;
+  }
+  .article-category {
+    display: inline-block;
+    background: rgba(232,49,127,0.15); border: 1px solid rgba(232,49,127,0.4);
+    color: var(--pink-light); font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px;
+    border-radius: 100px; margin-bottom: 20px;
+    text-decoration: none;
+  }
+  .article-title {
+    font-family: var(--serif); font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900; color: white; line-height: 1.1;
+    letter-spacing: -1px; margin-bottom: 24px; max-width: 800px;
+  }
+  .article-meta {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    color: rgba(255,255,255,0.6); font-size: 13px;
+  }
+  .article-meta-author { display: flex; align-items: center; gap: 10px; color: white; font-weight: 500; }
+  .article-meta-author img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--pink); }
+  .article-meta-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.2); }
+
+  /* ========== ARTICLE BODY ========== */
+  .article-body {
+    background: var(--white);
+    padding: 64px 0 80px;
+  }
+  .article-content p {
+    font-size: 17px; line-height: 1.85; color: #2a2a3a; margin-bottom: 24px; font-weight: 400;
+  }
+  .article-content h2 {
+    font-family: var(--serif); font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800; color: var(--dark); margin: 48px 0 20px;
+    line-height: 1.2; letter-spacing: -0.5px;
+  }
+  .article-content h3 {
+    font-size: 18px; font-weight: 700; color: var(--dark);
+    margin: 36px 0 16px; line-height: 1.3;
+  }
+  .article-content ul, .article-content ol {
+    margin: 0 0 24px 0; padding-left: 24px;
+  }
+  .article-content li {
+    font-size: 17px; line-height: 1.8; color: #2a2a3a; margin-bottom: 8px;
+  }
+  .article-content strong { color: var(--dark); font-weight: 700; }
+
+  /* Coach Insight Box */
+  .coach-insight {
+    background: var(--dark); border-radius: 12px;
+    padding: 32px 36px; margin: 40px 0;
+    border-left: 4px solid var(--pink);
+    position: relative; overflow: hidden;
+  }
+  .coach-insight::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,49,127,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .coach-insight-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--pink); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .coach-insight-label::before {
+    content: ''; display: block; width: 20px; height: 2px; background: var(--pink);
+  }
+  .coach-insight p {
+    font-size: 15px !important; line-height: 1.75 !important;
+    color: rgba(255,255,255,0.8) !important; margin-bottom: 0 !important; font-style: italic;
+  }
+  .coach-insight strong { color: white !important; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid rgba(15,10,26,0.1); padding: 20px 0; }
+  .faq-item:first-child { border-top: 1px solid rgba(15,10,26,0.1); }
+  .faq-q { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .faq-a { font-size: 16px; line-height: 1.75; color: #444; }
+
+  /* Article tag strip */
+  .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(15,10,26,0.1); }
+  .article-tag {
+    background: var(--light); border: 1px solid rgba(15,10,26,0.1);
+    color: var(--mid); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.5px; padding: 6px 14px; border-radius: 100px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .article-tag:hover { background: var(--pink); color: white; border-color: var(--pink); }
+
+  /* ========== INNER CIRCLE CTA ========== */
+  .article-cta {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--purple-dark) 50%, #1a0820 100%);
+    padding: 80px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .article-cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(232,49,127,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .article-cta-inner { position: relative; z-index: 1; max-width: 580px; margin: 0 auto; padding: 0 40px; }
+  .article-cta-label {
+    display: inline-block; background: rgba(232,49,127,0.15);
+    border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light);
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .article-cta h2 {
+    font-family: var(--serif); font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 900; color: white; line-height: 1.15;
+    letter-spacing: -0.5px; margin-bottom: 16px;
+  }
+  .article-cta p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; }
+  .btn-pink {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pink); color: white; font-weight: 700;
+    font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;
+    padding: 16px 36px; border-radius: 100px; text-decoration: none;
+    transition: all 0.3s; border: 2px solid var(--pink);
+  }
+  .btn-pink:hover { background: transparent; color: white; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--dark); padding: 64px 0 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand img { height: 36px; width: auto; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block; font-size: 14px; color: rgba(255,255,255,0.55);
+    text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .container--narrow { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .article-hero-img { height: 320px; }
+    .article-title { font-size: 28px; }
+    .article-body { padding: 40px 0 60px; }
+    .article-content p, .article-content li { font-size: 16px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .coach-insight { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="https://gymnasticsonline.com/" class="nav-logo">
+    <img src="https://gymnasticsonline.com/wp-content/uploads/logo-full-white.png" alt="Gymnastics Online" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+    <span style="display:none; color:white; font-weight:800; font-size:18px; letter-spacing:-0.5px;">Gymnastics<span style="color:var(--pink)">Online</span></span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="https://gymnasticsonline.com/">Home</a></li>
+    <li><a href="https://gymnasticsonline.com/blog/" class="active">GO Journal</a></li>
+    <li><a href="https://gymnasticsonline.com/inner-circle/">GO Inner Circle</a></li>
+    <li><a href="https://gymnasticsonline.com/clubs/">For Clubs</a></li>
+    <li><a href="https://gymnasticsonline.com/contact/" class="nav-cta">Get Early Access</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <img class="article-hero-img" src="https://gymnasticsonline.com/wp-content/uploads/2026/01/young-gymnast-finish-pose-training-scaled.png" alt="Young gymnast holding a finish pose during training" loading="eager">
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <div class="container">
+      <a href="https://gymnasticsonline.com/category/gymnastics-foundations/" class="article-category">Gymnastics Foundations</a>
+      <h1 class="article-title">Understanding Gymnastics Levels in Australia: A Parent's Guide</h1>
+      <div class="article-meta">
+        <div class="article-meta-author">
+          <img src="https://gymnasticsonline.com/wp-content/uploads/img/expert-kym-volp.jpg" alt="Kym Volp" onerror="this.style.display='none'">
+          Kym Volp
+        </div>
+        <div class="article-meta-divider"></div>
+        <span>6 January 2026</span>
+        <div class="article-meta-divider"></div>
+        <span>12 min read</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<article class="article-body">
+  <div class="container--narrow">
+    <div class="article-content">
+
+      <p>"I just want to understand what level she's in… and what it actually means." If you've ever sat in the parent viewing area feeling confused about where your child sits in the gymnastics system — you're not alone. Parents regularly wonder whether their child is progressing at the right pace, what the levels actually represent, and why it seems so hard to get a straight answer.</p>
+
+      <p>The reason it feels confusing is because it genuinely <strong>is</strong> complicated. In Australia, there is not one single 'levels system' used by every club. There are multiple pathways and competition frameworks operating side-by-side — and understanding which one your child is in makes all the difference.</p>
+
+      <h2>The official national pathway: Gymnastics Australia's ALP</h2>
+
+      <p>The most widely recognised structure is Gymnastics Australia's <strong>Australian Levels Program (ALP)</strong>. This operates as Levels 1–10 and is divided into three distinct phases:</p>
+
+      <ul>
+        <li><strong>Foundation Programme (Levels 1–2):</strong> Skills-based, no formal competition focus. Emphasises basic shapes, strength development, flexibility, and movement safety.</li>
+        <li><strong>Compulsory Levels (Levels 3–6):</strong> Set routines with required elements. Progress is intentionally gradual, prioritising technique mastery before advancing.</li>
+        <li><strong>Optional Levels (Levels 7–10):</strong> Coach-customised routines within regulatory rules. Scores combine D-Score (difficulty), E-Score (execution), and neutral deductions.</li>
+      </ul>
+
+      <h2>What Foundation, Compulsory, and Optional really mean</h2>
+
+      <p>Many parents hear their child is in "compulsory" and assume this just means the training is mandatory. It doesn't — it refers to the routines being <em>compulsory</em>, meaning every gymnast at that level performs the same set elements. This is intentional: it creates a consistent standard for judges and ensures gymnasts develop a common technical foundation before individualising their work.</p>
+
+      <p>When gymnasts move into Optional levels, routines become individualised. This is where coaching philosophy starts to show more clearly, and where the training environment, facility, and coaching staff have a bigger influence on what a gymnast is able to achieve.</p>
+
+      <div class="coach-insight">
+        <div class="coach-insight-label">Coach Insight</div>
+        <p>"A parent might say, 'My friend's daughter has her Level 5 badge but she's still competing Level 4.' The badge shows recognition of skills, but the competitive level is determined by readiness and state regulations. <strong>They're not the same thing.</strong>"</p>
+      </div>
+
+      <h2>Skipping levels vs progressing normally</h2>
+
+      <p>The question of whether a gymnast can skip a level comes up often — and the answer is: sometimes, depending on state regulations and club policy. But even when it's technically permitted, coaches weigh up whether skipping creates technical gaps or safety concerns that will cause problems later.</p>
+
+      <div class="coach-insight">
+        <div class="coach-insight-label">Coach Insight</div>
+        <p>"Coaches aren't just thinking about whether a gymnast <em>can</em> do Level 6 skills. They're thinking about whether she has the physical preparation to handle the training load safely, whether her technique is clean enough to build on, and whether the jump would create gaps that cause problems later. <strong>Long-term development is always the priority.</strong>"</p>
+      </div>
+
+      <h2>The elite and international pathway: where it fits</h2>
+
+      <p>Parents sometimes assume the ALP naturally leads into elite gymnastics — that Level 10 is followed by "elite" and then "international." It's more nuanced than that. <strong>The International Stream sits alongside the ALP but is not simply the next step after Level 10.</strong></p>
+
+      <p>It includes Future International, Developing International, and Senior International stages, and is governed separately through state and national selection processes. Not every gymnast who completes Level 10 enters this pathway — and not every elite gymnast followed the standard ALP route to get there.</p>
+
+      <h2>Other systems you may see in Australia</h2>
+
+      <ul>
+        <li><strong>Gymstar:</strong> A flexible competitive programme with state divisions</li>
+        <li><strong>Club Excel-style programmes:</strong> Inspired by overseas models with routine flexibility</li>
+        <li><strong>State Stream programmes:</strong> Lower-hour competitive pathways alongside ALP</li>
+        <li><strong>Independent competition leagues:</strong> Separate from GA national events</li>
+        <li><strong>Recreational levels:</strong> Internal club badge systems for motivation</li>
+      </ul>
+
+      <h3>How to identify which system your child is in</h3>
+
+      <p>Three questions that clarify it quickly:</p>
+      <ol>
+        <li>Is this the Gymnastics Australia ALP (WAG Levels 1–10)?</li>
+        <li>Do competitions follow GA Technical Regulations?</li>
+        <li>Are routines compulsory (Levels 3–6) or optional (Levels 7–10)?</li>
+      </ol>
+
+      <h2>Common questions parents ask</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Does starting in ALP mean my child is on the elite pathway?</div>
+        <div class="faq-a">Not automatically. The International Stream operates separately with different governance and selection criteria.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why are some kids the same age but in different levels?</div>
+        <div class="faq-a">Because gymnastics levels reflect readiness and development, not age alone. The ALP is designed to allow gymnasts to develop at a rate that suits their ability.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why does my friend's program sound different at the same level?</div>
+        <div class="faq-a">They may be using a different system — Gymstar, Excel-style, State Stream, etc. — which operates under different rules and structures.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can my child skip a level?</div>
+        <div class="faq-a">Eligibility depends on state regulations and club policy. Even when permitted, coaches evaluate whether it's safe and technically sound for long-term development.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do coaching philosophies differ?</div>
+        <div class="faq-a">Some prioritise acceleration toward higher levels, while others focus on thorough skill mastery at each stage. Neither approach is inherently wrong — what matters is that it suits your child's development and safety.</div>
+      </div>
+
+      <h2>A steadier way to think about gymnastics levels</h2>
+
+      <p>It's completely normal to want your child to progress. But in gymnastics, the healthiest version of that hope sounds like this: <em>"I want her to be safe, confident, and developing well — and I want to understand the system so I can support her without adding pressure."</em></p>
+
+      <p>Understanding gymnastics levels serves one purpose: supporting your child's development safely and confidently, and preserving their love for the sport for as long as possible.</p>
+
+      <div class="article-tags">
+        <a href="#" class="article-tag">ALP</a>
+        <a href="#" class="article-tag">Australian Gymnastics</a>
+        <a href="#" class="article-tag">Gymnastics Levels</a>
+        <a href="#" class="article-tag">Gymnastics Foundations</a>
+        <a href="#" class="article-tag">For Parents</a>
+      </div>
+
+    </div>
+  </div>
+</article>
+
+<!-- INNER CIRCLE CTA -->
+<section class="article-cta">
+  <div class="article-cta-inner">
+    <div class="article-cta-label">GO Inner Circle</div>
+    <h2>Want more like this?</h2>
+    <p>Join the GO Inner Circle — expert guidance, parent insights, and early access to new content delivered directly to you.</p>
+    <a href="https://gymnasticsonline.com/inner-circle/" class="btn-pink">Be Part of the GO Inner Circle</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://gymnasticsonline.com/wp-content/uploads/logo-full-white.png" alt="Gymnastics Online" onerror="this.style.display='none'">
+        <p>Supporting every gymnast, every family, every step of the journey.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="https://gymnasticsonline.com/">Home</a>
+        <a href="https://gymnasticsonline.com/blog/">GO Journal</a>
+        <a href="https://gymnasticsonline.com/inner-circle/">GO Inner Circle</a>
+        <a href="https://gymnasticsonline.com/clubs/">For Clubs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@gymnasticsonline.com">hello@gymnasticsonline.com</a>
+        <a href="https://gymnasticsonline.com/contact/">Get in Touch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Gymnastics Online. All rights reserved.</p>
+      <p>Made for gymnastics families across Australia.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '72px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'rgba(15,10,26,0.98)';
+    navLinks.style.padding = '20px 48px 24px';
+    navLinks.style.gap = '16px';
+  });
+</script>
+</body>
+</html>

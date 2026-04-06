@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the GO Inner Circle — Gymnastics Online</title>
+<meta name="description" content="Get expert guidance, parent insights, and early access to GO content delivered directly to you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #E8317F;
+    --pink-dark: #c4195f;
+    --pink-light: #f472a8;
+    --purple: #6B2FA0;
+    --purple-deep: #2D1B4E;
+    --purple-dark: #1a0e30;
+    --dark: #0f0a1a;
+    --mid: #6a6a7e;
+    --light: #f8f6fc;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Quicksand', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--dark); background: var(--dark); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 48px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(15,10,26,0.92);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 36px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.2px; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: white; }
+  .nav-cta {
+    background: var(--pink); color: white !important; padding: 9px 22px;
+    border-radius: 100px; font-weight: 600 !important; letter-spacing: 0.5px !important;
+    text-transform: uppercase !important; font-size: 12px !important;
+    transition: background 0.3s !important; border: 2px solid var(--pink);
+  }
+  .nav-cta:hover { background: var(--pink-dark) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; }
+
+  /* ========== HERO ========== */
+  .lp-hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 120px 0 80px;
+    background: linear-gradient(160deg, var(--dark) 0%, var(--purple-dark) 60%, #1a0820 100%);
+    position: relative; overflow: hidden;
+  }
+  .lp-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(107,47,160,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(232,49,127,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .lp-hero-inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .lp-label {
+    display: inline-block; background: rgba(232,49,127,0.15);
+    border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light);
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; padding: 7px 18px; border-radius: 100px; margin-bottom: 24px;
+  }
+  .lp-headline {
+    font-family: var(--serif); font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 900; color: white; line-height: 1.05;
+    letter-spacing: -1.5px; margin-bottom: 24px;
+  }
+  .lp-headline em { color: var(--pink); font-style: italic; }
+  .lp-subhead {
+    font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.75;
+    font-weight: 300; margin-bottom: 36px;
+  }
+
+  /* Benefit list */
+  .lp-benefits { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; }
+  .lp-benefits li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.5;
+  }
+  .lp-benefits li::before {
+    content: ''; flex-shrink: 0; width: 20px; height: 20px; margin-top: 1px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 12px; background-repeat: no-repeat; background-position: center;
+  }
+
+  /* Social proof strip */
+  .lp-proof {
+    display: flex; align-items: center; gap: 12px;
+    padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .lp-proof-avatars { display: flex; }
+  .lp-proof-avatars span {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border: 2px solid var(--dark); margin-left: -8px; display: block;
+  }
+  .lp-proof-avatars span:first-child { margin-left: 0; }
+  .lp-proof p { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .lp-proof strong { color: white; }
+
+  /* ========== FORM CARD ========== */
+  .lp-form-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 48px 40px;
+    backdrop-filter: blur(10px);
+  }
+  .lp-form-card h3 {
+    font-family: var(--serif); font-size: 26px; font-weight: 800;
+    color: white; margin-bottom: 8px; line-height: 1.2;
+  }
+  .lp-form-card > p {
+    font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 32px; line-height: 1.6;
+  }
+
+  /* ---- Gravity Form placeholder styling ----
+     These styles target Gravity Forms default output.
+     Drop your [gravityform id="X"] shortcode inside .gf-slot.
+     WordPress will render the form inside it — these styles will apply. */
+  .gf-slot { /* Gravity Form renders here — do not remove */ }
+  .gf-slot .gform_wrapper { margin: 0 !important; }
+  .gf-slot .gform_fields { display: flex; flex-direction: column; gap: 16px; }
+  .gf-slot .gfield input,
+  .gf-slot .gfield select,
+  .gf-slot .gfield textarea {
+    width: 100%; padding: 14px 18px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; color: white; font-size: 15px;
+    font-family: var(--sans); transition: border-color 0.3s, background 0.3s;
+    outline: none;
+  }
+  .gf-slot .gfield input:focus,
+  .gf-slot .gfield textarea:focus {
+    border-color: var(--pink); background: rgba(255,255,255,0.1);
+  }
+  .gf-slot .gfield input::placeholder,
+  .gf-slot .gfield textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .gf-slot .gfield_label {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; display: block;
+  }
+  .gf-slot .gform_footer input[type="submit"],
+  .gf-slot .gform_footer button {
+    width: 100%; padding: 16px 32px;
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    border: none; border-radius: 100px; color: white;
+    font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
+    cursor: pointer; transition: opacity 0.3s; font-family: var(--sans);
+    text-transform: uppercase;
+  }
+  .gf-slot .gform_footer input[type="submit"]:hover,
+  .gf-slot .gform_footer button:hover { opacity: 0.88; }
+  .gf-slot .gform_footer { margin-top: 20px; }
+
+  /* Privacy note */
+  .lp-privacy {
+    margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.3);
+    text-align: center; line-height: 1.5;
+  }
+
+  /* ========== TRUST STRIP ========== */
+  .lp-trust {
+    padding: 64px 0;
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .lp-trust-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center;
+  }
+  .lp-trust-item {}
+  .lp-trust-number {
+    font-family: var(--serif); font-size: 48px; font-weight: 900;
+    color: var(--pink); line-height: 1; margin-bottom: 8px;
+  }
+  .lp-trust-label { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ========== TESTIMONIAL ========== */
+  .lp-testimonial {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--purple-deep) 0%, var(--dark) 100%);
+    text-align: center;
+  }
+  .lp-testimonial blockquote {
+    font-family: var(--serif); font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700; font-style: italic; color: white;
+    line-height: 1.5; max-width: 680px; margin: 0 auto 24px; padding: 0 40px;
+  }
+  .lp-testimonial cite {
+    font-size: 14px; color: rgba(255,255,255,0.45); font-style: normal; font-weight: 500;
+  }
+  .lp-testimonial cite strong { color: var(--pink-light); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--dark); padding: 64px 0 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand img { height: 36px; width: auto; margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block; font-size: 14px; color: rgba(255,255,255,0.55);
+    text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .lp-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .lp-form-card { padding: 36px 28px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .lp-trust-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .container { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://gymnasticsonline.com/" class="nav-logo">
+    <img src="https://gymnasticsonline.com/wp-content/uploads/logo-full-white.png" alt="Gymnastics Online"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+    <span style="display:none; color:white; font-weight:800; font-size:18px; letter-spacing:-0.5px;">Gymnastics<span style="color:var(--pink)">Online</span></span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="https://gymnasticsonline.com/">Home</a></li>
+    <li><a href="https://gymnasticsonline.com/blog/">GO Journal</a></li>
+    <li><a href="https://gymnasticsonline.com/inner-circle/">GO Inner Circle</a></li>
+    <li><a href="https://gymnasticsonline.com/clubs/">For Clubs</a></li>
+    <li><a href="https://gymnasticsonline.com/contact/" class="nav-cta">Get Early Access</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO + FORM -->
+<section class="lp-hero">
+  <div class="container">
+    <div class="lp-hero-inner">
+
+      <!-- LEFT: Copy -->
+      <div>
+        <!-- EDIT: Change the label to match the page topic -->
+        <div class="lp-label">GO Inner Circle</div>
+
+        <!-- EDIT: Page headline -->
+        <h1 class="lp-headline">Expert guidance for every <em>gymnastics family</em></h1>
+
+        <!-- EDIT: Supporting copy -->
+        <p class="lp-subhead">Join thousands of gymnastics parents getting the insights they need to support their child — without the overwhelm.</p>
+
+        <!-- EDIT: Bullet point benefits — 3 to 5 works best -->
+        <ul class="lp-benefits">
+          <li>Understand the levels system and what it actually means for your child</li>
+          <li>Expert articles from coaches with decades of experience</li>
+          <li>Early access to new GO content and resources</li>
+          <li>A community of parents who get it</li>
+        </ul>
+
+        <div class="lp-proof">
+          <div class="lp-proof-avatars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <p><strong>2,400+ families</strong> already inside</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form card -->
+      <div class="lp-form-card">
+        <!-- EDIT: Form card heading -->
+        <h3>Join free today</h3>
+        <p>No spam. Unsubscribe any time.</p>
+
+        <!-- =====================================================
+             GRAVITY FORM SLOT
+             Replace the placeholder below with your shortcode:
+             [gravityform id="X" title="false" description="false"]
+             The .gf-slot styles above will style the form automatically.
+        ====================================================== -->
+        <div class="gf-slot">
+          <!-- REPLACE THIS COMMENT WITH YOUR GRAVITY FORM SHORTCODE -->
+
+          <!-- PREVIEW PLACEHOLDER (remove when using in WordPress) -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <label style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:6px; display:block;">First Name</label>
+              <input type="text" placeholder="Your first name" style="width:100%; padding:14px 18px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:white; font-size:15px; outline:none; font-family:inherit;">
+            </div>
+            <div>
+              <label style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:6px; display:block;">Email Address</label>
+              <input type="email" placeholder="your@email.com" style="width:100%; padding:14px 18px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:white; font-size:15px; outline:none; font-family:inherit;">
+            </div>
+            <button style="width:100%; padding:16px 32px; background:linear-gradient(90deg,#E8317F,#6B2FA0); border:none; border-radius:100px; color:white; font-size:15px; font-weight:700; letter-spacing:0.5px; cursor:pointer; font-family:inherit; text-transform:uppercase; margin-top:4px;">Join the Inner Circle →</button>
+          </div>
+          <!-- END PREVIEW PLACEHOLDER -->
+        </div>
+
+        <p class="lp-privacy">🔒 Your details are safe. We never share or sell your information.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRUST NUMBERS -->
+<section class="lp-trust">
+  <div class="container">
+    <div class="lp-trust-grid">
+      <!-- EDIT: Update numbers to match your actual stats -->
+      <div class="lp-trust-item">
+        <div class="lp-trust-number">2,400+</div>
+        <div class="lp-trust-label">Families in the GO community</div>
+      </div>
+      <div class="lp-trust-item">
+        <div class="lp-trust-number">50</div>
+        <div class="lp-trust-label">Structured workouts in the library</div>
+      </div>
+      <div class="lp-trust-item">
+        <div class="lp-trust-number">300+</div>
+        <div class="lp-trust-label">Individual exercises and counting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="lp-testimonial">
+  <div class="container">
+    <!-- EDIT: Swap in a real parent quote -->
+    <blockquote>"I finally feel like I understand what's happening in my daughter's training — and how to actually support her without adding pressure."</blockquote>
+    <cite>— <strong>Sarah M.</strong>, gymnastics mum, Melbourne</cite>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://gymnasticsonline.com/wp-content/uploads/logo-full-white.png" alt="Gymnastics Online"
+             onerror="this.style.display:'none'">
+        <p>Supporting every gymnast, every family, every step of the journey.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="https://gymnasticsonline.com/">Home</a>
+        <a href="https://gymnasticsonline.com/blog/">GO Journal</a>
+        <a href="https://gymnasticsonline.com/inner-circle/">GO Inner Circle</a>
+        <a href="https://gymnasticsonline.com/clubs/">For Clubs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@gymnasticsonline.com">hello@gymnasticsonline.com</a>
+        <a href="https://gymnasticsonline.com/contact/">Get in Touch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Gymnastics Online. All rights reserved.</p>
+      <p>Made for gymnastics families across Australia.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    if (!open) {
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '72px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = 'rgba(15,10,26,0.98)';
+      navLinks.style.padding = '20px 48px 24px';
+      navLinks.style.gap = '16px';
+    }
+  });
+</script>
+</body>
+</html>
