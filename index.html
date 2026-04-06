@@ -1226,22 +1226,15 @@
 
   /* ========== MASTERCLASS GRID ========== */
   .masterclass-section { margin: 48px 0 52px; }
-  .masterclass-intro { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; max-width: 640px; }
-  .masterclass-intro strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+  .masterclass-intro { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; max-width: 640px; }
   .masterclass-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-  @media (max-width: 1100px) { .masterclass-grid { grid-template-columns: repeat(4, 1fr); } }
-  @media (max-width: 720px) { .masterclass-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
-  @media (max-width: 480px) { .masterclass-grid { grid-template-columns: repeat(2, 1fr); } }
-  .mc-tile { display: flex; flex-direction: column; gap: 6px; cursor: default; }
-  .mc-img-wrap { position: relative; aspect-ratio: 3 / 2; border-radius: 10px; overflow: hidden; background: var(--purple-dark); }
-  .mc-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(60%) brightness(0.75); transition: filter 0.4s, transform 0.5s; display: block; }
-  .mc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(232,49,127,0.88) 0%, rgba(107,47,160,0.6) 60%, transparent 100%); opacity: 0; transition: opacity 0.35s; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; }
-  .mc-tile:hover .mc-img-wrap img { filter: grayscale(0%) brightness(0.85); transform: scale(1.06); }
-  .mc-tile:hover .mc-overlay { opacity: 1; }
-  .mc-coming { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); color: white; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; margin-bottom: 6px; width: fit-content; }
-  .mc-desc { font-size: 11px; color: rgba(255,255,255,0.9); line-height: 1.45; }
-  .mc-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65); line-height: 1.3; text-align: center; padding: 0 2px; }
-  @media (max-width: 720px) { .mc-label { font-size: 11px; } .mc-desc { font-size: 10px; } }
+  @media (max-width: 1000px) { .masterclass-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 600px) { .masterclass-grid { grid-template-columns: repeat(3, 1fr); } }
+  .mc-tile { display: flex; align-items: flex-start; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 12px 14px; cursor: default; transition: background 0.25s, border-color 0.25s; }
+  .mc-tile:hover { background: rgba(232,49,127,0.1); border-color: rgba(232,49,127,0.3); }
+  .mc-num { font-size: 10px; font-weight: 700; color: var(--pink); opacity: 0.7; line-height: 1.6; flex-shrink: 0; }
+  .mc-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.4; }
+  .mc-tile:hover .mc-name { color: white; }
 </style>
 </head>
 <body>
@@ -1339,95 +1332,22 @@
       <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:16px;">Built around <em style="color:var(--pink);font-style:italic;">12 masterclass</em> areas.</h2>
       <p class="masterclass-intro">GO is structured around 12 core areas of gymnastics development — each one a dedicated masterclass targeting a specific physical or technical foundation gymnasts need to progress.</p>
       <div class="masterclass-grid">
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-2061.jpg" alt="Split Leaps and Jumps"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Develop the strength, timing and air sense behind elite leaps and jumps.</p></div></div>
-          <div class="mc-label">Split Leaps &amp; Jumps</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-728.jpg" alt="The Kip"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Master the kip — the gateway skill to uneven bar progressions.</p></div></div>
-          <div class="mc-label">The Kip</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/hero-beam.jpg" alt="Beam Mastery"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Build the balance, focus and confidence the beam demands.</p></div></div>
-          <div class="mc-label">Beam Mastery</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-983.jpg" alt="Power"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Develop the explosive power that underpins every dynamic gymnastics skill.</p></div></div>
-          <div class="mc-label">Power</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-1780.jpg" alt="Vault Run"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Perfect the sprint mechanics and hurdle that set up every vault.</p></div></div>
-          <div class="mc-label">Vault Run</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-561.jpg" alt="Flexibility"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Increase active range of motion safely — the right way, at the right time.</p></div></div>
-          <div class="mc-label">Flexibility</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-1216.jpg" alt="Prehabilitation"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Keep gymnasts healthy, resilient and training consistently year-round.</p></div></div>
-          <div class="mc-label">Prehabilitation</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-750.jpg" alt="Shaping"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Develop the body tension and core control that shape every movement.</p></div></div>
-          <div class="mc-label">Shaping</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-805.jpg" alt="Bars Strength and Conditioning"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Build the specific strength and grip endurance bars demands.</p></div></div>
-          <div class="mc-label">Bars Strength &amp; Conditioning</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-124.jpg" alt="Handstands and Press"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Progress from solid handstands to controlled press work.</p></div></div>
-          <div class="mc-label">Handstands &amp; Press</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-810.jpg" alt="Posture, Lines and Artistry"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Refine the lines, presence and artistry that separate good from great.</p></div></div>
-          <div class="mc-label">Posture, Lines &amp; Artistry</div>
-        </div>
-
-        <div class="mc-tile">
-          <div class="mc-img-wrap"><img src="img/gobts-1896.jpg" alt="Vestibular and Neuroperformance"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Train the brain-body connection behind spatial awareness and skill acquisition.</p></div></div>
-          <div class="mc-label">Vestibular &amp; Neuroperformance</div>
-        </div>
-
+        <div class="mc-tile"><span class="mc-num">01</span><span class="mc-name">Split Leaps &amp; Jumps</span></div>
+        <div class="mc-tile"><span class="mc-num">02</span><span class="mc-name">The Kip</span></div>
+        <div class="mc-tile"><span class="mc-num">03</span><span class="mc-name">Beam Mastery</span></div>
+        <div class="mc-tile"><span class="mc-num">04</span><span class="mc-name">Power</span></div>
+        <div class="mc-tile"><span class="mc-num">05</span><span class="mc-name">Vault Run</span></div>
+        <div class="mc-tile"><span class="mc-num">06</span><span class="mc-name">Flexibility</span></div>
+        <div class="mc-tile"><span class="mc-num">07</span><span class="mc-name">Prehabilitation</span></div>
+        <div class="mc-tile"><span class="mc-num">08</span><span class="mc-name">Shaping</span></div>
+        <div class="mc-tile"><span class="mc-num">09</span><span class="mc-name">Bars Strength &amp; Conditioning</span></div>
+        <div class="mc-tile"><span class="mc-num">10</span><span class="mc-name">Handstands &amp; Press</span></div>
+        <div class="mc-tile"><span class="mc-num">11</span><span class="mc-name">Posture, Lines &amp; Artistry</span></div>
+        <div class="mc-tile"><span class="mc-num">12</span><span class="mc-name">Vestibular &amp; Neuroperformance</span></div>
       </div>
     </div>
 
-    
-    <div class="inside-header" style="align-items:start;grid-template-columns:1fr 1.2fr;">
-      <div>
-        <h2 class="section-title reveal reveal-delay-1" style="margin-top:0;">Real exercises.<br>Real problems solved.</h2>
-        <p style="font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;font-weight:300;margin-top:20px;max-width:340px;">Scroll through this small sample below and spot your child's challenge.</p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <p style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;font-weight:300;margin-bottom:20px;">Every workout and exercise in GO targets a specific gap, building the physical and athletic foundations gymnasts need to thrive.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Strength</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Flexibility</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Stability</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Range of Motion</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Coordination</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Timing</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Speed</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Power</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Body Lines</span>
-          <span style="background:rgba(232,49,127,0.18);border:1px solid rgba(232,49,127,0.4);color:rgba(255,255,255,0.9);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;letter-spacing:0.5px;display:inline-block;">Artistry</span>
-        </div>
-        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.75;font-weight:300;margin-bottom:10px;">These are the qualities your child's coach is working to develop. GO gives gymnasts a consistent, structured way to build those foundations at home — so when they walk back through the gym doors, they are stronger, more prepared, and ready to progress faster.</p>
-        <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;font-weight:300;font-style:italic;">Skills come from the coach. GO builds the athlete who is ready to learn them.</p>
-      </div>
-    </div>
-    <div class="demo-tabs reveal">
+        <div class="demo-tabs reveal">
       <button class="demo-tab active" onclick="switchDemoTab('workouts', this)">Gymnast Workouts</button>
       <button class="demo-tab" onclick="switchDemoTab('parents', this)">Parent Resources</button>
     </div>
