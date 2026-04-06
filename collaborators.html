@@ -838,11 +838,11 @@
   function unlock() {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
-    sessionStorage.setItem(SESSION_KEY, '1');
+    localStorage.setItem(SESSION_KEY, '1');
     window.scrollTo(0, 0);
   }
 
-  if (sessionStorage.getItem(SESSION_KEY) === '1') unlock();
+  if (localStorage.getItem(SESSION_KEY) === '1') unlock();
 
   document.getElementById('pw-submit').addEventListener('click', checkPassword);
   pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkPassword(); });
