@@ -421,13 +421,13 @@
   .exercise-slider:active { cursor: grabbing; }
   .exercise-slider::-webkit-scrollbar { display: none; }
   .exercise-card {
-    flex: 0 0 calc(41% - 12px); scroll-snap-align: start;
+    flex: 0 0 calc(31% - 12px); scroll-snap-align: start;
     border-radius: 12px; overflow: hidden;
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     transition: all 0.3s;
   }
   .exercise-card:hover { border-color: rgba(232,49,127,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-  .exercise-card video { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+  .exercise-card video { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; object-position: center top; }
   .exercise-card-problem {
     background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
     padding: 9px 20px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
