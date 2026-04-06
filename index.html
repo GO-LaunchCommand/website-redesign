@@ -1223,6 +1223,25 @@
   .clubs-bridge-link:hover svg { transform: translateX(4px); }
   @media (max-width: 768px) { .clubs-bridge-grid { grid-template-columns: repeat(2, 1fr); } .clubs-bridge-item { border-bottom: 1px solid rgba(255,255,255,0.07); } .clubs-bridge-item:nth-child(2) { border-right: none; } .clubs-bridge-item:nth-child(3), .clubs-bridge-item:nth-child(4) { border-bottom: none; } }
   @media (max-width: 480px) { .clubs-bridge-grid { grid-template-columns: 1fr 1fr; } .clubs-bridge-num { font-size: 32px; } }
+
+  /* ========== MASTERCLASS GRID ========== */
+  .masterclass-section { margin: 48px 0 52px; }
+  .masterclass-intro { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; max-width: 640px; }
+  .masterclass-intro strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+  .masterclass-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  @media (max-width: 1100px) { .masterclass-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 720px) { .masterclass-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
+  @media (max-width: 480px) { .masterclass-grid { grid-template-columns: repeat(2, 1fr); } }
+  .mc-tile { display: flex; flex-direction: column; gap: 8px; cursor: default; }
+  .mc-img-wrap { position: relative; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: var(--purple-dark); }
+  .mc-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(60%) brightness(0.75); transition: filter 0.4s, transform 0.5s; display: block; }
+  .mc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(232,49,127,0.88) 0%, rgba(107,47,160,0.6) 60%, transparent 100%); opacity: 0; transition: opacity 0.35s; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; }
+  .mc-tile:hover .mc-img-wrap img { filter: grayscale(0%) brightness(0.85); transform: scale(1.06); }
+  .mc-tile:hover .mc-overlay { opacity: 1; }
+  .mc-coming { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); color: white; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; margin-bottom: 6px; width: fit-content; }
+  .mc-desc { font-size: 11px; color: rgba(255,255,255,0.9); line-height: 1.45; }
+  .mc-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); line-height: 1.35; text-align: center; padding: 0 2px; }
+  @media (max-width: 720px) { .mc-label { font-size: 11px; } .mc-desc { font-size: 10px; } }
 </style>
 </head>
 <body>
@@ -1236,7 +1255,6 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experts">Experts</a></li>
-    <li><a href="#early-access">Early Access</a></li>
     <li><a href="journal.html">GO Journal</a></li>
     <li><a href="clubs.html" class="for-clubs">For Clubs</a></li>
     <li><a href="#early-access" class="nav-cta">Get Early Access</a></li>
@@ -1339,7 +1357,75 @@
         <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;font-weight:300;font-style:italic;">Skills come from the coach. GO builds the athlete who is ready to learn them.</p>
       </div>
     </div>
-    <div class="demo-tabs reveal">
+    <!-- MASTERCLASS TILES -->
+    <div class="masterclass-section">
+      <p class="masterclass-intro">GO is built around <strong>12 masterclass areas</strong> — each targeting a specific physical or technical foundation that gymnasts need to progress.</p>
+      <div class="masterclass-grid">
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-2061.jpg" alt="Split Leaps and Jumps"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Develop the strength, timing and air sense behind elite leaps and jumps.</p></div></div>
+          <div class="mc-label">Split Leaps &amp; Jumps</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-728.jpg" alt="The Kip"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Master the kip — the gateway skill to uneven bar progressions.</p></div></div>
+          <div class="mc-label">The Kip</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/hero-beam.jpg" alt="Beam Mastery"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Build the balance, focus and confidence the beam demands.</p></div></div>
+          <div class="mc-label">Beam Mastery</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-983.jpg" alt="Power"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Develop the explosive power that underpins every dynamic gymnastics skill.</p></div></div>
+          <div class="mc-label">Power</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-1780.jpg" alt="Vault Run"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Perfect the sprint mechanics and hurdle that set up every vault.</p></div></div>
+          <div class="mc-label">Vault Run</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-561.jpg" alt="Flexibility"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Increase active range of motion safely — the right way, at the right time.</p></div></div>
+          <div class="mc-label">Flexibility</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-1216.jpg" alt="Prehabilitation"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Keep gymnasts healthy, resilient and training consistently year-round.</p></div></div>
+          <div class="mc-label">Prehabilitation</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-750.jpg" alt="Shaping"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Develop the body tension and core control that shape every movement.</p></div></div>
+          <div class="mc-label">Shaping</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-805.jpg" alt="Bars Strength and Conditioning"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Build the specific strength and grip endurance bars demands.</p></div></div>
+          <div class="mc-label">Bars Strength &amp; Conditioning</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-124.jpg" alt="Handstands and Press"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Progress from solid handstands to controlled press work.</p></div></div>
+          <div class="mc-label">Handstands &amp; Press</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-810.jpg" alt="Posture, Lines and Artistry"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Refine the lines, presence and artistry that separate good from great.</p></div></div>
+          <div class="mc-label">Posture, Lines &amp; Artistry</div>
+        </div>
+
+        <div class="mc-tile">
+          <div class="mc-img-wrap"><img src="img/gobts-1896.jpg" alt="Vestibular and Neuroperformance"><div class="mc-overlay"><span class="mc-coming">Masterclass</span><p class="mc-desc">Train the brain-body connection behind spatial awareness and skill acquisition.</p></div></div>
+          <div class="mc-label">Vestibular &amp; Neuroperformance</div>
+        </div>
+
+      </div>
+    </div>
+
+        <div class="demo-tabs reveal">
       <button class="demo-tab active" onclick="switchDemoTab('workouts', this)">Gymnast Workouts</button>
       <button class="demo-tab" onclick="switchDemoTab('parents', this)">Parent Resources</button>
     </div>
