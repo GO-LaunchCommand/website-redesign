@@ -647,13 +647,17 @@
     border-color: rgba(232,49,127,0.25);
   }
   .expert-photo {
-    flex: 0 0 140px; width: 140px; height: 140px; overflow: hidden;
+    flex: 0 0 140px; width: 140px; overflow: hidden;
     background: var(--light); border-radius: 4px;
     margin: 18px 0 18px 18px; flex-shrink: 0;
+    display: flex; flex-direction: column; gap: 4px;
   }
   .expert-photo img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
-    filter: grayscale(100%); transition: filter 0.4s, opacity 0.18s ease;
+    width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center top;
+    filter: grayscale(100%); transition: filter 0.4s; display: block;
+  }
+  .expert-photo .bio-img {
+    object-position: center 20%;
   }
   .expert-card:hover .expert-photo img { filter: grayscale(0%); }
   .expert-overlay {
@@ -1680,7 +1684,7 @@
     </div>
     <div class="experts-grid">
       <div class="expert-card reveal" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour_Bio.jpg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour.jpg" alt="Kym Volp, founder of Gymnastics Online, qualified gymnastics judge and gym mum" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour_Bio.jpg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour.jpg" alt="Kym Volp, founder of Gymnastics Online, qualified gymnastics judge and gym mum" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Kym_Colour_Bio.jpg" alt="Kym Volp coaching young gymnasts, Gymnastics Online founder and qualified judge" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Kym Volp</div>
           <div class="expert-role">Founder</div>
@@ -1690,7 +1694,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-1" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour_Bio.jpg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour.jpg" alt="Emma Nedov, three-time World Championship gymnastics representative and performance coach" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour_Bio.jpg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour.jpg" alt="Emma Nedov, three-time World Championship gymnastics representative and performance coach" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Emma_Colour_Bio.jpg" alt="Emma Nedov, former elite gymnast and high performance advocate for Gymnastics Online" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Emma Nedov</div>
           <div class="expert-role">Gymnast Mentor &amp; High-Performance Advocate</div>
@@ -1700,7 +1704,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-1" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" alt="Stacey Umeh, FIG Artistry Expert and founder of The Creative Movement Group" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" alt="Stacey Umeh, FIG Artistry Expert and founder of The Creative Movement Group" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Stacey_Colour_Profile.jpg" alt="Stacey Umeh teaching gymnastics artistry, international FIG Artistry Expert" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Stacey Umeh</div>
           <div class="expert-role">Technical Advisor</div>
@@ -1710,7 +1714,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-2" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour-1.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour_Bio.png" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour-1.jpg" alt="Crystal Yeo, gymnastics performance coach and mental skills specialist" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour-1.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour_Bio.png" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour-1.jpg" alt="Crystal Yeo, gymnastics performance coach and mental skills specialist" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Crystal_Colour_Bio.png" alt="Crystal Yeo working with young athletes on mental skills and performance mindset" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Crystal Yeo</div>
           <div class="expert-role">Gymnastics Performance Coach &amp; Mental Skills Specialist</div>
@@ -1720,7 +1724,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-2" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour.png" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour_bio.jpeg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour.png" alt="Rebecca Smith, gymnastics performance and biomechanics specialist" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour.png" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour_bio.jpeg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour.png" alt="Rebecca Smith, gymnastics performance and biomechanics specialist" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Rebecca_Colour_bio.jpeg" alt="Rebecca Smith, 20 years experience in gymnastics conditioning and injury prevention" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Rebecca Smith</div>
           <div class="expert-role">Mental Performance Specialist</div>
@@ -1731,7 +1735,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-2" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour.webp" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour_Bio.jpeg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour.webp" alt="Zoe Power, accredited sports dietitian and founder of The Power Project" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour.webp" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour_Bio.jpeg" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour.webp" alt="Zoe Power, accredited sports dietitian and founder of The Power Project" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Zoe_Colour_Bio.jpeg" alt="Zoe Power, sports dietitian helping young gymnasts with nutrition and recovery" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Zoe Power</div>
           <div class="expert-role">Accredited Sports Dietitian</div>
@@ -1741,7 +1745,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-1" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Askleigh_Colour_Bio-1.webp" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" alt="Ashleigh Mitchell, accredited practising dietitian specialising in paediatric nutrition" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Askleigh_Colour_Bio-1.webp" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" alt="Ashleigh Mitchell, accredited practising dietitian specialising in paediatric nutrition" loading="lazy"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Askleigh_Colour_Bio-1.webp" alt="Ashleigh Mitchell, paediatric dietitian with a background in gymnastics" class="bio-img" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Ashleigh Mitchell</div>
           <div class="expert-role">Accredited Practising Dietitian</div>
@@ -2201,26 +2205,5 @@ var wf=document.getElementById("waitlist-form");if(wf){wf.addEventListener("subm
 })();
 </script>
 
-<script>
-// Expert photo swap: profile -> bio on hover
-document.querySelectorAll('.expert-card').forEach(function(card) {
-  var img = card.querySelector('.expert-photo img');
-  if (!img || !img.dataset.bio) return;
-  card.addEventListener('mouseenter', function() {
-    img.style.opacity = '0';
-    setTimeout(function() {
-      img.src = img.dataset.bio;
-      img.style.opacity = '1';
-    }, 180);
-  });
-  card.addEventListener('mouseleave', function() {
-    img.style.opacity = '0';
-    setTimeout(function() {
-      img.src = img.dataset.profile;
-      img.style.opacity = '1';
-    }, 180);
-  });
-});
-</script>
 </body>
 </html>
