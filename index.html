@@ -920,20 +920,12 @@
   .btn-instagram:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 
   /* ========== BEHOLD WIDGET ========== */
-  behold-widget { display: block; padding: 0 10px 10px; }
-  behold-widget .bh-grid { grid-template-columns: repeat(6, 1fr) !important; gap: 10px !important; }
-  behold-widget .bh-post,
-  behold-widget [class*="bh-post"] { aspect-ratio: 4/5 !important; border-radius: 4px !important; overflow: hidden !important; }
-  behold-widget .bh-post img,
-  behold-widget [class*="bh-post"] img {
-    filter: grayscale(100%) brightness(0.6) !important;
-    transition: filter 0.4s, transform 0.4s !important;
+  behold-widget {
+    display: block !important; width: 100% !important; padding: 0 10px 10px;
+    --behold-columns: 6; --behold-gap: 10px; --behold-border-radius: 4px;
   }
-  behold-widget .bh-post:hover img,
-  behold-widget [class*="bh-post"]:hover img {
-    filter: grayscale(0%) brightness(1) !important;
-    transform: scale(1.04) !important;
-  }
+  /* Force full-width grid regardless of Behold's internal max-width */
+  behold-widget > * { max-width: 100% !important; width: 100% !important; }
 
   /* ========== FOOTER ========== */
   .footer-contact {
@@ -1896,11 +1888,40 @@
 <!-- ========== INSTAGRAM ========== -->
 <section class="instagram-section">
 
-  <behold-widget feed-id="z9Cr4TIDOBhcRmHxYxMC" style="display:block;padding:0 10px 10px;"></behold-widget>
+  <behold-widget feed-id="z9Cr4TIDOBhcRmHxYxMC" columns="6" style="display:block;width:100%;padding:0 10px 10px;--behold-columns:6;--behold-gap:10px;--behold-border-radius:4px;"></behold-widget>
   <script>
     (() => {
       const d=document,s=d.createElement("script");s.type="module";
       s.src="https://w.behold.so/widget.js";d.head.append(s);
+    })();
+
+    // Apply grayscale + hover effects to Behold posts once they render
+    (function() {
+      function applyBeholdStyles(widget) {
+        var imgs = widget.querySelectorAll('img');
+        imgs.forEach(function(img) {
+          if (img.dataset.beholdStyled) return;
+          img.dataset.beholdStyled = '1';
+          img.style.cssText += ';filter:grayscale(100%) brightness(0.6);transition:filter 0.4s,transform 0.4s;display:block;width:100%;height:100%;object-fit:cover;';
+          var post = img.closest('a, [class*="post"], [class*="item"], li, .behold-post') || img.parentElement;
+          post.style.cssText += ';overflow:hidden;border-radius:4px;aspect-ratio:4/5;cursor:pointer;';
+          post.addEventListener('mouseenter', function() {
+            img.style.filter = 'grayscale(0%) brightness(1)';
+            img.style.transform = 'scale(1.04)';
+          });
+          post.addEventListener('mouseleave', function() {
+            img.style.filter = 'grayscale(100%) brightness(0.6)';
+            img.style.transform = 'scale(1)';
+          });
+        });
+      }
+
+      var widget = document.querySelector('behold-widget');
+      if (!widget) return;
+      var observer = new MutationObserver(function() { applyBeholdStyles(widget); });
+      observer.observe(widget, { childList: true, subtree: true });
+      // Also run once after a delay in case content already loaded
+      setTimeout(function() { applyBeholdStyles(widget); }, 2000);
     })();
   </script>
 </section>
