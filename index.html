@@ -421,7 +421,7 @@
     position: relative; padding: 0 32px;
   }
   .exercise-slider {
-    display: flex; gap: 24px;
+    display: flex; gap: 24px; align-items: flex-start;
     overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
     padding: 8px 4px 20px; cursor: grab;
@@ -435,7 +435,7 @@
     transition: all 0.3s;
   }
   .exercise-card:hover { border-color: rgba(232,49,127,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-  .exercise-card video { width: 100%; display: block; }
+  .exercise-card video { width: 100%; display: block; height: 260px; object-fit: cover; object-position: center top; }
   .exercise-card-problem {
     background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
     padding: 9px 20px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
@@ -464,7 +464,7 @@
   }
   /* Slider arrows */
   .slider-arrow {
-    position: absolute; top: calc(40% - 26px);
+    position: absolute; top: calc(130px - 26px);
     width: 52px; height: 52px; border-radius: 50%;
     background: var(--purple); border: 2px solid var(--purple);
     color: white; font-size: 28px; cursor: pointer;
