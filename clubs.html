@@ -55,9 +55,12 @@
   /* HERO */
   .clubs-hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
   .clubs-hero-bg { position: absolute; inset: 0; z-index: 0; }
-  .clubs-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(100%) brightness(0.5); }
-  .clubs-hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(107,47,160,0.72); mix-blend-mode: multiply; }
-  .clubs-hero-bg::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, rgba(45,27,78,0.65) 0%, rgba(15,10,26,0.4) 55%, rgba(232,49,127,0.18) 100%); }
+  .clubs-hero-bg .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s ease-in-out; }
+  .clubs-hero-bg .slide.active { opacity: 1; }
+  .clubs-hero-bg .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(100%) brightness(0.65); }
+  
+  .clubs-hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(107,47,160,0.50); mix-blend-mode: multiply; }
+  .clubs-hero-bg::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, rgba(45,27,78,0.42) 0%, rgba(15,10,26,0.22) 55%, rgba(232,49,127,0.10) 100%); }
   .clubs-hero .container { position: relative; z-index: 1; }
   .clubs-hero-content { max-width: 780px; padding: 80px 0; }
   .clubs-hero-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--pink-light); background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.3); padding: 8px 18px; border-radius: 100px; margin-bottom: 28px; }
@@ -205,8 +208,11 @@
 
 <!-- HERO -->
 <section class="clubs-hero">
-  <div class="clubs-hero-bg">
-    <img src="img/Coach Pics/LR_GO_25-3-223.jpg" alt="Gymnastics coaching">
+  <div class="clubs-hero-bg" id="heroSlides">
+    <div class="slide active"><img src="img/Coach Pics/LR_GO_25-3-223.jpg" alt="Gymnastics coaching"></div>
+    <div class="slide"><img src="img/Coach Pics/LR_GO_25-3-220.jpg" alt="Coach celebrating with gymnasts"></div>
+    <div class="slide"><img src="img/Coach Pics/LR_GO_25-3-78.jpg" alt="Coach working with athletes"></div>
+    <div class="slide"><img src="img/Coach Pics/LR_GO_25-3-50.jpg" alt="Coach instructing young gymnasts"></div>
   </div>
   <div class="container">
     <div class="clubs-hero-content">
@@ -221,20 +227,7 @@
   </div>
 </section>
 
-<!-- CLUB PHOTO GRID -->
-<section class="club-gallery">
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="img/Coach Pics/LR_GO_25-3-220.jpg" alt="Coach celebrating with gymnasts">
-    </div>
-    <div class="gallery-item">
-      <img src="img/Coach Pics/LR_GO_25-3-78.jpg" alt="Coach working with athletes on the floor">
-    </div>
-    <div class="gallery-item">
-      <img src="img/Coach Pics/LR_GO_25-3-50.jpg" alt="Coach instructing young gymnasts">
-    </div>
-  </div>
-</section>
+
 
 <!-- IS THIS YOUR CLUB -->
 <section class="qualify" id="for-clubs">
@@ -550,6 +543,18 @@ function handleClubForm(e) {
   link.download = 'GO-Club-Pack.pdf';
   link.click();
 }
+
+// Hero image slideshow
+(function() {
+  var slides = document.querySelectorAll('#heroSlides .slide');
+  if (!slides.length) return;
+  var current = 0;
+  setInterval(function() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000);
+})();
 </script>
 </body>
 </html>
