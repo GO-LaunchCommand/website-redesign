@@ -64,6 +64,28 @@
   .btn-outline { background: transparent; color: white; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; display: inline-block; border: 2px solid rgba(255,255,255,0.4); }
   .btn-outline:hover { background: white; color: var(--pink); border-color: white; transform: translateY(-2px); }
 
+  /* QUALIFY SECTION */
+  .qualify { padding: 100px 0; background: var(--white); }
+  .qualify-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 56px; }
+  .qualify-item { display: flex; gap: 20px; align-items: flex-start; padding: 28px; border: 1px solid rgba(15,10,26,0.07); border-radius: 12px; transition: all 0.3s; }
+  .qualify-item:hover { border-color: rgba(232,49,127,0.2); background: var(--light); }
+  .qualify-check { flex-shrink: 0; width: 36px; height: 36px; background: rgba(232,49,127,0.1); border: 1px solid rgba(232,49,127,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .qualify-check svg { width: 16px; height: 16px; stroke: var(--pink); stroke-width: 2.5; fill: none; }
+  .qualify-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; line-height: 1.3; }
+  .qualify-item p { font-size: 13px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+  @media (max-width: 768px) { .qualify-grid { grid-template-columns: 1fr; } }
+
+  /* FEATURE TAGS */
+  .feature-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 12px; }
+  .feature-tag--live { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: #16a34a; }
+  .feature-tag--soon { background: rgba(232,49,127,0.1); border: 1px solid rgba(232,49,127,0.25); color: var(--pink); }
+
+  /* SHAPE CALLOUT */
+  .shape-callout { margin-top: 60px; background: linear-gradient(135deg, var(--purple-dark), var(--dark)); border-radius: 16px; padding: 2px; }
+  .shape-callout-inner { background: linear-gradient(135deg, rgba(107,47,160,0.3), rgba(15,10,26,0.8)); border-radius: 14px; padding: 48px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .shape-callout-inner h3 { font-family: var(--serif); font-size: clamp(24px,3vw,36px); font-weight: 900; color: white; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .shape-callout-inner p { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 600px; font-weight: 300; }
+
   /* QUICK WINS BAR */
   .quick-wins { background: var(--pink); padding: 40px 0; }
   .quick-wins-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.2); }
@@ -207,54 +229,7 @@
   @media (max-width: 768px) {
     nav { padding: 0 24px; }
     .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .container { padding: 0 24px; }
-    .clubs-hero p { font-size: 16px; }
-    .quick-wins-grid { grid-template-columns: repeat(2, 1fr); }
-    .features-grid { grid-template-columns: 1fr; }
-    .chain-grid { grid-template-columns: 1fr; }
-    .faq-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr; gap: 24px; }
-    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-  }
-  @media (max-width: 640px) {
-    .quick-wins-grid { grid-template-columns: 1fr; }
-    .clubs-hero-actions { flex-direction: column; }
-    .download-form-wrap { padding: 28px 20px; }
-    .financial { padding: 60px 0; }
-    .features { padding: 60px 0; }
-    .benefits-chain { padding: 60px 0; }
-    .faq { padding: 60px 0; }
-    .download-cta { padding: 60px 0; }
-  }
-  .nav-links.mobile-open { display: flex !important; position: fixed; inset: 0; z-index: 10000; background: rgba(15,10,26,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 0; }
-  .nav-links.mobile-open li { list-style: none; }
-  .nav-links.mobile-open a { font-size: 20px; padding: 16px 0; display: block; text-align: center; letter-spacing: 2px; }
-  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav id="main-nav">
-  <a href="index.html" class="nav-logo">
-    <img src="img/logo-full-white.png" alt="Gymnastics Online">
-  </a>
-  <button class="nav-hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#experts">Experts</a></li>
-    <li><a href="index.html#early-access">Early Access</a></li>
-    <li><a href="journal.html">GO Journal</a></li>
-    <li><a href="clubs.html" class="for-clubs active">For Clubs</a></li>
-    <li><a href="index.html#early-access" class="nav-cta">Get Early Access</a></li>
-  </ul>
-</nav>
+    .nav-hamb
 
 <!-- HERO -->
 <section class="clubs-hero">
@@ -263,109 +238,83 @@
   </div>
   <div class="container">
     <div class="clubs-hero-content">
-      <div class="clubs-hero-badge">For Clubs &amp; Coaches</div>
-      <h1>For <em>Clubs</em><br>Who Want More.</h1>
-      <p>A platform built to support your coaches, accelerate athlete development, streamline parent communication — and put passive income back in your club.</p>
+      <div class="clubs-hero-badge">Club Partnership Programme</div>
+      <h1>Built with clubs<br>who <em>lead.</em></h1>
+      <p>We’re not building this for every club. We’re looking for a small group of forward-thinking clubs to partner with as we develop — clubs who are already thinking seriously about athlete wellness, parent communication, and what a best-practice gymnastics environment actually looks like.</p>
       <div class="clubs-hero-actions">
-        <a href="#download" class="btn-primary">Download Club Pack</a>
-        <a href="#features" class="btn-outline">See What's Included</a>
+        <a href="#request" class="btn-primary">Request the Club Pack</a>
+        <a href="#for-clubs" class="btn-outline">Learn More</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUICK WINS BAR -->
-<div class="quick-wins">
+<!-- IS THIS YOUR CLUB -->
+<section class="qualify" id="for-clubs">
   <div class="container">
-    <div class="quick-wins-grid">
-      <div class="quick-win">
-        <div class="quick-win-icon">💰</div>
-        <h3>Your club earns revenue</h3>
-        <p>Passive income every time a family joins with your club code</p>
+    <div class="section-header">
+      <span class="section-label">Selective Partnership</span>
+      <h2 class="section-title">Is this your club?</h2>
+      <p class="section-sub">We’re selective about who we partner with — not because we’re exclusive, but because we’re building something together. The clubs we want to hear from share a few things in common.</p>
+    </div>
+    <div class="qualify-grid">
+      <div class="qualify-item">
+        <div class="qualify-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <h4>You believe parent communication is part of athlete development</h4>
+          <p>Not a distraction from it. You want parents informed, confident, and aligned — not in the dark or guessing.</p>
+        </div>
       </div>
-      <div class="quick-win">
-        <div class="quick-win-icon">⏱</div>
-        <h3>Coaches save time</h3>
-        <p>Voice-to-report in under 60 seconds. No typing, no awkward conversations</p>
+      <div class="qualify-item">
+        <div class="qualify-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <h4>You think about retention and why families leave</h4>
+          <p>You understand that churn is costly — financially and culturally — and you’re actively looking for ways to keep the families you’ve worked hard to bring in.</p>
+        </div>
       </div>
-      <div class="quick-win">
-        <div class="quick-win-icon">🏅</div>
-        <h3>Athletes develop faster</h3>
-        <p>Home conditioning that actually translates to gym progress</p>
+      <div class="qualify-item">
+        <div class="qualify-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <h4>You take athlete wellness seriously</h4>
+          <p>You see your athletes as whole people — not just gymnasts. Physical readiness, mental wellbeing, and a positive relationship with the sport all matter to you.</p>
+        </div>
       </div>
-      <div class="quick-win">
-        <div class="quick-win-icon">🤝</div>
-        <h3>Parents stay informed</h3>
-        <p>Professional reporting that builds trust and reduces noise</p>
+      <div class="qualify-item">
+        <div class="qualify-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <h4>You want to be known as a best-practice club</h4>
+          <p>Reputation matters. You want your club to be the one other clubs look to — for professionalism, athlete outcomes, and the environment you create.</p>
+        </div>
+      </div>
+      <div class="qualify-item">
+        <div class="qualify-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <h4>You’re open to doing things differently</h4>
+          <p>You don’t assume the way things have always been done is the best way. If there’s a smarter approach that benefits your athletes and families, you want to know about it.</p>
+        </div>
+      </div>
+      <div class="qualify-item">
+        <div class="qualify-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <h4>You want your club to benefit financially from what you recommend</h4>
+          <p>When you point families toward something great, it’s fair that your club shares in that. We agree.</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- FINANCIAL BENEFITS -->
-<section class="financial" id="financial">
-  <div class="container">
-    <div class="financial-grid">
-      <div>
-        <span class="section-label">Financial Benefits</span>
-        <h2 class="section-title" style="color:white;">Your club earns.<br><em style="color:var(--pink);font-style:italic;">Every month.</em></h2>
-        <p class="section-sub" style="color:rgba(255,255,255,0.6);">One of the most compelling reasons to partner with Gymnastics Online is simple: your club earns money every time a family joins using your club code. No extra work. No selling. Just ongoing passive income.</p>
-        <div class="financial-how">
-          <div class="earn-steps">
-            <div class="earn-step">
-              <div class="earn-step-num">1</div>
-              <div class="earn-step-text">
-                <h4>First 3 months — 25% of every membership</h4>
-                <p>For each family that signs up using your club code, your club earns 25% of their membership fee for the first three months.</p>
-              </div>
-            </div>
-            <div class="earn-step">
-              <div class="earn-step-num">2</div>
-              <div class="earn-step-text">
-                <h4>Ongoing — 10% forever</h4>
-                <p>After the first 3 months, your club earns 10% of every membership fee, every month, for as long as that family stays a member.</p>
-              </div>
-            </div>
-            <div class="earn-step">
-              <div class="earn-step-num">3</div>
-              <div class="earn-step-text">
-                <h4>Zero effort required</h4>
-                <p>Families simply sign up using your club's unique code. No lock-in, no selling, no admin. Every family that joins adds to your club's income.</p>
-              </div>
-            </div>
-          </div>
-          <div class="earn-highlight">
-            <p>💡 <strong>Example:</strong> A club with 80 families, 50 of whom join GO. Your club immediately earns 25% of their monthly memberships for 3 months, then 10% every month after — indefinitely. Completely passive.</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="financial-image">
-          <img src="img/gobts-983.jpg" alt="Coach working with gymnast">
-        </div>
-        <div style="margin-top:28px; display:flex; flex-direction:column; gap:12px;">
-          <p style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:4px;">Clubs can use the income for</p>
-          <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">New equipment</span>
-            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Subsidising lessons</span>
-            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Coach development</span>
-            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">End of year events</span>
-            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Fundraising</span>
-            <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:8px 16px; border-radius:100px;">Anything you choose</span>
-          </div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-top:48px;">
+      <p style="font-size:16px;color:var(--mid);font-weight:300;font-style:italic;">If you’re nodding along — we’d love to talk.</p>
+      <a href="#request" class="btn-primary" style="margin-top:20px;display:inline-block;">Request the Club Pack</a>
     </div>
   </div>
 </section>
 
-<!-- PLATFORM FEATURES -->
+<!-- WHAT WE'RE BUILDING -->
 <section class="features" id="features">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Platform Features</span>
-      <h2 class="section-title">Everything your club needs.<br>Built for how coaches actually work.</h2>
-      <p class="section-sub">Beyond the financial incentive, GO gives your club a powerful set of tools that improve athlete outcomes, streamline coach workload, and elevate your club's professionalism.</p>
+      <span class="section-label">The Platform</span>
+      <h2 class="section-title">What we’re building —<br>and when you benefit.</h2>
+      <p class="section-sub">GO launches its family platform in 2026. Clubs benefit from day one. Beyond that, we’re developing a dedicated suite of club tools — and we want the right clubs involved in shaping them.</p>
     </div>
     <div class="features-grid">
 
@@ -376,13 +325,14 @@
           <div class="feature-card-icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5L17.5 17.5M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
         </div>
         <div class="feature-card-body">
-          <h3>Home Conditioning &amp; Workout Modules</h3>
-          <p>Coaches can assign specific conditioning and flexibility modules directly to individual athletes for home practice. With a library of 250+ exercises — and growing — coaches can build fully custom workouts.</p>
+          <div class="feature-tag feature-tag--live">Available from Launch — 2026</div>
+          <h3>Home Conditioning via GO Families</h3>
+          <p>When GO launches for families, coaches can immediately point athletes toward specific exercises and conditioning programmes to support their gym training at home. No separate club platform required.</p>
           <ul class="feature-bullets">
             <li>250+ expert-approved exercises at launch</li>
-            <li>New exercises added continuously</li>
-            <li>Assign to individual athletes or whole squads</li>
-            <li>Purpose-built for gymnastics — not adapted from generic fitness</li>
+            <li>Organised across 12 masterclass areas</li>
+            <li>Designed to complement — never replace — club training</li>
+            <li>New workouts added every month</li>
           </ul>
         </div>
       </div>
@@ -394,14 +344,14 @@
           <div class="feature-card-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         </div>
         <div class="feature-card-body">
+          <div class="feature-tag feature-tag--soon">In Development — Shaping Now</div>
           <h3>Reporting &amp; Communication Tool</h3>
-          <p>The feature coaches love most. Record a voice note from your phone — the platform converts it into a beautifully presented, professional report delivered directly to the family. No typing required.</p>
+          <p>We’re building a tool that transforms how clubs connect with families. The vision: coaches record a voice note, and the platform converts it into a professional report delivered directly to the family. We’re talking to clubs right now to make sure we build it right.</p>
           <ul class="feature-bullets">
-            <li>Voice-to-report in under 60 seconds</li>
+            <li>Voice-to-report — no typing required</li>
             <li>Question library from Baby Gym to International pathways</li>
-            <li>Ad hoc, injury, and end-of-term reports</li>
             <li>Coach privacy protected — no personal contact details shared</li>
-            <li>Club controls the approval workflow</li>
+            <li>Two-way messaging optional — and fully controllable</li>
           </ul>
         </div>
       </div>
@@ -413,17 +363,75 @@
           <div class="feature-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
         </div>
         <div class="feature-card-body">
+          <div class="feature-tag feature-tag--soon">In Development — Shaping Now</div>
           <h3>Athlete Wellness Check-In</h3>
-          <p>Rooted in the athlete-parent-coach triangle, the Wellness Check-In ensures every athlete is seen as a whole person. Before training, athletes answer a brief check-in covering physical and psychological readiness.</p>
+          <p>Before training, athletes complete a brief check-in covering physical and psychological readiness. Red flag responses are surfaced immediately to the coach, with best-practice response prompts built in. Clubs can use it, customise it, or substitute their own protocols entirely.</p>
           <ul class="feature-bullets">
-            <li>Physical and mental wellbeing check before each session</li>
-            <li>Red flag responses surfaced immediately to the coach</li>
-            <li>Best-practice coach response prompts included</li>
+            <li>Physical and mental wellbeing covered</li>
+            <li>Red flags surfaced to coaches immediately</li>
             <li>Completable on phone or club iPad before training</li>
+            <li>Fully optional — you control how it’s used</li>
           </ul>
         </div>
       </div>
 
+    </div>
+    <div class="shape-callout">
+      <div class="shape-callout-inner">
+        <h3>Help us build it right.</h3>
+        <p>Before we finalise our reporting tool and wellness check-in, we’re having real conversations with club owners and coaches. Your input directly shapes what we build — and clubs involved in shaping the product get first access when we’re ready to pilot.</p>
+        <a href="#request" class="btn-primary" style="margin-top:8px;display:inline-block;">Request the Club Pack</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE PARTNERSHIP -->
+<section class="financial" id="financial">
+  <div class="container">
+    <div class="financial-grid">
+      <div>
+        <span class="section-label">Revenue Partnership</span>
+        <h2 class="section-title" style="color:white;">Your club earns.<br><em style="color:var(--pink);font-style:italic;">Every month.</em></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.6);">Every club that partners with GO participates in a revenue share model. When your families join the GO platform, your club earns — every month, for as long as they’re members. No selling. No extra admin. Just ongoing passive income your club can direct wherever it’s needed most.</p>
+        <div class="financial-how">
+          <h3 style="font-family:var(--serif);font-size:20px;color:white;margin-bottom:20px;">Two partnership models</h3>
+          <div class="earn-steps">
+            <div class="earn-step">
+              <div class="earn-step-num">A</div>
+              <div class="earn-step-text">
+                <h4>Preferred Partner — Club Recommends GO</h4>
+                <p>Your club actively recommends GO to families. Families choose to join. Your club earns a revenue share for every family that signs up with your club code — ongoing, every month.</p>
+              </div>
+            </div>
+            <div class="earn-step">
+              <div class="earn-step-num">B</div>
+              <div class="earn-step-text">
+                <h4>Founding Partner — Club Integrates GO</h4>
+                <p>GO becomes part of your club’s offering — recommended to all families as the home training and parent support platform. Higher revenue share, deeper integration, first access to new features.</p>
+              </div>
+            </div>
+          </div>
+          <div class="earn-highlight">
+            <p>💡 Full revenue share details, partnership tiers, and earning examples are included in the <strong>Club Pack</strong>. Request yours below.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="financial-image">
+          <img src="img/gobts-983.jpg" alt="Coach working with gymnast">
+        </div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;">
+          <p style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">Clubs can use the income for</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:13px;padding:8px 16px;border-radius:100px;">New equipment</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:13px;padding:8px 16px;border-radius:100px;">Subsidising lessons</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:13px;padding:8px 16px;border-radius:100px;">Coach development</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:13px;padding:8px 16px;border-radius:100px;">End of year events</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:13px;padding:8px 16px;border-radius:100px;">Anything you choose</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -432,30 +440,30 @@
 <section class="benefits-chain">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">The Benefits Chain</span>
-      <h2 class="section-title">When clubs use GO, everyone wins.</h2>
-      <p class="section-sub">Every feature is connected. Better tools for coaches mean better outcomes for athletes, which means happier parents, stronger clubs, and a growing reputation.</p>
+      <span class="section-label">The Bigger Picture</span>
+      <h2 class="section-title" style="color:white;">When clubs use GO, everyone wins.</h2>
+      <p class="section-sub">Every feature connects. Better tools for coaches mean better outcomes for athletes, which means happier parents, stronger retention, and a growing club reputation.</p>
     </div>
     <div class="chain-grid">
       <div class="chain-item">
-        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5L17.5 17.5M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
+        <div class="chain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 6.5L17.5 17.5M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
         <h4>Athlete Development</h4>
-        <p>Home conditioning → faster gym progression → better athlete results → stronger club reputation → more enrolments</p>
+        <p>Home conditioning → faster gym progression → better results → stronger club reputation → more enrolments</p>
       </div>
       <div class="chain-item">
-        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h4>Communication</h4>
-        <p>Professional, effortless reporting → parents feel informed and valued → coaches feel respected → club positioned as quality-focused</p>
+        <div class="chain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>Parent Communication</h4>
+        <p>Informed parents → trust in the club → coaches feel respected → club known for professionalism</p>
       </div>
       <div class="chain-item">
-        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="chain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
         <h4>Athlete Wellness</h4>
-        <p>Athletes feel heard → parents trust the club → coaches handle situations with confidence → club known as athlete-first</p>
+        <p>Athletes feel heard → parents trust the club → coaches handle issues with confidence → club known as athlete-first</p>
       </div>
       <div class="chain-item">
-        <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="chain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <h4>Financial</h4>
-        <p>Passive income from every family → funds directed where most needed → sustainable club growth</p>
+        <p>Passive income every month → funds directed where most needed → sustainable club growth</p>
       </div>
     </div>
   </div>
@@ -466,75 +474,76 @@
   <div class="container">
     <div class="section-header">
       <span class="section-label">Common Questions</span>
-      <h2 class="section-title">We've heard your concerns.</h2>
+      <h2 class="section-title">We’ve heard your concerns.</h2>
       <p class="section-sub">Here are the questions we hear most from clubs — and our honest answers.</p>
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <div class="faq-question">"We don't want more back-and-forth with parents."</div>
-        <div class="faq-answer">Two-way communication is entirely optional and can be switched off. Coaches control their working hours — messages from parents only arrive during the window coaches set.</div>
+        <div class="faq-question">“We don’t want more back-and-forth with parents.”</div>
+        <div class="faq-answer">The communication tool we’re building is designed with this in mind. Two-way messaging will be entirely optional — you can use it as a one-way reporting tool only. Parents stay informed, coaches stay unbothered.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">"The wellness check-ins sound like extra work."</div>
-        <div class="faq-answer">They're optional and can be disabled at any time. For clubs that do use them, they take under a minute and have been credited with surfacing issues coaches would never have known about.</div>
+        <div class="faq-question">“We already do injury reporting.”</div>
+        <div class="faq-answer">What we’re building will make what you’re already doing faster, cleaner, and automatically stored in one place. Two minutes from a phone. That’s it.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">"We already do injury reporting."</div>
-        <div class="faq-answer">This just makes what you're already doing faster, cleaner, and stored automatically. Voice-to-report means the whole thing takes under 60 seconds.</div>
+        <div class="faq-question">“Will our coaches actually use it?”</div>
+        <div class="faq-answer">Everything we’re building is designed for the phone and built for speed. We’re talking to coaches now specifically to make sure that’s the case. Your input shapes the product.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">"Will our coaches actually use it?"</div>
-        <div class="faq-answer">It's designed for the phone and built for speed. The reporting tool was specifically created so coaches who hate admin will actually use it — because it takes less time than typing a text.</div>
+        <div class="faq-question">“We already have a system.”</div>
+        <div class="faq-answer">Fair. Our question is: does it pay you? Even setting aside the tools, the revenue share model alone is worth understanding. Details are in the Club Pack.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">"We already have a system."</div>
-        <div class="faq-answer">Fair. Our question is simple: does your current system pay you? Every family that joins GO with your club code earns your club passive income — month after month.</div>
+        <div class="faq-question">“The wellness check-ins sound like extra work.”</div>
+        <div class="faq-answer">They’ll be optional and fully controllable. Most coaches find that surfacing issues before training — rather than discovering them on the floor — saves time and avoids difficult moments.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">"We're a small club. Is this for us?"</div>
-        <div class="faq-answer">Perfect for small clubs. Low effort, passive income, and tools that actually reduce coach workload. You don't need 200 families to make this worthwhile.</div>
+        <div class="faq-question">“We’re a small club. Is this for us?”</div>
+        <div class="faq-answer">Absolutely. Low effort, passive income, and tools that reduce coach workload. Small clubs often have the most to gain — and the most influence over how their families engage with GO.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DOWNLOAD CTA + FORM -->
-<section class="download-cta" id="download">
+<!-- REQUEST PACK FORM -->
+<section class="download-cta" id="request">
   <div class="container">
     <div class="download-grid">
       <div class="download-info">
-        <h2>Download the<br><em>Club Pack.</em></h2>
-        <p>Everything you need to understand the GO club offering, share with your committee, and make an informed decision. Fill in your details and we'll get you the pack instantly.</p>
+        <h2>Request the<br><em>Club Pack.</em></h2>
+        <p>Get the full picture on the GO club partnership — platform features, revenue model, partnership tiers, and how to get involved in shaping what we build. We’ll follow up personally within 24 hours.</p>
         <ul class="pack-includes">
-          <li>Full platform overview &amp; feature breakdown</li>
-          <li>Affiliate revenue model explained</li>
-          <li>Reporting &amp; wellness tool walkthroughs</li>
-          <li>Pricing and partnership tiers</li>
-          <li>Getting started guide</li>
-          <li>Contact details for a free club demo</li>
+          <li>Full platform overview &amp; feature timeline</li>
+          <li>Revenue partnership model &amp; earning examples</li>
+          <li>Partnership tiers explained</li>
+          <li>How to get involved in shaping the product</li>
+          <li>What a founding partner relationship looks like</li>
+          <li>How to start the conversation</li>
         </ul>
+        <p style="margin-top:32px;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;">We respond to every enquiry personally. No automated sequences, no sales pressure.</p>
       </div>
-
       <div>
         <div class="download-form-wrap">
-          <h3>Get the Club Pack</h3>
-          <p>We'll send your pack immediately. We'll never share your details.</p>
-
-          <form id="club-form" onsubmit="handleClubForm(event)">
+          <h3>Request the Club Pack</h3>
+          <p>Tell us a little about your club and we’ll be in touch within 24 hours.</p>
+          <form id="club-form" name="club-pack" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="club-pack">
+            <p style="display:none;"><label>Skip: <input name="bot-field"></label></p>
             <div class="form-row">
               <div class="form-group">
-                <label for="coach-name">Coach / Contact Name *</label>
+                <label for="coach-name">Your Name *</label>
                 <input type="text" id="coach-name" name="coach_name" placeholder="Your full name" required>
               </div>
               <div class="form-group">
                 <label for="club-name">Club Name *</label>
-                <input type="text" id="club-name" name="club_name" placeholder="Your club's name" required>
+                <input type="text" id="club-name" name="club_name" placeholder="Your club’s name" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="coach@yourclub.com" required>
+                <input type="email" id="email" name="email" placeholder="you@yourclub.com" required>
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number</label>
@@ -547,11 +556,58 @@
                     <option value="+1-CA">🇨🇦 +1</option>
                     <option value="+353">🇮🇪 +353</option>
                     <option value="+27">🇿🇦 +27</option>
-                    <option value="+33">🇫🇷 +33</option>
-                    <option value="+49">🇩🇪 +49</option>
-                    <option value="+81">🇯🇵 +81</option>
-                    <option value="+65">🇸🇬 +65</option>
-                    <option value="+971">🇦🇪 +971</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <input type="tel" id="phone" name="phone" placeholder="400 000 000" style="flex:1;">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Country *</label>
+              <select id="country" name="country" required onchange="updateStates()">
+                <option value="">Select your country</option>
+                <option value="AU">Australia</option>
+                <option value="NZ">New Zealand</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="IE">Ireland</option>
+                <option value="ZA">South Africa</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+            <div class="form-group" id="state-group" style="display:none;">
+              <label for="state" id="state-label">State / Region *</label>
+              <select id="state" name="state"></select>
+            </div>
+            <div class="form-group">
+              <label for="club-size">Number of athletes (approx)</label>
+              <select id="club-size" name="club_size">
+                <option value="">Select</option>
+                <option value="under-50">Under 50</option>
+                <option value="50-100">50 – 100</option>
+                <option value="100-200">100 – 200</option>
+                <option value="200+">200+</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-download">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Request the Club Pack
+            </button>
+            <p class="form-privacy">We respond personally to every enquiry. Your details are never shared.</p>
+          </form>
+          <div class="form-success" id="form-success" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Thanks — we’ll be in touch.</h3>
+            <p>We’ve received your request and will send the Club Pack to your email within 24 hours. We look forward to the conversation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+option>
                     <option value="other">Other</option>
                   </select>
                   <input type="tel" id="phone" name="phone" placeholder="400 000 000" style="flex:1;">
