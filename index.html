@@ -421,10 +421,7 @@
     position: relative; padding: 0 32px;
   }
   .exercise-slider {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc(25% - 18px);
-    gap: 24px;
+    display: flex; gap: 24px;
     overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
     padding: 8px 4px 20px; cursor: grab;
@@ -432,14 +429,13 @@
   .exercise-slider:active { cursor: grabbing; }
   .exercise-slider::-webkit-scrollbar { display: none; }
   .exercise-card {
-    scroll-snap-align: start;
+    flex: 0 0 calc(25% - 18px); scroll-snap-align: start;
     border-radius: 12px; overflow: hidden;
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    display: flex; flex-direction: column;
     transition: all 0.3s;
   }
   .exercise-card:hover { border-color: rgba(232,49,127,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-  .exercise-card video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+  .exercise-card video { width: 100%; display: block; }
   .exercise-card-problem {
     background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
     padding: 9px 20px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
@@ -1111,7 +1107,7 @@
     .hero h1 { font-size: clamp(32px, 6vw, 48px); }
     .stat-number { font-size: 28px; }
     .section-title { font-size: clamp(26px, 4vw, 36px); }
-    .exercise-slider { grid-auto-columns: calc(46% - 12px); }
+    .exercise-card { flex: 0 0 calc(46% - 12px); }
     .footer-contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .instagram-grid { grid-template-columns: repeat(3, 1fr); }
     .instagram-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0 24px; }
@@ -1177,7 +1173,7 @@
     .footer-form { padding: 24px 16px; }
     .footer-legal { gap: 16px; flex-wrap: wrap; }
     .footer-contact-info h2 { font-size: clamp(28px, 6vw, 40px); }
-    .exercise-slider { grid-auto-columns: calc(82% - 12px); }
+    .exercise-card { flex: 0 0 calc(82% - 12px); }
     .exercise-slider-outer { padding: 0 24px; }
     .slider-arrow { width: 36px; height: 36px; font-size: 20px; }
     .demo-card-info { padding: 16px 20px; }
