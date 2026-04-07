@@ -1893,17 +1893,15 @@
   <script>
     fetch('https://feeds.behold.so/z9Cr4TIDOBhcRmHxYxMC')
       .then(function(r){ return r.json(); })
-      .then(function(posts){
+      .then(function(data){
+        var posts = data.posts || data;
         var grid = document.getElementById('behold-ig-grid');
         if (!grid || !posts || !posts.length) return;
         var items = grid.querySelectorAll('.instagram-item');
         posts.slice(0,6).forEach(function(post, i) {
           var el = items[i];
           if (!el) return;
-          el.style = '';
-          var imgSrc = post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl
-            ? post.sizes.medium.mediaUrl
-            : (post.mediaUrl || post.thumbnailUrl || '');
+          var imgSrc = post.thumbnailUrl || (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) || post.mediaUrl || '';
           if (!imgSrc) return;
           var link = document.createElement('a');
           link.href = post.permalink || '#';
