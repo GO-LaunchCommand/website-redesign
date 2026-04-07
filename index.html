@@ -919,13 +919,7 @@
   }
   .btn-instagram:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 
-  /* ========== BEHOLD WIDGET ========== */
-  behold-widget {
-    display: block !important; width: 100% !important; padding: 0 10px 10px;
-    --behold-columns: 6; --behold-gap: 10px; --behold-border-radius: 4px;
-  }
-  /* Force full-width grid regardless of Behold's internal max-width */
-  behold-widget > * { max-width: 100% !important; width: 100% !important; }
+  /* Instagram grid powered by Behold.so feed API */
 
   /* ========== FOOTER ========== */
   .footer-contact {
@@ -1888,41 +1882,44 @@
 <!-- ========== INSTAGRAM ========== -->
 <section class="instagram-section">
 
-  <behold-widget feed-id="z9Cr4TIDOBhcRmHxYxMC" columns="6" style="display:block;width:100%;padding:0 10px 10px;--behold-columns:6;--behold-gap:10px;--behold-border-radius:4px;"></behold-widget>
+  <div class="instagram-grid" id="behold-ig-grid">
+    <div class="instagram-item" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;"></div>
+    <div class="instagram-item" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;"></div>
+    <div class="instagram-item" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;"></div>
+    <div class="instagram-item" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;"></div>
+    <div class="instagram-item" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;"></div>
+    <div class="instagram-item" style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;"></div>
+  </div>
   <script>
-    (() => {
-      const d=document,s=d.createElement("script");s.type="module";
-      s.src="https://w.behold.so/widget.js";d.head.append(s);
-    })();
-
-    // Apply grayscale + hover effects to Behold posts once they render
-    (function() {
-      function applyBeholdStyles(widget) {
-        var imgs = widget.querySelectorAll('img');
-        imgs.forEach(function(img) {
-          if (img.dataset.beholdStyled) return;
-          img.dataset.beholdStyled = '1';
-          img.style.cssText += ';filter:grayscale(100%) brightness(0.6);transition:filter 0.4s,transform 0.4s;display:block;width:100%;height:100%;object-fit:cover;';
-          var post = img.closest('a, [class*="post"], [class*="item"], li, .behold-post') || img.parentElement;
-          post.style.cssText += ';overflow:hidden;border-radius:4px;aspect-ratio:4/5;cursor:pointer;';
-          post.addEventListener('mouseenter', function() {
-            img.style.filter = 'grayscale(0%) brightness(1)';
-            img.style.transform = 'scale(1.04)';
-          });
-          post.addEventListener('mouseleave', function() {
-            img.style.filter = 'grayscale(100%) brightness(0.6)';
-            img.style.transform = 'scale(1)';
-          });
+    fetch('https://feeds.behold.so/z9Cr4TIDOBhcRmHxYxMC')
+      .then(function(r){ return r.json(); })
+      .then(function(posts){
+        var grid = document.getElementById('behold-ig-grid');
+        if (!grid || !posts || !posts.length) return;
+        var items = grid.querySelectorAll('.instagram-item');
+        posts.slice(0,6).forEach(function(post, i) {
+          var el = items[i];
+          if (!el) return;
+          el.style = '';
+          var imgSrc = post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl
+            ? post.sizes.medium.mediaUrl
+            : (post.mediaUrl || post.thumbnailUrl || '');
+          if (!imgSrc) return;
+          var link = document.createElement('a');
+          link.href = post.permalink || '#';
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.style.cssText = 'display:block;width:100%;height:100%;';
+          var img = document.createElement('img');
+          img.src = imgSrc;
+          img.alt = 'Instagram post';
+          img.loading = 'lazy';
+          link.appendChild(img);
+          el.innerHTML = '';
+          el.appendChild(link);
         });
-      }
-
-      var widget = document.querySelector('behold-widget');
-      if (!widget) return;
-      var observer = new MutationObserver(function() { applyBeholdStyles(widget); });
-      observer.observe(widget, { childList: true, subtree: true });
-      // Also run once after a delay in case content already loaded
-      setTimeout(function() { applyBeholdStyles(widget); }, 2000);
-    })();
+      })
+      .catch(function(){});
   </script>
 </section>
 
