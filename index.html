@@ -429,7 +429,7 @@
   .exercise-slider:active { cursor: grabbing; }
   .exercise-slider::-webkit-scrollbar { display: none; }
   .exercise-card {
-    flex: 0 0 calc(30% - 12px); scroll-snap-align: start;
+    flex: 0 0 calc(25% - 18px); scroll-snap-align: start;
     border-radius: 12px; overflow: hidden;
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     transition: all 0.3s;
@@ -464,14 +464,15 @@
   }
   /* Slider arrows */
   .slider-arrow {
-    position: absolute; top: calc(40% - 22px);
-    width: 44px; height: 44px; border-radius: 50%;
-    background: rgba(30,12,60,0.85); border: 1px solid rgba(255,255,255,0.18);
-    color: white; font-size: 24px; cursor: pointer;
+    position: absolute; top: calc(40% - 26px);
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--pink); border: 2px solid var(--pink);
+    color: white; font-size: 28px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: all 0.2s; z-index: 2; padding: 0;
+    box-shadow: 0 4px 20px rgba(232,49,127,0.45);
   }
-  .slider-arrow:hover { background: var(--pink); border-color: var(--pink); }
+  .slider-arrow:hover { background: var(--pink-dark); border-color: var(--pink-dark); transform: scale(1.08); }
   .slider-prev { left: 0; }
   .slider-next { right: 0; }
   /* Slider dots */
@@ -1106,7 +1107,7 @@
     .hero h1 { font-size: clamp(32px, 6vw, 48px); }
     .stat-number { font-size: 28px; }
     .section-title { font-size: clamp(26px, 4vw, 36px); }
-    .exercise-card { flex: 0 0 calc(60% - 12px); }
+    .exercise-card { flex: 0 0 calc(46% - 12px); }
     .footer-contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .instagram-grid { grid-template-columns: repeat(3, 1fr); }
     .instagram-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0 24px; }
@@ -1487,6 +1488,35 @@
               <div class="exercise-card-modules">
                 <span class="exercise-card-module">Beam Mastery</span>
                 <span class="exercise-card-module">Posture &amp; Artistry</span>
+                <span class="exercise-card-module">Injury Prevention</span>
+              </div>
+            </div>
+
+          <!-- Card 7: Body Arch Sequence -->
+          <div class="exercise-card">
+            <video src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Exercise-125-Body-Arch-Sequence_4s.mp4" autoplay loop muted playsinline preload="metadata"></video>
+            <div class="exercise-card-problem"><em>My child: </em>lacks artistry and flow in her routines</div>
+            <div class="exercise-card-body">
+              <div class="exercise-card-label">Posture &amp; Artistry &middot; Workout C</div>
+              <div class="exercise-card-title">Body Arch Sequence</div>
+              <div class="exercise-card-desc">Develops the back flexibility, body wave and expressive movement quality that separates technically correct from truly beautiful &mdash; artistry and flow built through structured repetition.</div>
+              <div class="exercise-card-modules">
+                <span class="exercise-card-module">Posture &amp; Artistry</span>
+                <span class="exercise-card-module">Flexibility</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8: Aeroplane Balance -->
+          <div class="exercise-card">
+            <video src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Exercise-577-Airplane-Balance_4s.mp4" autoplay loop muted playsinline preload="metadata"></video>
+            <div class="exercise-card-problem"><em>My child: </em>wobbles on single leg work and beam balances</div>
+            <div class="exercise-card-body">
+              <div class="exercise-card-label">Beam Mastery &middot; Workout A</div>
+              <div class="exercise-card-title">Aeroplane Balance with Rotation</div>
+              <div class="exercise-card-desc">Builds the rotational stability and single-leg proprioception gymnasts need for every beam balance &mdash; the progressive challenge that makes wobbling on one leg a thing of the past.</div>
+              <div class="exercise-card-modules">
+                <span class="exercise-card-module">Beam Mastery</span>
                 <span class="exercise-card-module">Injury Prevention</span>
               </div>
             </div>
