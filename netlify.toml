@@ -1,3 +1,2 @@
 [build]
-  command = "git lfs pull"
   publish = "."
