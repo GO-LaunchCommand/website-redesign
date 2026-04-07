@@ -228,6 +228,32 @@
   }
   .highlight-box p { font-size: 14px; line-height: 1.65; }
 
+
+  /* EVERYONE WINS */
+  .everyone { padding: 100px 0; background: var(--purple-dark); position: relative; overflow: hidden; }
+  .everyone::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(232,49,127,0.1) 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, rgba(107,47,160,0.15) 0%, transparent 55%); }
+  .everyone .container { position: relative; z-index: 1; }
+  .everyone-header { text-align: center; margin-bottom: 64px; }
+  .chain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .chain-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); padding: 36px 28px; position: relative; transition: all 0.3s; }
+  .chain-item:hover { background: rgba(255,255,255,0.09); border-color: rgba(232,49,127,0.3); }
+  .chain-item::after { content: "→"; position: absolute; right: -14px; top: 44px; color: var(--pink); font-size: 18px; z-index: 2; }
+  .chain-item:last-child::after { display: none; }
+  .chain-who { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
+  .chain-icon { width: 48px; height: 48px; background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .chain-icon svg { width: 22px; height: 22px; stroke: var(--pink); stroke-width: 1.5; fill: none; }
+  .chain-item h4 { font-family: var(--serif); font-size: 18px; font-weight: 700; color: white; margin-bottom: 12px; line-height: 1.2; }
+  .chain-wins { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .chain-win { font-size: 12px; color: rgba(255,255,255,0.55); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .chain-win::before { content: ''; flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='2.5'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); background-size: 8px; background-position: center; background-repeat: no-repeat; margin-top: 2px; }
+  @media (max-width: 900px) { .chain-grid { grid-template-columns: 1fr 1fr; } .chain-item::after { display: none; } }
+  @media (max-width: 560px) { .chain-grid { grid-template-columns: 1fr; } }
+
+  /* PHASE LABELS */
+  .phase-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .phase-label-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .phase-label-sub { font-size: 13px; color: rgba(255,255,255,0.35); }
+
   /* ── FOUNDING PARTNER OFFER ── */
   .offer { padding: 100px 0; background: var(--dark); position: relative; overflow: hidden; }
   .offer::before {
@@ -631,6 +657,64 @@
   </section>
 
 
+  <!-- EVERYONE WINS -->
+  <section class="everyone">
+    <div class="container">
+      <div class="everyone-header">
+        <span class="section-label" style="color:var(--pink-light)">Why it works</span>
+        <h2 class="section-title" style="color:white">When the club wins,<br>everyone <em>wins.</em></h2>
+        <p class="section-sub">GO for Clubs isn't a product you deploy at your staff and families. It's a system that makes every stakeholder's life meaningfully better — and that's why it works.</p>
+      </div>
+      <div class="chain-grid">
+        <div class="chain-item">
+          <p class="chain-who">The Athlete</p>
+          <div class="chain-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg></div>
+          <h4>Supported at home, stronger in the gym.</h4>
+          <div class="chain-wins">
+            <div class="chain-win">Structured home conditioning that is safe, specific, and coach-approved</div>
+            <div class="chain-win">Physical foundations built between sessions, not just at training</div>
+            <div class="chain-win">Feels heard through regular wellness check-ins</div>
+            <div class="chain-win">Less likely to be used as a messenger between adults</div>
+          </div>
+        </div>
+        <div class="chain-item">
+          <p class="chain-who">The Coach</p>
+          <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4>A better job, not a bigger one.</h4>
+          <div class="chain-wins">
+            <div class="chain-win">Progress reports done in 60 seconds — no typing, no drafting</div>
+            <div class="chain-win">Athletes arrive better prepared and physically ready</div>
+            <div class="chain-win">Parents who know how to help instead of hovering and second-guessing</div>
+            <div class="chain-win">Early warning on athlete wellbeing before small issues become serious</div>
+          </div>
+        </div>
+        <div class="chain-item">
+          <p class="chain-who">The Parent</p>
+          <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h4>Included, informed, and actually helpful.</h4>
+          <div class="chain-wins">
+            <div class="chain-win">Given a specific, coach-approved role in their child's development</div>
+            <div class="chain-win">Professional progress updates they can understand and act on</div>
+            <div class="chain-win">No more guessing, worrying, or anxious pick-up conversations</div>
+            <div class="chain-win">Trust in the club deepens because they can see what is happening</div>
+          </div>
+        </div>
+        <div class="chain-item">
+          <p class="chain-who">The Club Owner</p>
+          <div class="chain-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h4>Better retention. Real income. Real reputation.</h4>
+          <div class="chain-wins">
+            <div class="chain-win">Families who feel included and informed do not leave</div>
+            <div class="chain-win">Passive affiliate income every month from family subscriptions</div>
+            <div class="chain-win">Visibility over athlete wellbeing before issues become safeguarding concerns</div>
+            <div class="chain-win">A reputation as a forward-thinking, athlete-first club</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ── FOUNDING PARTNER OFFER ── -->
   <section class="offer">
     <div class="container">
@@ -640,6 +724,10 @@
         <p class="section-sub">We're selective about who we pilot with — because we're building this together, not just deploying it at you. Here's exactly what that means.</p>
       </div>
 
+      <div class="phase-header">
+        <p class="phase-label-title">Phase 1 — Pilot</p>
+        <p class="phase-label-sub">What Founding Partner clubs receive from day one, throughout the pilot period.</p>
+      </div>
       <div class="offer-grid">
         <!-- PILOT PHASE -->
         <div class="offer-card offer-card--featured">
@@ -681,6 +769,10 @@
         <p><strong>After the pilot — two options for ongoing coach access.</strong> Once GO for Clubs launches commercially, Founding Partners can choose how to maintain coach logins for the reporting and wellness tools.</p>
       </div>
 
+      <div class="phase-header" style="margin-top:48px">
+        <p class="phase-label-title">Phase 2 — Post Launch</p>
+        <p class="phase-label-sub">Once GO for Clubs launches commercially, Founding Partners choose how to maintain ongoing coach access.</p>
+      </div>
       <div class="post-launch">
         <div class="post-launch-card">
           <span class="post-label">Option A — Earn it</span>
@@ -690,7 +782,7 @@
         <div class="post-launch-card">
           <span class="post-label">Option B — Pay for it</span>
           <h4>Subscribe directly</h4>
-          <p>Prefer to keep it simple? Subscribe to coach logins directly at a monthly per-coach rate. Founding Partners lock in a preferred rate that won't be available to clubs joining after launch. Pricing confirmed ahead of commercial launch.</p>
+          <p>Prefer to keep it simple? Subscribe to coach logins directly at a monthly per-coach rate. We don't have a number yet — because we want your input on what that should be. Pricing will be set collaboratively with pilot clubs before commercial launch, and Founding Partners lock in terms that won't be available to clubs joining later.</p>
         </div>
       </div>
     </div>
