@@ -55,8 +55,9 @@
   /* HERO */
   .clubs-hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
   .clubs-hero-bg { position: absolute; inset: 0; z-index: 0; }
-  .clubs-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: brightness(0.38); }
-  .clubs-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(45,27,78,0.7) 0%, rgba(15,10,26,0.5) 50%, rgba(232,49,127,0.15) 100%); }
+  .clubs-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(100%) brightness(0.5); }
+  .clubs-hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(107,47,160,0.72); mix-blend-mode: multiply; }
+  .clubs-hero-bg::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, rgba(45,27,78,0.65) 0%, rgba(15,10,26,0.4) 55%, rgba(232,49,127,0.18) 100%); }
   .clubs-hero .container { position: relative; z-index: 1; }
   .clubs-hero-content { max-width: 780px; padding: 80px 0; }
   .clubs-hero-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--pink-light); background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.3); padding: 8px 18px; border-radius: 100px; margin-bottom: 28px; }
@@ -68,6 +69,16 @@
   .btn-primary:hover { background: var(--pink-dark); transform: translateY(-2px); }
   .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: white; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s; }
   .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+  /* CLUB PHOTO GRID */
+  .club-gallery { overflow: hidden; line-height: 0; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .gallery-item { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.55); transition: filter 0.5s ease; display: block; }
+  .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(107,47,160,0.55); mix-blend-mode: multiply; transition: opacity 0.5s ease; pointer-events: none; }
+  .gallery-item:hover img { filter: grayscale(0%) brightness(1); }
+  .gallery-item:hover::after { opacity: 0; }
+  @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } }
 
   /* QUALIFY SECTION */
   .qualify { padding: 100px 0; background: var(--white); }
@@ -195,7 +206,7 @@
 <!-- HERO -->
 <section class="clubs-hero">
   <div class="clubs-hero-bg">
-    <img src="img/Coach 4.jpg" alt="Gymnastics coaching">
+    <img src="img/Coach Pics/LR_GO_25-3-223.jpg" alt="Gymnastics coaching">
   </div>
   <div class="container">
     <div class="clubs-hero-content">
@@ -206,6 +217,21 @@
         <a href="#request" class="btn-primary">Request the Club Pack</a>
         <a href="#for-clubs" class="btn-outline">Learn More</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLUB PHOTO GRID -->
+<section class="club-gallery">
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="img/Coach Pics/LR_GO_25-3-220.jpg" alt="Coach celebrating with gymnasts">
+    </div>
+    <div class="gallery-item">
+      <img src="img/Coach Pics/LR_GO_25-3-78.jpg" alt="Coach working with athletes on the floor">
+    </div>
+    <div class="gallery-item">
+      <img src="img/Coach Pics/LR_GO_25-3-50.jpg" alt="Coach instructing young gymnasts">
     </div>
   </div>
 </section>
