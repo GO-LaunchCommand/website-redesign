@@ -122,24 +122,25 @@
     /* ====================================================
        MAIN CONTENT
     ==================================================== */
-    #main-content { display: none; padding-top: 70px; }
+    #main-content { display: none; }
 
     /* ====== HERO ====== */
-    .collab-hero { padding: 80px 0 60px; background: linear-gradient(160deg, var(--dark) 0%, var(--purple-dark) 60%, #12041e 100%); position: relative; overflow: hidden; }
-    .collab-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 80%, rgba(232,49,127,0.12) 0%, transparent 55%), radial-gradient(ellipse at 20% 20%, rgba(107,47,160,0.18) 0%, transparent 55%); pointer-events: none; }
-    .collab-hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    @media (max-width: 860px) { .collab-hero .container { grid-template-columns: 1fr; gap: 40px; } }
-    .collab-hero-label { display: inline-block; background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 18px; }
-    .collab-hero h1 { font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; }
+    .collab-hero { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; padding-top: 70px; }
+    .collab-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .collab-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: grayscale(100%) brightness(0.5); display: block; }
+    .collab-hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(107,47,160,0.72); mix-blend-mode: multiply; }
+    .collab-hero-bg::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, rgba(45,27,78,0.65) 0%, rgba(13,6,24,0.4) 55%, rgba(232,49,127,0.18) 100%); }
+    .collab-hero .container { position: relative; z-index: 1; }
+    .collab-hero-content { max-width: 760px; padding: 80px 0; }
+    .collab-hero-label { display: inline-block; background: rgba(232,49,127,0.12); border: 1px solid rgba(232,49,127,0.3); color: var(--pink-light); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 22px; }
+    .collab-hero h1 { font-family: var(--serif); font-size: clamp(52px, 7vw, 88px); font-weight: 900; line-height: 1.0; letter-spacing: -2px; margin-bottom: 28px; color: white; }
     .collab-hero h1 em { color: var(--pink); font-style: italic; }
-    .collab-hero p { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
-    .collab-hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; margin-top: 8px; }
-    .collab-stat { padding: 20px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
-    .collab-stat:last-child { border-right: none; }
-    .collab-stat-num { font-family: var(--serif); font-size: 28px; font-weight: 900; color: white; line-height: 1; margin-bottom: 4px; }
-    .collab-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.4; }
-    .collab-hero-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; }
-    .collab-hero-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+    .collab-hero p { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.8; font-weight: 300; margin-bottom: 20px; max-width: 620px; }
+    .collab-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+    .btn-hero-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--pink); color: white; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 30px rgba(232,49,127,0.4); border: none; cursor: pointer; font-family: var(--sans); }
+    .btn-hero-primary:hover { background: var(--pink-dark); transform: translateY(-2px); }
+    .btn-hero-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: white; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s; }
+    .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
 
     /* ====== SHARED SECTION STYLES ====== */
     .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
@@ -398,16 +399,20 @@
 
   <!-- HERO -->
   <section class="collab-hero">
+    <div class="collab-hero-bg">
+      <img src="img/Coach Pics/LR_GO_25-3-174.jpg" alt="Gymnastics coaching collaboration">
+    </div>
     <div class="container">
-      <div class="collab-hero-text">
+      <div class="collab-hero-content">
         <span class="collab-hero-label">Collaborator Portal</span>
         <h1>Work <em>with</em> us.</h1>
         <p>Gymnastics Online is being built by a growing community of practitioners, coaches, educators, and specialists from around the world — all united by the same goals.</p>
-        <p>To raise the standard of support available to every gymnast and the families behind them; and to bridge the gap between clubs, coaches, and families so that every athlete has the tools, knowledge, and support to pursue the sport they love and become the best version of themselves — because at the end of the day, it's all for them.</p>
+        <p>To raise the standard of support available to every gymnast, and to bridge the gap between clubs, coaches, and families so that every athlete has the tools, knowledge, and support they deserve. Because at the end of the day, it's all for them.</p>
         <p>If you're in this space, you belong here. We're stronger together.</p>
-      </div>
-      <div class="collab-hero-img">
-        <img src="img/gobts-1867.jpg" alt="Gymnastics Online collaborators">
+        <div class="collab-hero-actions">
+          <button class="btn-hero-primary" onclick="document.getElementById('apply-section').scrollIntoView({behavior:'smooth'})">Get Involved</button>
+          <a href="#ways" class="btn-hero-outline">Learn More</a>
+        </div>
       </div>
     </div>
   </section>
