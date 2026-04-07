@@ -1744,7 +1744,7 @@
         </div>
       </div>
       <div class="expert-card reveal reveal-delay-1" onclick="this.classList.toggle('expanded')">
-        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Askleigh_Colour_Bio-1.webp" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" alt="Ashleigh Mitchell, accredited practising dietitian specialising in paediatric nutrition" loading="lazy"></div>
+        <div class="expert-photo"><img src="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" data-bio="https://gymnasticsonline.com/wp-content/uploads/2026/04/Askleigh_Colour_Bio-1.webp" data-profile="https://gymnasticsonline.com/wp-content/uploads/2026/04/Ashleigh_Colour.jpg" data-bio-position="center 65%" data-profile-position="center top" alt="Ashleigh Mitchell, accredited practising dietitian specialising in paediatric nutrition" loading="lazy"></div>
         <div class="expert-overlay">
           <div class="expert-name">Ashleigh Mitchell</div>
           <div class="expert-role">Accredited Practising Dietitian</div>
@@ -2210,11 +2210,19 @@ document.querySelectorAll('.expert-card').forEach(function(card) {
   if (!img || !img.dataset.bio || img.dataset.bio === img.dataset.profile) return;
   card.addEventListener('mouseenter', function() {
     img.style.opacity = '0';
-    setTimeout(function() { img.src = img.dataset.bio; img.style.opacity = '1'; }, 180);
+    setTimeout(function() {
+      img.src = img.dataset.bio;
+      if (img.dataset.bioPosition) img.style.objectPosition = img.dataset.bioPosition;
+      img.style.opacity = '1';
+    }, 180);
   });
   card.addEventListener('mouseleave', function() {
     img.style.opacity = '0';
-    setTimeout(function() { img.src = img.dataset.profile; img.style.opacity = '1'; }, 180);
+    setTimeout(function() {
+      img.src = img.dataset.profile;
+      if (img.dataset.profilePosition) img.style.objectPosition = img.dataset.profilePosition;
+      img.style.opacity = '1';
+    }, 180);
   });
 });
 </script>
