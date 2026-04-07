@@ -421,15 +421,18 @@
     position: relative; padding: 0 32px;
   }
   .exercise-slider {
-    display: flex; flex-wrap: nowrap; gap: 24px; align-items: flex-start;
-    overflow-x: auto; overflow-y: visible; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(25% - 18px);
+    gap: 24px;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
     padding: 8px 4px 20px; cursor: grab;
   }
   .exercise-slider:active { cursor: grabbing; }
   .exercise-slider::-webkit-scrollbar { display: none; }
   .exercise-card {
-    flex: 0 0 calc(25% - 18px); scroll-snap-align: start;
+    scroll-snap-align: start;
     border-radius: 12px; overflow: hidden;
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     display: flex; flex-direction: column;
@@ -465,7 +468,7 @@
   }
   /* Slider arrows */
   .slider-arrow {
-    position: absolute; top: calc(130px - 26px);
+    position: absolute; top: 30%;
     width: 52px; height: 52px; border-radius: 50%;
     background: var(--purple); border: 2px solid var(--purple);
     color: white; font-size: 28px; cursor: pointer;
@@ -1108,7 +1111,7 @@
     .hero h1 { font-size: clamp(32px, 6vw, 48px); }
     .stat-number { font-size: 28px; }
     .section-title { font-size: clamp(26px, 4vw, 36px); }
-    .exercise-card { flex: 0 0 calc(46% - 12px); }
+    .exercise-slider { grid-auto-columns: calc(46% - 12px); }
     .footer-contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .instagram-grid { grid-template-columns: repeat(3, 1fr); }
     .instagram-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0 24px; }
@@ -1174,7 +1177,7 @@
     .footer-form { padding: 24px 16px; }
     .footer-legal { gap: 16px; flex-wrap: wrap; }
     .footer-contact-info h2 { font-size: clamp(28px, 6vw, 40px); }
-    .exercise-card { flex: 0 0 calc(82% - 12px); }
+    .exercise-slider { grid-auto-columns: calc(82% - 12px); }
     .exercise-slider-outer { padding: 0 24px; }
     .slider-arrow { width: 36px; height: 36px; font-size: 20px; }
     .demo-card-info { padding: 16px 20px; }
