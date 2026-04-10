@@ -150,15 +150,18 @@
 
     /* ====== COLLAB TYPES ====== */
     .collab-types { padding: 80px 0 60px; }
-    .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    @media (max-width: 860px) { .types-grid { grid-template-columns: 1fr 1fr; } }
+    .types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media (max-width: 980px) { .types-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 540px) { .types-grid { grid-template-columns: 1fr; } }
-    .type-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; transition: all 0.3s; }
+    .type-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; transition: all 0.3s; display: flex; flex-direction: column; }
     .type-card:hover { border-color: rgba(232,49,127,0.3); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
     .type-icon { width: 48px; height: 48px; background: rgba(232,49,127,0.1); border: 1px solid rgba(232,49,127,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--pink-light); }
     .type-icon svg { width: 22px; height: 22px; }
+    .type-card-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(232,49,127,0.7); margin-bottom: 8px; }
     .type-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
-    .type-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+    .type-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; flex-grow: 1; }
+    .type-card-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 12px; font-weight: 700; color: var(--pink-light); text-decoration: none; letter-spacing: 0.5px; transition: gap 0.2s; }
+    .type-card-link:hover { gap: 10px; }
 
     /* ====== BENEFITS ====== */
     .benefits-section { padding: 60px 0 80px; background: rgba(107,47,160,0.07); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -478,50 +481,69 @@
 
         <div class="type-card">
           <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <span class="type-card-tag">On or off camera</span>
+          <h3>Technical Gymnastics Contributor</h3>
+          <p>Help shape GO's training content from the inside. Design exercises, build programming, and contribute the technical gymnastics knowledge that sets us apart from generic fitness platforms — whether you're in front of the camera or behind it.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
-          <h3>Content Collaborator</h3>
-          <p>Contribute articles, guides, video content or expert commentary across any discipline — nutrition, mental performance, coaching, parenting, and more.</p>
+          <span class="type-card-tag">On or off camera</span>
+          <h3>Allied Content Collaborator</h3>
+          <p>Bring your specialist expertise to gymnastics families who need it. Contribute articles, guides, video content or resources across nutrition, mental performance, sports science, parenting, and more — on camera or in writing.</p>
         </div>
 
         <div class="type-card">
           <div class="type-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
-          </div>
-          <h3>Technical Contributor</h3>
-          <p>Help shape the platform itself — from exercise library design and workout programming to data analysis, research integration, and app functionality.</p>
-        </div>
-
-        <div class="type-card">
-          <div class="type-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
           </div>
           <h3>Affiliate Partner</h3>
-          <p>Earn ongoing commissions by introducing GO to clubs, families and coaches in your network. Our affiliate programme rewards you for every member you bring on board.</p>
+          <p>Earn ongoing commissions for every member you bring to GO. Introduce us to clubs, families, and coaches in your network and get rewarded every month for as long as they stay. No selling — just sharing something you believe in.</p>
         </div>
 
         <div class="type-card">
           <div class="type-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <h3>Expert Advisor</h3>
-          <p>Lend your professional expertise to validate our content and guide our direction. Be listed as a GO expert and reach thousands of gymnastics families worldwide.</p>
+          <h3>Club Partner</h3>
+          <p>Partner your club with GO and give your families access to the home training platform built for their gymnast. Clubs earn affiliate income from every family who subscribes and position themselves as forward-thinking environments serious about whole-athlete development.</p>
+          <a href="clubs.html" class="type-card-link">Club partner details →</a>
         </div>
 
         <div class="type-card">
           <div class="type-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           </div>
-          <h3>Brand Partner</h3>
-          <p>Align your brand with a trusted platform serving gymnastics families globally. Opportunities span merchandise, equipment, apparel, and nutrition categories.</p>
+          <h3>Merchandise Partner</h3>
+          <p>Align your brand with a values-led platform serving gymnastics families globally. If you're in merchandise, equipment, apparel, or nutrition — let's explore how we can build something that genuinely benefits the community and your business.</p>
         </div>
 
         <div class="type-card">
           <div class="type-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <h3>Community Leader</h3>
-          <p>Facilitate conversations, champion regions or disciplines, and help gymnastics families connect meaningfully within the GO community.</p>
+          <h3>Brand Ambassador</h3>
+          <p>Be the face of GO in your region. We're looking for respected voices in the gymnastics world to front campaigns, champion the platform, and help build trust with athletes and families at scale. If that sounds like you, we'd love to hear from you.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3>Commercial Partner</h3>
+          <p>Our long-term vision is a globally consistent platform with locally grounded leadership. Regional Commercial Partners take ownership of membership growth in their territory while ensuring GO's content remains relevant for their gymnastics community. If this resonates, let's have a conversation.</p>
+        </div>
+
+        <div class="type-card">
+          <div class="type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>General Contributor</h3>
+          <p>You don't need a specific brief to be part of this. If you believe in what we're building and you have time, skills, or connections to offer — reach out. There are more ways to contribute than we could ever list on a page.</p>
         </div>
 
       </div>
