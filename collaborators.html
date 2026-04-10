@@ -122,7 +122,7 @@
     /* ====================================================
        MAIN CONTENT
     ==================================================== */
-    #main-content { display: none; }
+    #main-content { display: block; }
 
     /* ====== HERO ====== */
     .collab-hero { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; padding-top: 70px; }
@@ -335,14 +335,9 @@
 <!-- ====================================================
      PASSWORD GATE
 ==================================================== -->
-<div id="gate">
+<!-- gate removed -->
+<div id="gate" style="display:none;">
   <div class="gate-inner">
-
-    <div class="gate-logo">
-      <img src="img/logo-full-white.png" alt="Gymnastics Online">
-    </div>
-
-    <!-- Password panel -->
     <div id="pw-panel">
       <span class="gate-label">Collaborator Portal</span>
       <h1 class="gate-title">Welcome.</h1>
@@ -1129,64 +1124,6 @@
     document.getElementById('nav-links').classList.toggle('open');
   });
 
-  // Eye toggle
-  const pwInput = document.getElementById('pw-input');
-  const eyeOpen = document.getElementById('eye-open');
-  const eyeClosed = document.getElementById('eye-closed');
-  document.getElementById('pw-toggle').addEventListener('click', function() {
-    const isPass = pwInput.type === 'password';
-    pwInput.type = isPass ? 'text' : 'password';
-    eyeOpen.style.display = isPass ? 'none' : '';
-    eyeClosed.style.display = isPass ? '' : 'none';
-  });
-
-  // Password check
-  const CORRECT_PASSWORD = 'GOCollab26';
-  const SESSION_KEY = 'go_collab_auth';
-
-  function unlock() {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-    localStorage.setItem(SESSION_KEY, '1');
-    window.scrollTo(0, 0);
-  }
-
-  if (localStorage.getItem(SESSION_KEY) === '1') unlock();
-
-  document.getElementById('pw-submit').addEventListener('click', checkPassword);
-  pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkPassword(); });
-
-  function checkPassword() {
-    const val = pwInput.value.trim();
-    const err = document.getElementById('pw-error');
-    if (val === CORRECT_PASSWORD) {
-      err.classList.remove('show');
-      unlock();
-    } else {
-      err.classList.add('show');
-      pwInput.value = '';
-      pwInput.focus();
-    }
-  }
-
-  // Toggle signup panel
-  document.getElementById('show-signup').addEventListener('click', function() {
-    document.getElementById('pw-panel').style.display = 'none';
-    document.getElementById('signup-panel').style.display = 'block';
-  });
-  document.getElementById('back-to-pw').addEventListener('click', function() {
-    document.getElementById('signup-panel').style.display = 'none';
-    document.getElementById('pw-panel').style.display = 'block';
-  });
-
-  // Signup form
-  document.getElementById('signup-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = this;
-    fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString() })
-      .then(function() { form.style.display = 'none'; document.getElementById('sf-success').style.display = 'block'; })
-      .catch(function() { form.style.display = 'none'; document.getElementById('sf-success').style.display = 'block'; });
-  });
 
   // EOI form
   document.getElementById('eoi-form').addEventListener('submit', function(e) {
