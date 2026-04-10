@@ -131,23 +131,30 @@
   }
 
   /* ── WELCOME HERO ── */
-  .welcome {
-    padding: 140px 0 100px;
+  .welcome-hero {
+    padding: 200px 0 160px;
     background:
-                radial-gradient(ellipse at 20% 60%, rgba(107,47,160,0.2) 0%, transparent 55%),
-                radial-gradient(ellipse at 80% 20%, rgba(232,49,127,0.12) 0%, transparent 50%),
-                linear-gradient(rgba(10,5,20,0.80), rgba(10,5,20,0.88)),
-                url('img/Coach Pics/LR_GO_25-3-93.jpg') center 30% / cover no-repeat;
+      linear-gradient(rgba(10,5,20,0.60), rgba(10,5,20,0.72)),
+      url('img/Coach Pics/LR_GO_25-3-93.jpg') center 35% / cover no-repeat;
     position: relative; overflow: hidden;
+    text-align: center;
   }
-  .welcome::before {
+  .welcome-hero::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
   }
+  .welcome-hero-content { position: relative; z-index: 1; }
+  .welcome-hero-content .pre { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 24px; }
+  .welcome-hero-content h1 { font-family: var(--serif); font-size: clamp(72px,10vw,120px); font-weight: 900; color: white; line-height: 1.0; letter-spacing: -3px; }
+  .welcome-hero-content h1 em { color: var(--pink); font-style: italic; }
+
+  .welcome-intro {
+    padding: 80px 0 100px;
+    background: radial-gradient(ellipse at 20% 60%, rgba(107,47,160,0.15) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, rgba(232,49,127,0.1) 0%, transparent 50%),
+                var(--dark);
+  }
   .welcome-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .welcome-text .pre { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 20px; }
-  .welcome-text h1 { font-family: var(--serif); font-size: clamp(48px,6vw,80px); font-weight: 900; color: white; line-height: 1.0; letter-spacing: -2px; margin-bottom: 28px; }
-  .welcome-text h1 em { color: var(--pink); font-style: italic; }
   .welcome-text p { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.75; font-weight: 300; margin-bottom: 16px; }
   .welcome-stats { display: flex; flex-direction: column; gap: 16px; }
   .stat-card {
@@ -385,7 +392,7 @@
     .feature-inner--reverse { direction: ltr; }
     .container { padding: 0 24px; }
     .pack-nav { padding: 0 24px; }
-    .welcome { padding: 120px 0 80px; }
+    .welcome-hero { padding: 140px 0 100px; }
     .feature, .problem, .offer, .roadmap { padding: 72px 0; }
   }
 </style>
@@ -424,13 +431,21 @@
   </nav>
 
 
-  <!-- ── WELCOME ── -->
-  <section class="welcome">
+  <!-- ── WELCOME HERO ── -->
+  <section class="welcome-hero">
+    <div class="container">
+      <div class="welcome-hero-content">
+        <p class="pre">Founding Partner Document — Confidential</p>
+        <h1>You're<br><em>in.</em></h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WELCOME INTRO ── -->
+  <section class="welcome-intro">
     <div class="container">
       <div class="welcome-inner">
         <div class="welcome-text">
-          <p class="pre">Founding Partner Document — Confidential</p>
-          <h1>You're<br><em>in.</em></h1>
           <p>Thanks for requesting the GO Club Pack. What follows is the full story — the platform, the features, how it works, and what it genuinely means to be a Founding Partner.</p>
           <p>This isn't a sales deck. It's an honest look at what we're building, where we are, and why we want the right clubs alongside us from the beginning.</p>
         </div>
@@ -469,6 +484,7 @@
 
 
   <!-- ── THE PROBLEM ── -->
+
   <section class="problem">
     <div class="container">
       <div class="problem-inner">
