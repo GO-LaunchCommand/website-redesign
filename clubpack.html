@@ -352,19 +352,42 @@
 
   /* ── NEXT STEP ── */
   .nextstep {
-    padding: 120px 0;
+    padding: 100px 0 120px;
     background: linear-gradient(135deg, var(--purple-dark) 0%, var(--dark) 50%, #1a0820 100%);
-    position: relative; overflow: hidden; text-align: center;
+    position: relative; overflow: hidden;
   }
   .nextstep::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(232,49,127,0.15) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(232,49,127,0.12) 0%, transparent 55%);
   }
-  .nextstep .container { position: relative; z-index: 1; max-width: 680px; }
+  .nextstep .container { position: relative; z-index: 1; max-width: 860px; }
+  .nextstep-header { text-align: center; margin-bottom: 56px; }
   .nextstep .section-label { color: var(--pink-light); }
-  .nextstep .section-title { color: white; margin-bottom: 24px; }
-  .nextstep p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; font-weight: 300; margin-bottom: 48px; }
+  .nextstep .section-title { color: white; margin-bottom: 20px; }
+  .nextstep-header > p { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; font-weight: 300; max-width: 560px; margin: 0 auto; }
   .nextstep-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  /* Book-a-call form */
+  .book-form-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 48px; }
+  .book-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .book-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+  .book-field:last-child { margin-bottom: 0; }
+  .book-field label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .book-optional { font-size: 10px; font-weight: 400; letter-spacing: 0; text-transform: none; color: rgba(255,255,255,0.2); margin-left: 4px; }
+  .book-field input, .book-field select, .book-field textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-size: 15px; font-family: var(--sans); padding: 12px 16px; width: 100%; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none; appearance: none; }
+  .book-field input:focus, .book-field select:focus, .book-field textarea:focus { outline: none; border-color: rgba(232,49,127,0.5); background: rgba(255,255,255,0.07); }
+  .book-field input::placeholder, .book-field textarea::placeholder { color: rgba(255,255,255,0.2); }
+  .book-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; padding-right: 40px; cursor: pointer; }
+  .book-field select option { background: #1a0e30; color: white; }
+  .book-field textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
+  .book-phone-wrap { display: grid; grid-template-columns: 120px 1fr; gap: 10px; }
+  .book-submit { width: 100%; background: var(--pink); color: white; border: none; border-radius: 100px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 18px; cursor: pointer; transition: all 0.3s; font-family: var(--sans); margin-top: 8px; box-shadow: 0 4px 30px var(--glow-pink); }
+  .book-submit:hover { background: var(--pink-dark); transform: translateY(-2px); }
+  .book-success { text-align: center; padding: 48px 32px; display: none; }
+  .book-success-icon { width: 60px; height: 60px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .book-success-icon svg { width: 26px; height: 26px; stroke: #22c55e; fill: none; stroke-width: 2.5; }
+  .book-success h3 { font-family: var(--serif); font-size: 26px; color: white; margin-bottom: 10px; font-weight: 900; }
+  .book-success p { color: rgba(255,255,255,0.55); font-size: 15px; line-height: 1.7; }
+  @media (max-width: 640px) { .book-form-card { padding: 28px 20px; } .book-form-row { grid-template-columns: 1fr; } .book-phone-wrap { grid-template-columns: 100px 1fr; } }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--pink); color: white; padding: 18px 40px; border-radius: 100px;
@@ -897,24 +920,147 @@
       <div class="roadmap-note">
         <p>This timeline is indicative and subject to change. We'll keep Founding Partners informed of any shifts — you'll always know where things stand before anyone else does.</p>
       </div>
+      <div style="text-align:center;margin-top:48px;">
+        <button onclick="document.getElementById('book-call').scrollIntoView({behavior:'smooth'})" style="background:var(--pink);color:white;border:none;border-radius:100px;padding:16px 40px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;font-family:var(--sans);box-shadow:0 4px 24px var(--glow-pink);transition:all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">Book a Call →</button>
+      </div>
     </div>
   </section>
 
 
-  <!-- ── NEXT STEP ── -->
-  <section class="nextstep">
+  <!-- ── BOOK A CALL ── -->
+  <section class="nextstep" id="book-call">
     <div class="container">
-      <span class="section-label">Ready to talk?</span>
-      <h2 class="section-title">Let's have a<br>real conversation.</h2>
-      <p>If this feels like the right fit for your club, we'd love to connect. No pressure, no pitch — just an honest conversation about whether this makes sense for where your club is heading.</p>
-      <div class="nextstep-actions">
-        <a href="mailto:hello@gymnasticsonline.com.au?subject=Founding Partner — Club Pack Enquiry" class="btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Get in Touch
-        </a>
-        <a href="index.html" class="btn-outline-white">Back to Home Page</a>
+
+      <div class="nextstep-header">
+        <span class="section-label">Ready to talk?</span>
+        <h2 class="section-title">Let's have a<br><em style="color:var(--pink);font-style:italic;">real conversation.</em></h2>
+        <p>If this feels like the right fit for your club, fill in the form below and we'll be in touch to set up a call. No pressure, no pitch — just an honest conversation about whether this makes sense for where your club is heading.</p>
       </div>
-      <p class="nextstep-small">This document is confidential and intended for club leaders only. Please don't share your access code.</p>
+
+      <div class="book-form-card">
+        <form id="book-call-form" name="club-book-call" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="club-book-call">
+          <p style="display:none;"><label>Skip: <input name="bot-field"></label></p>
+
+          <div class="book-form-row">
+            <div class="book-field">
+              <label for="bc-club">Club Name *</label>
+              <input type="text" id="bc-club" name="club_name" placeholder="Your club's name" required>
+            </div>
+            <div class="book-field">
+              <label for="bc-name">Your Name *</label>
+              <input type="text" id="bc-name" name="contact_name" placeholder="Your full name" required>
+            </div>
+          </div>
+
+          <div class="book-form-row">
+            <div class="book-field">
+              <label for="bc-email">Email Address *</label>
+              <input type="email" id="bc-email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="book-field">
+              <label>Phone <span class="book-optional">(optional)</span></label>
+              <div class="book-phone-wrap">
+                <select name="phone_code">
+                  <option value="">Code</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+64">🇳🇿 +64</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+353">🇮🇪 +353</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+27">🇿🇦 +27</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+31">🇳🇱 +31</option>
+                </select>
+                <input type="tel" name="phone" placeholder="Phone number">
+              </div>
+            </div>
+          </div>
+
+          <div class="book-form-row">
+            <div class="book-field">
+              <label for="bc-country">Country *</label>
+              <select id="bc-country" name="country" required>
+                <option value="">Select country…</option>
+                <option>Australia</option>
+                <option>New Zealand</option>
+                <option>United Kingdom</option>
+                <option>Ireland</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>South Africa</option>
+                <option>Germany</option>
+                <option>France</option>
+                <option>Netherlands</option>
+                <option>Belgium</option>
+                <option>Switzerland</option>
+                <option>Italy</option>
+                <option>Spain</option>
+                <option>Sweden</option>
+                <option>Norway</option>
+                <option>Denmark</option>
+                <option>Finland</option>
+                <option>Japan</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="book-field">
+              <label for="bc-size">Approximate Number of Gymnasts *</label>
+              <select id="bc-size" name="club_size" required>
+                <option value="">Select…</option>
+                <option>Under 50</option>
+                <option>50 – 100</option>
+                <option>100 – 200</option>
+                <option>200 – 500</option>
+                <option>500+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="book-form-row">
+            <div class="book-field">
+              <label for="bc-time">Preferred Call Time <span class="book-optional">(optional)</span></label>
+              <select id="bc-time" name="preferred_time">
+                <option value="">No preference</option>
+                <option>Morning (before 12pm local)</option>
+                <option>Afternoon (12pm – 5pm local)</option>
+                <option>Evening (after 5pm local)</option>
+              </select>
+            </div>
+            <div class="book-field">
+              <label for="bc-heard">How did you hear about GO? <span class="book-optional">(optional)</span></label>
+              <select id="bc-heard" name="how_heard">
+                <option value="">Select…</option>
+                <option>Social media</option>
+                <option>Recommended by someone</option>
+                <option>Google / web search</option>
+                <option>Another gymnastics club</option>
+                <option>GO team reached out</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="book-field">
+            <label for="bc-message">Anything you'd like to discuss or ask? <span class="book-optional">(optional)</span></label>
+            <textarea id="bc-message" name="message" placeholder="Any questions, context, or specific areas you'd like to cover on the call…"></textarea>
+          </div>
+
+          <button type="submit" class="book-submit">Request a Call →</button>
+        </form>
+
+        <div class="book-success" id="book-success">
+          <div class="book-success-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Request received — thank you.</h3>
+          <p>We'll be in touch within a couple of business days to arrange a time. Looking forward to the conversation.</p>
+        </div>
+      </div>
+
+      <p class="nextstep-small" style="text-align:center;margin-top:32px;">Prefer email? Reach us at <a href="mailto:hello@gymnasticsonline.com.au" style="color:var(--pink-light);text-decoration:none;">hello@gymnasticsonline.com.au</a> — This document is confidential and intended for club leaders only.</p>
+
     </div>
   </section>
 
@@ -960,6 +1106,15 @@
   // Allow Enter key
   document.getElementById('gate-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') checkCode();
+  });
+
+  // Book-a-call form
+  document.getElementById('book-call-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString() })
+      .then(function() { form.style.display = 'none'; document.getElementById('book-success').style.display = 'block'; })
+      .catch(function() { form.style.display = 'none'; document.getElementById('book-success').style.display = 'block'; });
   });
 </script>
 
