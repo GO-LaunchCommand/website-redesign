@@ -132,9 +132,9 @@
 
   /* ── WELCOME HERO ── */
   .welcome-hero {
-    padding: 200px 0 160px;
+    padding: 180px 0 140px;
     background:
-      linear-gradient(rgba(10,5,20,0.60), rgba(10,5,20,0.72)),
+      linear-gradient(rgba(10,5,20,0.72), rgba(10,5,20,0.85)),
       url('img/Coach Pics/LR_GO_25-3-78.jpg') center 30% / cover no-repeat;
     position: relative; overflow: hidden;
     text-align: center;
@@ -143,10 +143,15 @@
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
   }
-  .welcome-hero-content { position: relative; z-index: 1; }
+  .welcome-hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
   .welcome-hero-content .pre { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 24px; }
-  .welcome-hero-content h1 { font-family: var(--serif); font-size: clamp(72px,10vw,120px); font-weight: 900; color: white; line-height: 1.0; letter-spacing: -3px; }
+  .welcome-hero-content h1 { font-family: var(--serif); font-size: clamp(72px,10vw,120px); font-weight: 900; color: white; line-height: 1.0; letter-spacing: -3px; margin-bottom: 32px; }
   .welcome-hero-content h1 em { color: var(--pink); font-style: italic; }
+  .welcome-hero-content .hero-sub { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 40px; }
+  .welcome-hero-scroll { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); cursor: pointer; background: none; border: none; font-family: var(--sans); transition: color 0.2s; }
+  .welcome-hero-scroll:hover { color: rgba(255,255,255,0.6); }
+  .welcome-hero-scroll svg { width: 16px; height: 16px; animation: bounce 2s infinite; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
   .welcome-intro {
     padding: 80px 0 100px;
@@ -437,6 +442,11 @@
       <div class="welcome-hero-content">
         <p class="pre">Founding Partner Document — Confidential</p>
         <h1>You're<br><em>in.</em></h1>
+        <p class="hero-sub">What follows is the full story — the platform, the features, how it works, and what it genuinely means to be a Founding Partner.</p>
+        <button class="welcome-hero-scroll" onclick="document.querySelector('.welcome-intro').scrollIntoView({behavior:'smooth'})">
+          Scroll to explore
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
       </div>
     </div>
   </section>
