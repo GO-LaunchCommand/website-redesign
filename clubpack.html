@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --pink: #E8317F; --pink-dark: #c4195f; --pink-light: #f472a8;
+    --pink: #E8317F; --pink-dark: #c4195f; --pink-light: #f472a8; --glow-pink: rgba(232,49,127,0.4);
     --purple: #6B2FA0; --purple-deep: #2D1B4E; --purple-dark: #1a0e30;
     --dark: #0f0a1a; --mid: #6a6a7e; --light: #f8f6fc; --white: #ffffff;
     --serif: 'Playfair Display', Georgia, serif;
@@ -400,7 +400,7 @@
     <h1>Private<br>Access</h1>
     <p>This page is for club leaders who have registered their interest. Enter your access code to continue.</p>
     <input type="text" id="gate-input" class="gate-input" placeholder="Enter access code" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
-    <button class="gate-btn" onclick="checkCode()">Access Club Pack</button>
+    <button type="button" class="gate-btn" onclick="checkCode()">Access Club Pack</button>
     <p class="gate-error" id="gate-error">That code doesn't look right. Please check and try again.</p>
     <p class="gate-footer">Don't have a code? <a href="clubs.html">Request access here</a></p>
   </div>
@@ -439,7 +439,7 @@
             </div>
             <div class="stat-card-text">
               Home Conditioning — Live at Launch
-              <span>Structured programmes across 12 masterclass areas, available to gymnasts from day one. Also available to coaches so that they can recommend at-home workouts to their team.</span>
+              <span>Structured programmes across 12 masterclass areas, available to gymnasts and coaches from day 1.</span>
             </div>
           </div>
           <div class="stat-card">
