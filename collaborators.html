@@ -294,6 +294,13 @@
     @media (max-width: 700px) { .eoi-form-wrap { padding: 32px 24px; } .eoi-row, .eoi-row-3 { grid-template-columns: 1fr; } .eoi-check-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 480px) { .eoi-check-grid { grid-template-columns: 1fr; } .eoi-phone-wrap { grid-template-columns: 110px 1fr; } }
 
+    /* ====== COLLAB PARALLAX BREAK ====== */
+    .collab-parallax { position: relative; height: 340px; overflow: hidden; background-attachment: fixed; background-size: cover; background-position: center 40%; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .collab-parallax::before { content: ''; position: absolute; inset: 0; background: inherit; background-attachment: fixed; background-size: cover; background-position: center 40%; filter: grayscale(60%) brightness(0.45) contrast(1.1); z-index: 0; }
+    .collab-parallax-text { position: relative; z-index: 1; }
+    .collab-parallax-text p { font-family: var(--serif); font-size: clamp(22px, 3.5vw, 38px); font-weight: 700; color: white; line-height: 1.3; letter-spacing: -0.5px; max-width: 700px; margin: 0 auto; }
+    .collab-parallax-text p em { color: var(--pink); font-style: italic; }
+
     /* ====== FOOTER ====== */
     footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 28px; }
     .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -550,6 +557,13 @@
     </div>
   </section>
 
+  <!-- PARALLAX BREAK -->
+  <div class="collab-parallax" style="background-image:url('img/Coach Pics/LR_GO_25-3-179.jpg');">
+    <div class="collab-parallax-text">
+      <p>Built by people who know gymnastics.<br><em>For people who love it.</em></p>
+    </div>
+  </div>
+
   <!-- BENEFITS -->
   <section class="benefits-section">
     <div class="container">
@@ -613,7 +627,7 @@
         <div class="benefit-note-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
-        <p><strong>A note on remuneration:</strong> We don't make blanket promises about compensation — because every collaboration is different. What we can promise is an honest conversation about what's fair for your contribution, your time, and your expertise. We're building something long-term, and we want everyone involved to benefit as GO grows.</p>
+        <p><strong>A note on remuneration:</strong> The form compensation takes varies by contribution type and scope. Affiliates earn commissions on every referral. Content contributors receive upfront fees for work produced. Some collaborators provide time or resources in exchange for outbound referrals. We're transparent about compensation from the first conversation and work out an arrangement for each relationship that is mutually beneficial.</p>
       </div>
     </div>
   </section>
@@ -735,10 +749,10 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            Will I be compensated for my contribution?
+            Do I need a big following or audience?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-answer">Yes — The form compensation takes varies by contribution type and scope. Affiliates earn commissions on every referral. Content contributors receive upfront fees for work produced. Some collaborators provide time or resources in exchange for outbound referrals. We're transparent about compensation from the first conversation and work out an arrangement for each relationship that is mutually beneficial.</div>
+          <div class="faq-answer">Not at all. Reach matters for some collaboration types — Brand Ambassadors and affiliates benefit from an existing audience — but for most roles, expertise and genuine connection to the gymnastics community matter far more than follower counts. Some of our most valuable contributors have no public profile at all.</div>
         </div>
 
         <div class="faq-item">
@@ -771,6 +785,30 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
           <div class="faq-answer">Reach out anyway. If you work in or around gymnastics — whether that's coaching, officiating, sports medicine, mental health, media, merchandise, or anything else — there's probably a place for you. The worst that can happen is we have a good conversation.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What does onboarding actually look like?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">Once we've agreed on terms and contracts are signed, we set up a proper onboarding session together. You'll get access to GO resources, a clear plan for how the relationship will work, and a direct line to the team from day one. We don't hand you a login and wish you luck.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            When can I start?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">As soon as we've agreed terms and contracts are signed. We're actively onboarding collaborators now ahead of the 2026 launch — which means the people joining now get to genuinely shape how things work, not just fit into a structure that already exists.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What if it's not working out?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">We'd have an honest conversation about it. Our contracts include fair exit clauses on both sides — we'd rather part on good terms than have anyone feeling locked in. In practice, we work hard upfront to make sure the fit is right so it doesn't come to that.</div>
         </div>
 
       </div>
