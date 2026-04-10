@@ -241,6 +241,56 @@
     .cf-success { background: rgba(232,49,127,0.1); border: 1px solid rgba(232,49,127,0.2); border-radius: 12px; padding: 20px; text-align: center; display: none; }
     .cf-success p { font-size: 14px; color: rgba(255,255,255,0.7); }
 
+    /* ====== EOI FORM ====== */
+    .eoi-section { padding: 100px 0; background: var(--purple-dark); }
+    .eoi-section-header { text-align: center; margin-bottom: 56px; }
+    .eoi-section-header h2 { font-family: var(--serif); font-size: clamp(32px,4vw,52px); font-weight: 900; color: white; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; }
+    .eoi-section-header h2 em { color: var(--pink); font-style: italic; }
+    .eoi-section-header p { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+    .eoi-form-wrap { max-width: 820px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 48px; }
+    .eoi-group { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .eoi-group:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .eoi-group-label { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 20px; display: block; }
+    .eoi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .eoi-row:last-child { margin-bottom: 0; }
+    .eoi-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .eoi-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+    .eoi-field:last-child { margin-bottom: 0; }
+    .eoi-field label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .eoi-optional { font-size: 10px; font-weight: 400; letter-spacing: 0; text-transform: none; color: rgba(255,255,255,0.2); margin-left: 4px; }
+    .eoi-field input, .eoi-field select, .eoi-field textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; color: white; font-size: 15px; font-family: var(--sans);
+      padding: 12px 16px; width: 100%; transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .eoi-field input:focus, .eoi-field select:focus, .eoi-field textarea:focus { outline: none; border-color: rgba(232,49,127,0.5); background: rgba(255,255,255,0.07); }
+    .eoi-field input::placeholder, .eoi-field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .eoi-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; padding-right: 40px; cursor: pointer; }
+    .eoi-field select option { background: #1a0e30; color: white; }
+    .eoi-field textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
+    .eoi-phone-wrap { display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
+    .eoi-hint { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 4px; line-height: 1.5; }
+    .eoi-check-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .eoi-check-item { position: relative; }
+    .eoi-check-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .eoi-check-item label { display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 12px 14px; cursor: pointer; font-size: 13px; color: rgba(255,255,255,0.55); transition: all 0.2s; line-height: 1.35; }
+    .eoi-check-item label::before { content: ''; flex-shrink: 0; width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid rgba(255,255,255,0.2); background: transparent; transition: all 0.2s; margin-top: 1px; }
+    .eoi-check-item input:checked + label { border-color: rgba(232,49,127,0.4); background: rgba(232,49,127,0.08); color: white; }
+    .eoi-check-item input:checked + label::before { background: var(--pink); border-color: var(--pink); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); background-size: 10px; background-position: center; background-repeat: no-repeat; }
+    .eoi-submit { width: 100%; background: var(--pink); color: white; border: none; border-radius: 100px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 18px; cursor: pointer; transition: all 0.3s; font-family: var(--sans); margin-top: 8px; }
+    .eoi-submit:hover { background: var(--pink-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,49,127,0.4); }
+    .eoi-success { text-align: center; padding: 60px 40px; display: none; }
+    .eoi-success-icon { width: 64px; height: 64px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    .eoi-success-icon svg { width: 28px; height: 28px; stroke: #22c55e; fill: none; stroke-width: 2.5; }
+    .eoi-success h3 { font-family: var(--serif); font-size: 30px; color: white; margin-bottom: 12px; font-weight: 900; }
+    .eoi-success p { color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.7; }
+    .eoi-direct { text-align: center; margin-top: 32px; font-size: 14px; color: rgba(255,255,255,0.3); }
+    .eoi-direct a { color: var(--pink-light); text-decoration: none; }
+    .eoi-direct a:hover { text-decoration: underline; }
+    @media (max-width: 700px) { .eoi-form-wrap { padding: 32px 24px; } .eoi-row, .eoi-row-3 { grid-template-columns: 1fr; } .eoi-check-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .eoi-check-grid { grid-template-columns: 1fr; } .eoi-phone-wrap { grid-template-columns: 110px 1fr; } }
+
     /* ====== FOOTER ====== */
     footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 28px; }
     .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -705,36 +755,281 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact-section">
+  <!-- EOI FORM -->
+  <section class="eoi-section" id="apply-section">
     <div class="container">
-      <div class="contact-inner">
+      <div class="eoi-section-header">
+        <span class="section-label">Expression of Interest</span>
+        <h2>Let's start a <em>conversation.</em></h2>
+        <p>No lengthy applications — just tell us who you are and how you'd like to be involved. Kym reads every submission personally.</p>
+      </div>
 
-        <div class="contact-text">
-          <span class="section-label">Get in touch</span>
-          <h2>Prefer to reach out <em>directly?</em></h2>
-          <p>If forms aren't your thing, or you'd just rather have a direct conversation — reach out to Kym, our founder, personally. She reads and responds to every message.</p>
-          <a href="mailto:kym@gymnasticsonline.com" class="contact-email-link">
-            kym@gymnasticsonline.com
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+      <div class="eoi-form-wrap">
+        <form id="eoi-form" name="collaborator-eoi" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="collaborator-eoi">
+          <p style="display:none;"><label>Skip: <input name="bot-field"></label></p>
 
-        <div class="contact-form-wrap">
-          <h3>Or send a quick message</h3>
-          <form class="contact-form" name="collab-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
-            <input type="hidden" name="form-name" value="collab-contact">
-            <p style="display:none;"><label>Skip: <input name="bot-field"></label></p>
-            <div class="cf-field"><input type="text" name="name" placeholder="Your name" required></div>
-            <div class="cf-field"><input type="email" name="email" placeholder="Your email" required></div>
-            <div class="cf-field"><textarea name="message" placeholder="Your message…" required></textarea></div>
-            <button type="submit" class="cf-submit">Send message →</button>
-          </form>
-          <div class="cf-success" id="cf-success">
-            <p>✓ &nbsp;Message sent — Kym will be in touch soon.</p>
+          <!-- ABOUT YOU -->
+          <div class="eoi-group">
+            <span class="eoi-group-label">About You</span>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label for="eoi-name">Full Name *</label>
+                <input type="text" id="eoi-name" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-email">Email Address *</label>
+                <input type="email" id="eoi-email" name="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label for="eoi-country">Country *</label>
+                <select id="eoi-country" name="country" required>
+                  <option value="">Select country…</option>
+                  <option>Australia</option>
+                  <option>New Zealand</option>
+                  <option>United Kingdom</option>
+                  <option>Ireland</option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>South Africa</option>
+                  <option>Germany</option>
+                  <option>France</option>
+                  <option>Netherlands</option>
+                  <option>Belgium</option>
+                  <option>Switzerland</option>
+                  <option>Austria</option>
+                  <option>Italy</option>
+                  <option>Spain</option>
+                  <option>Portugal</option>
+                  <option>Sweden</option>
+                  <option>Norway</option>
+                  <option>Denmark</option>
+                  <option>Finland</option>
+                  <option>Romania</option>
+                  <option>Bulgaria</option>
+                  <option>Hungary</option>
+                  <option>Czech Republic</option>
+                  <option>Poland</option>
+                  <option>Russia</option>
+                  <option>Ukraine</option>
+                  <option>Japan</option>
+                  <option>China</option>
+                  <option>Brazil</option>
+                  <option>Argentina</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-city">City <span class="eoi-optional">(optional — helps us schedule calls)</span></label>
+                <input type="text" id="eoi-city" name="city" placeholder="e.g. Melbourne">
+              </div>
+            </div>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label>Phone <span class="eoi-optional">(optional)</span></label>
+                <div class="eoi-phone-wrap">
+                  <select name="phone-code">
+                    <option value="">Code</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+64">🇳🇿 +64</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+353">🇮🇪 +353</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+1">🇨🇦 +1</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+32">🇧🇪 +32</option>
+                    <option value="+41">🇨🇭 +41</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+46">🇸🇪 +46</option>
+                    <option value="+47">🇳🇴 +47</option>
+                    <option value="+45">🇩🇰 +45</option>
+                    <option value="+358">🇫🇮 +358</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+81">🇯🇵 +81</option>
+                    <option value="+86">🇨🇳 +86</option>
+                  </select>
+                  <input type="tel" name="phone" placeholder="Phone number">
+                </div>
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-timezone">Timezone <span class="eoi-optional">(optional)</span></label>
+                <select id="eoi-timezone" name="timezone">
+                  <option value="">Select timezone…</option>
+                  <optgroup label="Australia / Pacific">
+                    <option>AEST — Sydney / Melbourne (UTC+10)</option>
+                    <option>ACST — Adelaide (UTC+9:30)</option>
+                    <option>AWST — Perth (UTC+8)</option>
+                    <option>NZST — Auckland (UTC+12)</option>
+                  </optgroup>
+                  <optgroup label="Europe">
+                    <option>GMT — London (UTC+0)</option>
+                    <option>IST — Dublin (UTC+1)</option>
+                    <option>CET — Paris / Berlin / Amsterdam (UTC+1)</option>
+                    <option>EET — Bucharest / Helsinki (UTC+2)</option>
+                  </optgroup>
+                  <optgroup label="Americas">
+                    <option>EST — New York / Toronto (UTC-5)</option>
+                    <option>CST — Chicago (UTC-6)</option>
+                    <option>MST — Denver (UTC-7)</option>
+                    <option>PST — Los Angeles / Vancouver (UTC-8)</option>
+                    <option>BRT — São Paulo (UTC-3)</option>
+                  </optgroup>
+                  <optgroup label="Asia">
+                    <option>JST — Tokyo (UTC+9)</option>
+                    <option>CST — Beijing / Shanghai (UTC+8)</option>
+                    <option>SGT — Singapore (UTC+8)</option>
+                  </optgroup>
+                  <optgroup label="Africa">
+                    <option>SAST — Johannesburg (UTC+2)</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
           </div>
+
+          <!-- YOUR BACKGROUND -->
+          <div class="eoi-group">
+            <span class="eoi-group-label">Your Background</span>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label for="eoi-role">Current Role / Job Title *</label>
+                <input type="text" id="eoi-role" name="role" placeholder="e.g. Level 7 WAG Coach, Physiotherapist…" required>
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-experience">Years in Gymnastics *</label>
+                <select id="eoi-experience" name="experience" required>
+                  <option value="">Select…</option>
+                  <option>Less than 2 years</option>
+                  <option>2–5 years</option>
+                  <option>5–10 years</option>
+                  <option>10–20 years</option>
+                  <option>20+ years</option>
+                </select>
+              </div>
+            </div>
+            <div class="eoi-field">
+              <label>Gymnastics Discipline <span class="eoi-optional">(select all that apply)</span></label>
+              <div class="eoi-check-grid">
+                <div class="eoi-check-item"><input type="checkbox" id="disc-wag" name="discipline" value="WAG"><label for="disc-wag">WAG — Women's Artistic</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="disc-mag" name="discipline" value="MAG"><label for="disc-mag">MAG — Men's Artistic</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="disc-rhythmic" name="discipline" value="Rhythmic"><label for="disc-rhythmic">Rhythmic</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="disc-trampoline" name="discipline" value="Trampoline"><label for="disc-trampoline">Trampoline</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="disc-acro" name="discipline" value="Acrobatics"><label for="disc-acro">Acrobatics</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="disc-gfa" name="discipline" value="GfA / General"><label for="disc-gfa">GfA / General</label></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOW YOU'D LIKE TO CONTRIBUTE -->
+          <div class="eoi-group">
+            <span class="eoi-group-label">How You'd Like to Contribute</span>
+            <div class="eoi-field">
+              <label>Contribution Type <span class="eoi-optional">(select all that apply)</span></label>
+              <div class="eoi-check-grid">
+                <div class="eoi-check-item"><input type="checkbox" id="ct-content" name="contribution" value="Expert Content Creator"><label for="ct-content">Expert Content Creator</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-coach" name="contribution" value="Coach / Technical Specialist"><label for="ct-coach">Coach / Technical Specialist</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-science" name="contribution" value="Sports Science / Physio"><label for="ct-science">Sports Science / Physio</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-psych" name="contribution" value="Mental Performance / Psychology"><label for="ct-psych">Mental Performance / Psychology</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-nutrition" name="contribution" value="Nutrition / Dietetics"><label for="ct-nutrition">Nutrition / Dietetics</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-affiliate" name="contribution" value="Affiliate / Referral Partner"><label for="ct-affiliate">Affiliate / Referral Partner</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-brand" name="contribution" value="Brand / Commercial Partner"><label for="ct-brand">Brand / Commercial Partner</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-media" name="contribution" value="Media / Content Creator"><label for="ct-media">Media / Content Creator</label></div>
+                <div class="eoi-check-item"><input type="checkbox" id="ct-official" name="contribution" value="Judge / Official"><label for="ct-official">Judge / Official</label></div>
+              </div>
+            </div>
+            <div class="eoi-field" style="margin-top:16px">
+              <label for="eoi-contribute-more">Tell us more *</label>
+              <textarea id="eoi-contribute-more" name="contribution_detail" placeholder="What specifically would you like to do? What skills, knowledge, or resources would you bring? The more you share, the better we can assess the fit." required></textarea>
+            </div>
+            <div class="eoi-field">
+              <label for="eoi-what-for-you">What are you hoping to get from this? <span class="eoi-optional">(optional — helps us make sure it's a good fit for you too)</span></label>
+              <textarea id="eoi-what-for-you" name="what_in_it_for_you" placeholder="e.g. Reach, income, content platform, professional credibility, community connection…"></textarea>
+            </div>
+          </div>
+
+          <!-- ONLINE PRESENCE -->
+          <div class="eoi-group">
+            <span class="eoi-group-label">Online Presence <span class="eoi-optional" style="font-size:10px;letter-spacing:0;text-transform:none;">— all optional</span></span>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label for="eoi-website">Website</label>
+                <input type="url" id="eoi-website" name="website" placeholder="https://yourwebsite.com">
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-instagram">Instagram Handle</label>
+                <input type="text" id="eoi-instagram" name="instagram" placeholder="@yourhandle">
+              </div>
+            </div>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label for="eoi-linkedin">LinkedIn</label>
+                <input type="url" id="eoi-linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-reach">Approximate Audience / Reach</label>
+                <select id="eoi-reach" name="reach">
+                  <option value="">Select…</option>
+                  <option>Not applicable — I'm not a content creator</option>
+                  <option>Under 1,000</option>
+                  <option>1,000 – 10,000</option>
+                  <option>10,000 – 50,000</option>
+                  <option>50,000+</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- ONE LAST THING -->
+          <div class="eoi-group">
+            <span class="eoi-group-label">One Last Thing</span>
+            <div class="eoi-row">
+              <div class="eoi-field">
+                <label for="eoi-heard">How did you hear about GO?</label>
+                <select id="eoi-heard" name="how_heard">
+                  <option value="">Select…</option>
+                  <option>Social media</option>
+                  <option>Recommended by someone</option>
+                  <option>Google / web search</option>
+                  <option>Gymnastics club or community</option>
+                  <option>Existing GO collaborator</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="eoi-field">
+                <label for="eoi-contact-pref">Preferred Contact Method</label>
+                <select id="eoi-contact-pref" name="contact_preference">
+                  <option value="">Select…</option>
+                  <option>Email</option>
+                  <option>WhatsApp</option>
+                  <option>Phone call</option>
+                  <option>No preference</option>
+                </select>
+              </div>
+            </div>
+            <div class="eoi-field">
+              <label for="eoi-extra">Anything else you'd like to add? <span class="eoi-optional">(optional)</span></label>
+              <textarea id="eoi-extra" name="additional_notes" placeholder="Any context, questions, or anything else worth knowing…"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="eoi-submit">Submit Expression of Interest →</button>
+        </form>
+
+        <div class="eoi-success" id="eoi-success">
+          <div class="eoi-success-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>We've got it — thank you.</h3>
+          <p>Kym will review your expression of interest and be in touch directly within a few business days. If there's a fit, she'll reach out to set up a proper conversation.</p>
         </div>
 
+        <p class="eoi-direct">Prefer email? Reach Kym directly at <a href="mailto:kym@gymnasticsonline.com">kym@gymnasticsonline.com</a></p>
       </div>
     </div>
   </section>
@@ -833,13 +1128,13 @@
       .catch(function() { form.style.display = 'none'; document.getElementById('sf-success').style.display = 'block'; });
   });
 
-  // Contact form
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
+  // EOI form
+  document.getElementById('eoi-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const form = this;
     fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(form)).toString() })
-      .then(function() { form.style.display = 'none'; document.getElementById('cf-success').style.display = 'block'; })
-      .catch(function() { form.style.display = 'none'; document.getElementById('cf-success').style.display = 'block'; });
+      .then(function() { form.style.display = 'none'; document.getElementById('eoi-success').style.display = 'block'; })
+      .catch(function() { form.style.display = 'none'; document.getElementById('eoi-success').style.display = 'block'; });
   });
 
   // FAQ accordion
