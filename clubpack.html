@@ -133,21 +133,30 @@
   /* ── WELCOME HERO ── */
   .welcome-hero {
     padding: 180px 0 140px;
-    background:
-      linear-gradient(rgba(10,5,20,0.72), rgba(10,5,20,0.85)),
-      url('img/Coach Pics/LR_GO_25-3-78.jpg') center 30% / cover no-repeat;
+    background: var(--purple-dark);
     position: relative; overflow: hidden;
     text-align: center;
   }
   .welcome-hero::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
+    z-index: 2;
   }
-  .welcome-hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .welcome-hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: url('img/Coach Pics/LR_GO_25-3-78.jpg') center 30% / cover no-repeat;
+    filter: grayscale(100%) brightness(0.55);
+  }
+  .welcome-hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(rgba(10,5,20,0.55), rgba(10,5,20,0.78));
+  }
+  .welcome-hero-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
   .welcome-hero-content .pre { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 24px; }
   .welcome-hero-content h1 { font-family: var(--serif); font-size: clamp(72px,10vw,120px); font-weight: 900; color: white; line-height: 1.0; letter-spacing: -3px; margin-bottom: 32px; }
   .welcome-hero-content h1 em { color: var(--pink); font-style: italic; }
-  .welcome-hero-content .hero-sub { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 40px; }
+  .welcome-hero-content .hero-sub { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+  .welcome-hero-content .hero-body { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; font-weight: 300; max-width: 540px; margin: 0 auto 40px; }
   .welcome-hero-scroll { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); cursor: pointer; background: none; border: none; font-family: var(--sans); transition: color 0.2s; }
   .welcome-hero-scroll:hover { color: rgba(255,255,255,0.6); }
   .welcome-hero-scroll svg { width: 16px; height: 16px; animation: bounce 2s infinite; }
